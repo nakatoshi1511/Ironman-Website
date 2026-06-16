@@ -10,24 +10,21 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=flow-8" />
+    <link rel="stylesheet" href="styles.css?v=flow-14" />
   </head>
   <body class="flow-page site-home">
     <header id="header" class="flow-hero" aria-labelledby="flow-hero-title">
       <img src="../Bilder Landingpage/HeroV1.jpg" alt="Schwimmen, Radfahren und Laufen als Hero Collage" />
       <nav class="site-nav" aria-label="Hauptnavigation">
-        <a class="site-brand" href="#header">David Simon</a>
         <div class="site-nav-links">
           <a href="#profil">Profil</a>
           <a href="#erfolge">Erfolge</a>
           <a href="#partner">Partner werden</a>
-          <a href="#roadmap">Roadmap</a>
           <a href="#social-sponsoren">Socials & Sponsoren</a>
           <a href="newsfeed.html">Newsfeed</a>
         </div>
       </nav>
       <div class="flow-hero-content">
-        <p class="eyebrow">David Simon · Kona 2026</p>
         <h1 id="flow-hero-title">Road to Hawaii</h1>
         <div class="flow-hero-bottom">
           <p>
@@ -44,60 +41,149 @@
     </header>
 
     <main>
-      <section id="profil" class="athlete-profile" aria-labelledby="athlete-profile-title">
+      <section id="profil" class="athlete-profile" aria-labelledby="profile-info-title">
         <div class="profile-inner">
-          <div class="profile-heading">
-            <p class="section-kicker">Davids Profil</p>
-            <h2 id="athlete-profile-title">Vom Moseltal auf die größte Triathlon-Bühne.</h2>
-          </div>
+          <figure class="profile-portrait">
+            <img src="../Bilder Landingpage/Profilbild.jpg" alt="Portrait von David Simon" />
+          </figure>
           <div class="profile-copy">
-            <p>
-              David Simon ist Amateur-Triathlet aus Büchel, Polizeibeamter und
-              Athlet des RSC Untermosel. Seine Geschichte verbindet sportliche
-              Leistung mit Alltag, Disziplin und regionaler Bodenhaftung.
-            </p>
-            <p>
-              Für Sponsoren entsteht daraus ein glaubwürdiges Umfeld: ein Athlet
-              mit klarer Haltung, greifbarem Ziel und einer Reise, die auch
-              außerhalb der Triathlon-Szene verstanden wird.
-            </p>
-            <div class="profile-facts" aria-label="Kurzfakten">
-              <span>35 Jahre</span>
-              <span>Büchel</span>
-              <span>Polizeibeamter</span>
-              <span>RSC Untermosel</span>
-            </div>
+            <p id="profile-info-title" class="section-kicker">Davids Profil</p>
+            <dl class="profile-info-list" aria-label="Davids Informationen">
+              <div>
+                <dt>Vorname Nachname</dt>
+                <dd>David Simon</dd>
+              </div>
+              <div>
+                <dt>Geburtsdatum</dt>
+                <dd>1991</dd>
+              </div>
+              <div>
+                <dt>Wohnort</dt>
+                <dd>B&uuml;chel</dd>
+              </div>
+              <div>
+                <dt>Beruf</dt>
+                <dd>Polizist</dd>
+              </div>
+              <div>
+                <dt>Trainer</dt>
+                <dd>Andreas W&uuml;rtz <span>EMH-Coaching</span></dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
 
-      <section id="erfolge" class="achievements-section" aria-labelledby="achievements-title">
-        <div class="achievements-inner">
-          <div class="achievements-head">
-            <p class="section-kicker">Erfolge</p>
-            <h2 id="achievements-title">Leistung, die Vertrauen schafft.</h2>
+      <section id="erfolge" class="vision-section" aria-labelledby="vision-title">
+        <div class="vision-inner">
+          <div class="vision-head">
+            <p class="section-kicker">Der Weg nach Kona</p>
+            <h2 id="vision-title">Leistung &amp; Vision</h2>
           </div>
-          <div class="profile-stats achievements-grid" aria-label="Sportliche Erfolge">
-            <div>
-              <strong>8:38</strong>
-              <span>Bestzeit auf der Langdistanz</span>
+
+          <div class="vision-tabs" role="tablist" aria-label="Leistung und Roadmap anzeigen">
+            <button id="vision-tab-achievements" class="vision-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="vision-panel-achievements" data-vision-tab="achievements">
+              Erfolge
+            </button>
+            <button id="vision-tab-roadmap" class="vision-tab" type="button" role="tab" aria-selected="false" aria-controls="roadmap" data-vision-tab="roadmap">
+              Roadmap
+            </button>
+          </div>
+
+          <div class="vision-panels">
+            <div id="vision-panel-achievements" class="vision-panel is-active" role="tabpanel" aria-labelledby="vision-tab-achievements" data-vision-panel="achievements">
+              <div class="achievement-list" aria-label="Sportliche Erfolge">
+                <article class="achievement-row">
+                  <span>Sieg</span>
+                  <div>
+                    <h3>IRONMAN Lanzarote 2026</h3>
+                    <p>Altersklassensieg M35 - Qualifikation f&uuml;r Hawaii</p>
+                  </div>
+                </article>
+                <article class="achievement-row">
+                  <span>2. Platz</span>
+                  <div>
+                    <h3>IRONMAN Frankfurt 2025</h3>
+                    <p>Vizeeuropameister Altersklasse M30</p>
+                  </div>
+                </article>
+                <article class="achievement-row">
+                  <span>Ironman</span>
+                  <div>
+                    <h3>08:38:52</h3>
+                    <p>IRONMAN Frankfurt 2026</p>
+                  </div>
+                </article>
+                <article class="achievement-row">
+                  <span>Marathon</span>
+                  <div>
+                    <h3>02:37:56</h3>
+                    <p>Marathon Frankfurt 2025</p>
+                  </div>
+                </article>
+                <article class="achievement-row">
+                  <span>Halbmarathon</span>
+                  <div>
+                    <h3>1:13:01</h3>
+                    <p>Halbmarathon Saarbr&uuml;cken 2026</p>
+                  </div>
+                </article>
+                <article class="achievement-row">
+                  <span>10 km</span>
+                  <div>
+                    <h3>33:44</h3>
+                    <p>Leverkusen 2026</p>
+                  </div>
+                </article>
+                <article class="achievement-row">
+                  <span>5 km</span>
+                  <div>
+                    <h3>16:35</h3>
+                    <p>Wittlich 2025</p>
+                  </div>
+                </article>
+                <article class="achievement-row">
+                  <span>Quali</span>
+                  <div>
+                    <h3>IRONMAN Weltmeisterschaft Hawaii</h3>
+                    <p>Startplatz Kona 2026 gesichert</p>
+                  </div>
+                </article>
+              </div>
             </div>
-            <div>
-              <strong>M30</strong>
-              <span>Vizeeuropameister IRONMAN Frankfurt 2025</span>
-            </div>
-            <div>
-              <strong>1.</strong>
-              <span>Altersklassensieg IRONMAN Lanzarote 2026</span>
-            </div>
-            <div>
-              <strong>Kona</strong>
-              <span>Qualifiziert für die IRONMAN WM Hawaii 2026</span>
+
+            <div id="roadmap" class="vision-panel" role="tabpanel" aria-labelledby="vision-tab-roadmap" data-vision-panel="roadmap" hidden>
+              <div class="vision-roadmap">
+                <div class="roadmap-art" aria-label="Roadmap von B&uuml;chel bis Hawaii">
+                  <img src="../RoadmapV2.png" alt="Illustration vom Start in B&uuml;chel &uuml;ber Schwimmen, Radfahren und Laufen bis zum Ziel in Hawaii" />
+                </div>
+                <div class="roadmap-milestones" aria-label="Roadmap Meilensteine">
+                  <article>
+                    <span>Mai 2026</span>
+                    <h3>Quali Lanzarote</h3>
+                    <p>Ticket nach Kona gel&ouml;st</p>
+                  </article>
+                  <article>
+                    <span>Juli 2026</span>
+                    <h3>Trainingslager</h3>
+                    <p>Hitze- und Distanz-Prep</p>
+                  </article>
+                  <article>
+                    <span>August 2026</span>
+                    <h3>Tune-up-Rennen</h3>
+                    <p>Formtest unter Wettkampfbedingungen</p>
+                  </article>
+                  <article>
+                    <span>10. Okt 2026</span>
+                    <h3>WM Hawaii</h3>
+                    <p>Das Zielrennen in Kona</p>
+                  </article>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
       <section id="partner" class="partner-case" aria-labelledby="partner-case-title">
         <div class="partner-inner">
           <div class="partner-lead">
@@ -147,79 +233,29 @@
         </div>
       </section>
 
-      <section id="roadmap" class="race-clock roadmap-clock" aria-labelledby="race-clock-title">
-        <div class="race-clock-inner">
-          <div class="roadmap-intro">
-            <div>
-              <p class="section-kicker">Roadmap</p>
-              <h2 id="race-clock-title">Der Weg nach Kona läuft.</h2>
-            </div>
-            <div class="race-day-countdown" aria-label="Countdown bis zur IRONMAN Weltmeisterschaft">
-              <span>Noch</span>
-              <strong><b data-countdown-days>121</b> Tage</strong>
-              <small>
-                <b data-countdown-hours>08</b>h
-                <b data-countdown-minutes>42</b>m
-                <b data-countdown-seconds>00</b>s bis zur IRONMAN WM am 10.10.2026
-              </small>
-            </div>
-          </div>
-
-          <div class="roadmap-stage" aria-label="Road to Kona Timeline">
-            <img src="../Dokumente/Bilder/Roadmap-transparent.png" alt="Roadmap mit Schwimmen, Radfahren und Laufen" />
-            <div class="roadmap-card roadmap-card-1">
-              <span>21. Juni</span>
-              <strong>Mittelmoseltriathlon</strong>
-              <p>Regionaler Auftritt vor heimischem Publikum.</p>
-            </div>
-            <div class="roadmap-card roadmap-card-2">
-              <span>Sommer</span>
-              <strong>Training & Material</strong>
-              <p>Formaufbau, Ausrüstung und Partner-Updates.</p>
-            </div>
-            <div class="roadmap-card roadmap-card-3">
-              <span>August</span>
-              <strong>Leistungsschärfung</strong>
-              <p>Diagnostik, Belastung und gezielte Vorbereitung.</p>
-            </div>
-            <div class="roadmap-card roadmap-card-4">
-              <span>Oktober</span>
-              <strong>Race Week</strong>
-              <p>Content, Presse und Präsenz vor Ort.</p>
-            </div>
-            <div class="roadmap-card roadmap-card-5">
-              <span>10.10.26</span>
-              <strong>IRONMAN Hawaii</strong>
-              <p>Der Renntag auf der größten Triathlon-Bühne.</p>
-            </div>
-          </div>
-
-          <p class="roadmap-note">
-            Arbeitsstand: Die Roadmap nutzt aktuell ein eingefügtes Canva-Visual.
-            Die Kästchen sind als editierbare Website-Texte angelegt und können
-            später durch ein finales Bild oder eine Animation ersetzt werden.
-          </p>
-        </div>
-      </section>
-
-      <section id="social-sponsoren" class="social-sponsors" aria-labelledby="social-sponsors-title">
+      <section id="social-sponsoren" class="social-sponsors" aria-labelledby="social-sponsors-kicker">
         <div class="social-sponsors-inner">
-          <div class="social-sponsors-head">
-            <p class="section-kicker">Social Media & Sponsoren</p>
-            <h2 id="social-sponsors-title">Nähe zur Vorbereitung, Raum für Partner.</h2>
+          <div class="social-sponsors-head social-sponsors-head-compact">
+            <p id="social-sponsors-kicker" class="section-kicker">Social Media &amp; Sponsoren</p>
           </div>
-          <div class="social-links" aria-label="Social Media Links">
-            <a href="#" aria-label="Instagram Profil öffnen">
-              <span>Instagram</span>
-              <strong>@david.simon</strong>
+          <div class="social-links social-icon-links" aria-label="Social Media Links">
+            <a href="#" aria-label="Instagram Profil &ouml;ffnen">
+              <span class="social-icon" aria-hidden="true">
+                <img src="../Bilder Landingpage/social-icons/instagram.svg" alt="" />
+              </span>
+              <strong>Instagram</strong>
             </a>
-            <a href="#" aria-label="Strava Profil öffnen">
-              <span>Strava</span>
-              <strong>Training & Rennen</strong>
+            <a href="#" aria-label="Strava Profil &ouml;ffnen">
+              <span class="social-icon" aria-hidden="true">
+                <img src="../Bilder Landingpage/social-icons/strava.svg" alt="" />
+              </span>
+              <strong>Strava</strong>
             </a>
-            <a href="#" aria-label="Facebook Profil öffnen">
-              <span>Facebook</span>
-              <strong>Updates teilen</strong>
+            <a href="#" aria-label="Facebook Profil &ouml;ffnen">
+              <span class="social-icon" aria-hidden="true">
+                <img src="../Bilder Landingpage/social-icons/facebook.svg" alt="" />
+              </span>
+              <strong>Facebook</strong>
             </a>
           </div>
           <div class="featured-partner">
@@ -243,31 +279,34 @@
         </div>
       </section>
     </main>
+
     <script>
-      const raceDate = new Date("2026-10-10T07:00:00+02:00");
-      const countdownParts = {
-        days: document.querySelector("[data-countdown-days]"),
-        hours: document.querySelector("[data-countdown-hours]"),
-        minutes: document.querySelector("[data-countdown-minutes]"),
-        seconds: document.querySelector("[data-countdown-seconds]"),
-      };
+      const visionTabs = document.querySelectorAll("[data-vision-tab]");
+      const visionPanels = document.querySelectorAll("[data-vision-panel]");
 
-      function updateCountdown() {
-        const remaining = Math.max(0, raceDate.getTime() - Date.now());
-        const totalSeconds = Math.floor(remaining / 1000);
-        const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
+      function setVisionPanel(target) {
+        visionTabs.forEach((tab) => {
+          const isActive = tab.dataset.visionTab === target;
+          tab.classList.toggle("is-active", isActive);
+          tab.setAttribute("aria-selected", String(isActive));
+        });
 
-        countdownParts.days.textContent = String(days);
-        countdownParts.hours.textContent = String(hours).padStart(2, "0");
-        countdownParts.minutes.textContent = String(minutes).padStart(2, "0");
-        countdownParts.seconds.textContent = String(seconds).padStart(2, "0");
+        visionPanels.forEach((panel) => {
+          const isActive = panel.dataset.visionPanel === target;
+          panel.classList.toggle("is-active", isActive);
+          panel.hidden = !isActive;
+        });
       }
 
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
+      visionTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          setVisionPanel(tab.dataset.visionTab);
+        });
+      });
+
+      if (window.location.hash === "#roadmap") {
+        setVisionPanel("roadmap");
+      }
     </script>
   </body>
 </html>
