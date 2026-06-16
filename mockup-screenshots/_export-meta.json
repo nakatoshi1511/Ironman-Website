@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:4173/mockups/",
+  "deviceScaleFactor": 2,
+  "rects": [
+    {
+      "index": 1,
+      "title": "Sponsor Editorial",
+      "x": 394,
+      "y": 231,
+      "width": 1132,
+      "height": 1055
+    },
+    {
+      "index": 2,
+      "title": "Kona Performance",
+      "x": 394,
+      "y": 1327,
+      "width": 1132,
+      "height": 1146
+    },
+    {
+      "index": 3,
+      "title": "Regional Precision",
+      "x": 394,
+      "y": 2516,
+      "width": 1132,
+      "height": 1112
+    },
+    {
+      "index": 4,
+      "title": "Image First Minimal",
+      "x": 394,
+      "y": 3670,
+      "width": 1132,
+      "height": 829
+    }
+  ]
+}

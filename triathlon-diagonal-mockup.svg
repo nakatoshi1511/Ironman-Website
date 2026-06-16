@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="900" viewBox="0 0 1800 900" role="img" aria-labelledby="title desc">
+  <title id="title">Triathlon diagonal mockup</title>
+  <desc id="desc">Three image areas from left to right: Swim, Bike, Run, divided by subtle diagonal cuts from upper left to lower right.</desc>
+  <rect width="1800" height="900" fill="#111111"/>
+  <polygon points="0,0 690,0 510,900 0,900" fill="#1f8fbf"/>
+  <polygon points="610,0 1270,0 1090,900 430,900" fill="#e0b33f"/>
+  <polygon points="1190,0 1800,0 1800,900 1010,900" fill="#4f9b5f"/>
+  <line x1="690" y1="0" x2="510" y2="900" stroke="#ffffff" stroke-width="10" stroke-opacity="0.72"/>
+  <line x1="1270" y1="0" x2="1090" y2="900" stroke="#ffffff" stroke-width="10" stroke-opacity="0.72"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#ffffff" text-anchor="middle">
+    <text x="285" y="468" font-size="86">SWIM</text>
+    <text x="850" y="468" font-size="86">BIKE</text>
+    <text x="1450" y="468" font-size="86">RUN</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#ffffff" fill-opacity="0.84" text-anchor="middle">
+    <text x="285" y="532">Swim.JPG</text>
+    <text x="850" y="532">Bike.JPG</text>
+    <text x="1450" y="532">Run.JPG</text>
+  </g>
+</svg>

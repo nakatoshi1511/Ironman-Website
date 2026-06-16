@@ -1,0 +1,190 @@
+{
+  "homeDesktop": {
+    "title": "Road to Hawaii - Landingpage Flow",
+    "innerWidth": 1440,
+    "innerHeight": 1200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "bodyHeight": 7197,
+    "navLinks": [
+      "#header",
+      "#profil",
+      "#erfolge",
+      "#partner",
+      "#roadmap",
+      "#social-sponsoren",
+      "newsfeed.html"
+    ],
+    "sections": [
+      {
+        "tag": "HEADER",
+        "id": "header",
+        "className": "flow-hero",
+        "top": 0,
+        "height": 1056
+      },
+      {
+        "tag": "SECTION",
+        "id": "profil",
+        "className": "athlete-profile",
+        "top": 1056,
+        "height": 934
+      },
+      {
+        "tag": "SECTION",
+        "id": "erfolge",
+        "className": "achievements-section",
+        "top": 1990,
+        "height": 864
+      },
+      {
+        "tag": "SECTION",
+        "id": "partner",
+        "className": "partner-case",
+        "top": 2854,
+        "height": 1569
+      },
+      {
+        "tag": "SECTION",
+        "id": "roadmap",
+        "className": "race-clock roadmap-clock",
+        "top": 4422,
+        "height": 1219
+      },
+      {
+        "tag": "SECTION",
+        "id": "social-sponsoren",
+        "className": "social-sponsors",
+        "top": 5640,
+        "height": 1557
+      }
+    ]
+  },
+  "homeMobile": {
+    "title": "Road to Hawaii - Landingpage Flow",
+    "innerWidth": 390,
+    "innerHeight": 1200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyHeight": 7200,
+    "navLinks": [
+      "#header",
+      "#profil",
+      "#erfolge",
+      "#partner",
+      "#roadmap",
+      "#social-sponsoren",
+      "newsfeed.html"
+    ],
+    "sections": [
+      {
+        "tag": "HEADER",
+        "id": "header",
+        "className": "flow-hero",
+        "top": 0,
+        "height": 760
+      },
+      {
+        "tag": "SECTION",
+        "id": "profil",
+        "className": "athlete-profile",
+        "top": 760,
+        "height": 911
+      },
+      {
+        "tag": "SECTION",
+        "id": "erfolge",
+        "className": "achievements-section",
+        "top": 1671,
+        "height": 904
+      },
+      {
+        "tag": "SECTION",
+        "id": "partner",
+        "className": "partner-case",
+        "top": 2575,
+        "height": 1950
+      },
+      {
+        "tag": "SECTION",
+        "id": "roadmap",
+        "className": "race-clock roadmap-clock",
+        "top": 4524,
+        "height": 1055
+      },
+      {
+        "tag": "SECTION",
+        "id": "social-sponsoren",
+        "className": "social-sponsors",
+        "top": 5579,
+        "height": 1621
+      }
+    ]
+  },
+  "newsDesktop": {
+    "title": "Road to Hawaii - Newsfeed",
+    "innerWidth": 1440,
+    "innerHeight": 1200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "bodyHeight": 2586,
+    "navLinks": [
+      "landingpage-flow.html#header",
+      "landingpage-flow.html#profil",
+      "landingpage-flow.html#erfolge",
+      "landingpage-flow.html#partner",
+      "landingpage-flow.html#roadmap",
+      "landingpage-flow.html#social-sponsoren",
+      "newsfeed.html"
+    ],
+    "sections": [
+      {
+        "tag": "HEADER",
+        "id": "",
+        "className": "newsfeed-hero",
+        "top": 0,
+        "height": 712
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "className": "feed-grid",
+        "top": 904,
+        "height": 1542
+      }
+    ]
+  },
+  "newsMobile": {
+    "title": "Road to Hawaii - Newsfeed",
+    "innerWidth": 390,
+    "innerHeight": 1200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyHeight": 3066,
+    "navLinks": [
+      "landingpage-flow.html#header",
+      "landingpage-flow.html#profil",
+      "landingpage-flow.html#erfolge",
+      "landingpage-flow.html#partner",
+      "landingpage-flow.html#roadmap",
+      "landingpage-flow.html#social-sponsoren",
+      "newsfeed.html"
+    ],
+    "sections": [
+      {
+        "tag": "HEADER",
+        "id": "",
+        "className": "newsfeed-hero",
+        "top": 0,
+        "height": 526
+      },
+      {
+        "tag": "SECTION",
+        "id": "",
+        "className": "feed-grid",
+        "top": 688,
+        "height": 2302
+      }
+    ]
+  }
+}

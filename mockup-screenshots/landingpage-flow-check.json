@@ -1,0 +1,18 @@
+{
+  "desktop": {
+    "innerWidth": 1440,
+    "innerHeight": 1200,
+    "scrollWidth": 1495,
+    "clientWidth": 1440,
+    "bodyHeight": 9475,
+    "visibleOverflow": "hidden"
+  },
+  "mobile": {
+    "innerWidth": 390,
+    "innerHeight": 1200,
+    "scrollWidth": 426,
+    "clientWidth": 390,
+    "bodyHeight": 10250,
+    "visibleOverflow": "hidden"
+  }
+}
