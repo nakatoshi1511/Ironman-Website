@@ -163,6 +163,42 @@ Aktuelle URLs:
 
 Vor Arbeiten immer prüfen, ob der Server/Port noch aktiv ist.
 
+## GitHub und Vercel Deployment
+
+Das Projekt ist auf GitHub und Vercel veröffentlicht.
+
+GitHub:
+- Repository: `nakatoshi1511/Ironman-Website`
+- URL: `https://github.com/nakatoshi1511/Ironman-Website`
+- Branch: `main`
+- Remote: `origin`
+
+Vercel:
+- Projektname: `ironman-website`
+- Production URL: `https://ironman-website.vercel.app`
+- Aktuelle Live-Startseite leitet weiter auf:
+  `https://ironman-website.vercel.app/mockups/landingpage-flow.html`
+- Vercel-Projekt ist mit dem GitHub-Repo `nakatoshi1511/Ironman-Website` verbunden.
+- Vercel zeigte nach dem Verbinden: `Connected just now`.
+- Zukünftige Pushes auf GitHub sollen automatisch neue Vercel-Deployments auslösen.
+
+Wichtige Deployment-Details:
+- Im Projekt-Root liegt `index.html`; diese leitet auf `mockups/landingpage-flow.html` weiter.
+- Die lokale `.vercel/` Projektverknüpfung wird über `.gitignore` ignoriert und soll nicht committed werden.
+- Der erste Production-Deploy wurde per `npx vercel --prod --yes --name ironman-website` erstellt.
+- Beim direkten CLI-Deploy wurde der Alias `https://ironman-website.vercel.app` gesetzt.
+
+Typischer Update-Flow:
+
+```powershell
+git status --short --branch
+git add <geänderte-dateien>
+git commit -m "<kurze beschreibung>"
+git push
+```
+
+Nach dem Push im Vercel Dashboard oder unter der Live-URL prüfen, ob das automatische Deployment durchgelaufen ist.
+
 ## Designpräferenzen
 
 - keine generische Landingpage
@@ -178,9 +214,11 @@ Vor Arbeiten immer prüfen, ob der Server/Port noch aktiv ist.
 ## Aktueller Git-Stand
 
 Stand nach diesem Kontext-Update:
-- Branch: `master`
-- erster Projektstand soll committed sein
-- alle aktuellen Mockups und Assets sollen auf `master` verfügbar sein
+- Branch: `main`
+- Remote: `origin`
+- GitHub-Repo: `https://github.com/nakatoshi1511/Ironman-Website`
+- Vercel-Live-URL: `https://ironman-website.vercel.app`
+- alle aktuellen Mockups und Assets sollen auf `main` verfügbar sein
 
 ## Hinweise für neue Chats
 
