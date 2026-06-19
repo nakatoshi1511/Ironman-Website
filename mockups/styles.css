@@ -1418,34 +1418,48 @@ a {
 }
 
 .partner-case {
-  padding: clamp(64px, 9vw, 126px) 24px clamp(76px, 10vw, 142px);
+  padding: clamp(58px, 8vw, 104px) 24px clamp(68px, 9vw, 118px);
   background:
-    linear-gradient(135deg, rgba(231, 91, 50, 0.1), transparent 34%),
-    linear-gradient(180deg, #f4efe4 0%, #dcd3c2 100%);
+    linear-gradient(135deg, rgba(15, 79, 93, 0.08), transparent 38%),
+    linear-gradient(180deg, #f4efe4 0%, #e4dccd 100%);
 }
 
 .partner-inner {
   width: 100%;
   min-width: 0;
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.58fr);
-  gap: clamp(30px, 6vw, 72px);
-  max-width: 1180px;
+  grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.55fr);
+  gap: clamp(28px, 5vw, 58px);
+  max-width: 1120px;
   margin: 0 auto;
 }
 
 .partner-lead {
   min-width: 0;
-  max-width: 760px;
+  max-width: 640px;
 }
 
 .partner-lead .section-kicker {
   color: var(--ocean);
 }
 
+.partner-lead h2 {
+  max-width: 620px;
+  margin: 0;
+  color: var(--site-graphite);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(2.45rem, 4.4vw, 4.2rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .partner-lead p {
-  max-width: 650px;
-  margin-top: 26px;
+  max-width: 600px;
+  margin-top: 18px;
+  color: rgba(17, 20, 24, 0.68);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.7;
 }
 
 .partner-actions {
@@ -1454,8 +1468,9 @@ a {
   flex-wrap: wrap;
   align-items: center;
   gap: 14px 18px;
-  margin-top: clamp(30px, 5vw, 54px);
-  padding-top: 24px;
+  width: fit-content;
+  margin-top: clamp(24px, 4vw, 42px);
+  padding-top: 22px;
   border-top: 1px solid rgba(17, 20, 24, 0.16);
 }
 
@@ -1470,17 +1485,13 @@ a {
 .partner-support-card {
   min-width: 0;
   align-self: start;
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(24px, 4vw, 36px);
+  padding: clamp(24px, 3vw, 34px);
   border: 1px solid rgba(17, 20, 24, 0.14);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(15, 79, 93, 0.12), transparent 46%),
-    rgba(255, 253, 248, 0.42);
-  box-shadow: 0 24px 60px rgba(24, 31, 31, 0.08);
+    linear-gradient(135deg, rgba(255, 253, 248, 0.72), rgba(255, 253, 248, 0.36)),
+    rgba(255, 253, 248, 0.52);
+  box-shadow: 0 18px 46px rgba(24, 31, 31, 0.07);
 }
 
 .partner-support-card span,
@@ -1501,15 +1512,52 @@ a {
   line-height: 1.62;
 }
 
+.partner-support-card h3 {
+  margin: 18px 0 0;
+  color: var(--site-graphite);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  line-height: 0.96;
+  letter-spacing: 0;
+}
+
+.partner-support-card ul {
+  display: grid;
+  gap: 14px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partner-support-card li {
+  position: relative;
+  padding-left: 20px;
+  color: rgba(17, 20, 24, 0.68);
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.partner-support-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lava);
+}
+
 .sponsor-showcase {
   min-width: 0;
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: minmax(260px, 0.36fr) minmax(0, 0.64fr);
-  gap: clamp(24px, 5vw, 54px);
+  gap: clamp(22px, 4.5vw, 48px);
   align-items: start;
-  margin-top: clamp(8px, 2vw, 22px);
-  padding-top: clamp(34px, 5vw, 58px);
+  margin-top: clamp(4px, 1.5vw, 16px);
+  padding-top: clamp(30px, 4vw, 46px);
   border-top: 1px solid rgba(17, 20, 24, 0.16);
 }
 
@@ -1533,7 +1581,7 @@ a {
 }
 
 .sponsor-grid > div {
-  min-height: 122px;
+  min-height: 108px;
   display: grid;
   place-items: center;
   padding: 18px;
@@ -1545,7 +1593,7 @@ a {
 
 .sponsor-grid .sponsor-main {
   grid-column: span 2;
-  min-height: 170px;
+  min-height: 148px;
   background:
     linear-gradient(135deg, rgba(231, 91, 50, 0.1), transparent 42%),
     rgba(255, 253, 248, 0.52);
@@ -1563,7 +1611,7 @@ a {
   display: block;
   color: var(--site-graphite);
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-size: clamp(2rem, 4.2vw, 4rem);
   line-height: 0.9;
   text-transform: uppercase;
 }
@@ -2526,9 +2574,12 @@ a {
     padding-inline: 20px;
   }
 
-  .profile-heading h2,
-  .partner-lead h2 {
+  .profile-heading h2 {
     font-size: clamp(3.5rem, 17vw, 5.4rem);
+  }
+
+  .partner-lead h2 {
+    font-size: clamp(2.3rem, 11vw, 3.45rem);
   }
 
   .roadmap-milestones,
