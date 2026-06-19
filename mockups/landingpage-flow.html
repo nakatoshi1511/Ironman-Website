@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Caveat:wght@600;700&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=flow-31" />
+    <link rel="stylesheet" href="styles.css?v=flow-33" />
   </head>
   <body class="flow-page site-home">
     <header id="header" class="flow-hero" aria-labelledby="flow-hero-title">
@@ -27,14 +27,36 @@
       <div class="flow-hero-content">
         <h1 id="flow-hero-title">Road to Hawaii</h1>
         <div class="flow-hero-bottom">
-          <p>
-            Ein regionaler Amateur-Triathlet auf dem Weg zur IRONMAN
-            Weltmeisterschaft. Werden Sie Partner einer sportlichen Reise mit
-            Haltung, Leistung und Sichtbarkeit.
-          </p>
-          <div class="actions" aria-label="Sponsor Aktionen">
-            <a class="button primary" href="mailto:david91simon@gmail.com">Gespräch vereinbaren</a>
-            <a class="button secondary" href="#partner">Sponsoring ansehen</a>
+          <div class="flow-hero-copy">
+            <p>
+              Ein regionaler Amateur-Triathlet auf dem Weg zur IRONMAN
+              Weltmeisterschaft. Werden Sie Partner einer sportlichen Reise mit
+              Haltung, Leistung und Sichtbarkeit.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="kona-countdown" data-countdown-target="2026-10-10T06:30:00-10:00" aria-label="Countdown bis zur IRONMAN Weltmeisterschaft Hawaii">
+        <div class="kona-countdown-head">
+          <span>Countdown Hawaii</span>
+          <time datetime="2026-10-10">10. Okt 2026</time>
+        </div>
+        <div class="kona-countdown-grid" aria-live="polite">
+          <div>
+            <strong data-countdown-unit="days">000</strong>
+            <span>Tage</span>
+          </div>
+          <div>
+            <strong data-countdown-unit="hours">00</strong>
+            <span>Stunden</span>
+          </div>
+          <div>
+            <strong data-countdown-unit="minutes">00</strong>
+            <span>Minuten</span>
+          </div>
+          <div>
+            <strong data-countdown-unit="seconds">00</strong>
+            <span>Sekunden</span>
           </div>
         </div>
       </div>
@@ -194,6 +216,8 @@
               Haltung und authentischen Einblicken.
             </p>
             <div class="partner-actions" id="konzept">
+              <a class="button primary" href="mailto:david91simon@gmail.com">Gespräch vereinbaren</a>
+              <a class="button secondary" href="#konzept">Sponsoring ansehen</a>
               <a class="button primary" href="#">Sponsoring-Konzept herunterladen</a>
             </div>
           </div>
@@ -302,6 +326,39 @@
 
       if (window.location.hash === "#roadmap") {
         setVisionPanel("roadmap");
+      }
+
+      const countdown = document.querySelector("[data-countdown-target]");
+
+      if (countdown) {
+        const targetTime = new Date(countdown.dataset.countdownTarget).getTime();
+        const units = {
+          days: countdown.querySelector('[data-countdown-unit="days"]'),
+          hours: countdown.querySelector('[data-countdown-unit="hours"]'),
+          minutes: countdown.querySelector('[data-countdown-unit="minutes"]'),
+          seconds: countdown.querySelector('[data-countdown-unit="seconds"]'),
+        };
+
+        function pad(value, size = 2) {
+          return String(value).padStart(size, "0");
+        }
+
+        function updateCountdown() {
+          const remaining = Math.max(0, targetTime - Date.now());
+          const totalSeconds = Math.floor(remaining / 1000);
+          const days = Math.floor(totalSeconds / 86400);
+          const hours = Math.floor((totalSeconds % 86400) / 3600);
+          const minutes = Math.floor((totalSeconds % 3600) / 60);
+          const seconds = totalSeconds % 60;
+
+          units.days.textContent = pad(days, 3);
+          units.hours.textContent = pad(hours);
+          units.minutes.textContent = pad(minutes);
+          units.seconds.textContent = pad(seconds);
+        }
+
+        updateCountdown();
+        window.setInterval(updateCountdown, 1000);
       }
     </script>
   </body>
