@@ -652,7 +652,7 @@ a {
 
 .kona-countdown-head span,
 .kona-countdown-head time {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 800;
 }
 
@@ -1583,6 +1583,23 @@ a {
   margin-top: clamp(24px, 4vw, 42px);
   padding-top: 22px;
   border-top: 1px solid rgba(17, 20, 24, 0.16);
+}
+
+.partner-actions .button {
+  border-color: rgba(248, 244, 234, 0.16);
+  background:
+    radial-gradient(ellipse at 19% 8%, rgba(231, 91, 50, 0.22), transparent 30%),
+    linear-gradient(90deg, rgba(15, 79, 93, 0.28), transparent 58%),
+    #2f3435;
+  color: var(--lava);
+}
+
+.partner-actions .button.primary {
+  border-color: rgba(231, 91, 50, 0.34);
+}
+
+.partner-actions .button.secondary {
+  border-color: rgba(231, 91, 50, 0.42);
 }
 
 .partner-actions span {
