@@ -534,9 +534,13 @@ a {
   color: #f8f4ea;
 }
 
-.flow-hero img {
+.flow-hero picture {
   position: absolute;
   inset: 0;
+  display: block;
+}
+
+.flow-hero picture img {
   width: 100%;
   max-width: 100%;
   height: 100%;
@@ -2779,12 +2783,22 @@ a {
     width: 100%;
     transform: none;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
+    padding-inline: 10px;
   }
 
   .site-nav-links {
-    justify-content: flex-start;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+
+  .site-nav-links a {
+    padding-inline: 6px;
+    font-size: 0.62rem;
+    letter-spacing: 0;
   }
 
   .feed-grid {
@@ -2874,17 +2888,17 @@ a {
       linear-gradient(180deg, #0d1111 0%, #151917 48%, #0d1111 100%);
   }
 
-  .flow-hero img {
+  .flow-hero picture img {
     height: 100%;
     max-height: none;
-    object-fit: cover;
-    object-position: 58% center;
+    object-fit: contain;
+    object-position: center center;
   }
 
   .flow-hero::after {
     background:
-      linear-gradient(180deg, rgba(8, 12, 12, 0.56), rgba(8, 12, 12, 0.14) 34%, rgba(8, 12, 12, 0.76) 66%, rgba(8, 12, 12, 0.96)),
-      linear-gradient(90deg, rgba(8, 12, 12, 0.48), transparent 48%, rgba(8, 12, 12, 0.42));
+      linear-gradient(180deg, rgba(8, 12, 12, 0.86), rgba(8, 12, 12, 0.5) 28%, rgba(8, 12, 12, 0.34) 50%, rgba(8, 12, 12, 0.9) 74%, rgba(8, 12, 12, 0.98)),
+      linear-gradient(90deg, rgba(8, 12, 12, 0.58), transparent 48%, rgba(8, 12, 12, 0.5));
   }
 
   .flow-hero-content {
@@ -3106,8 +3120,8 @@ a {
 
   .site-nav-links a {
     min-height: 27px;
-    padding-inline: 8px;
-    font-size: 0.68rem;
+    padding-inline: 4px;
+    font-size: 0.56rem;
   }
 
   .profile-info-list div {
