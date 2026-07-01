@@ -2508,9 +2508,19 @@ a {
 .feed-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: clamp(24px, 4vw, 38px);
   max-width: 900px;
   margin: 0 auto;
+}
+
+.feed-grid .news-card {
+  border-color: rgba(17, 20, 24, 0.16);
+  background: rgba(239, 233, 220, 0.9);
+  box-shadow: 0 16px 42px rgba(17, 20, 24, 0.08);
+}
+
+.feed-grid .news-card div {
+  border-top: 1px solid rgba(17, 20, 24, 0.08);
 }
 
 .feed-grid .news-card-large {

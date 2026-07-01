@@ -163,6 +163,80 @@ Aktuelle URLs:
 
 Vor Arbeiten immer prüfen, ob der Server/Port noch aktiv ist.
 
+## Browser-, Mobile- und Layout-Workflow
+
+Learnings aus der aktuellen Iteration:
+
+- Der In-App-Browser soll für visuelle Änderungen aktiv genutzt werden.
+- Vor visuellen Arbeiten immer die aktuelle lokale URL öffnen:
+  `http://127.0.0.1:4173/mockups/landingpage-flow.html`
+- Wenn der lokale Server nicht läuft, wieder mit Python auf Port `4173` starten.
+- Für Mobile-Prüfungen ist `390px` eine gute Standardbreite.
+- Zusätzlich kurz bei `360px` gegenprüfen, wenn Navigation, Headline oder enge Textbereiche betroffen sind.
+- Für Desktop-Prüfungen eine breite Ansicht verwenden, z. B. `1280px`.
+- In Chrome kann die Mobile-Breite über DevTools gesetzt werden:
+  `F12` oder Rechtsklick `Untersuchen`, dann Device Toolbar mit `Ctrl + Shift + M`, Modus `Responsive`, Breite `390` eintragen.
+- Bei paralleler Arbeit an Desktop und Mobile am besten zwei Ansichten offen halten:
+  eine normale Desktop-Ansicht und eine DevTools-/Responsive-Ansicht mit `390px`.
+
+Grundregel für CSS-Anpassungen:
+
+- Desktop ist die Basis und bleibt außerhalb der Mobile-Media-Queries.
+- Mobile-Anpassungen gehören in die vorhandenen Breakpoints, vor allem:
+  - `@media (max-width: 720px)` für mobile Hauptanpassungen
+  - `@media (max-width: 560px)` für sehr schmale Geräte
+- Desktop nicht versehentlich verändern, wenn nur Mobile gemeint ist.
+- Nach jeder relevanten Layout-Änderung mindestens Desktop und Mobile kurz prüfen.
+
+Aktuelle Mobile-Hero-Entscheidungen:
+
+- Desktop-Hero-Bild bleibt:
+  `Bilder Landingpage/Hero/final-variants/hero-final-H-no-bars-clean-filter-warm-sunrise.jpg`
+- Mobile-Hero-Bild ist:
+  `Bilder Landingpage/Hero/mobile-hero/road-to-hawaii-mobile-hero.jpg`
+- Das mobile Hero-Bild wird in `mockups/landingpage-flow.html` über eine `<source>` im `<picture>` gesetzt.
+- Wichtig: Im `srcset` muss der Pfad mit Leerzeichen URL-encodiert werden:
+  `../Bilder%20Landingpage/Hero/mobile-hero/road-to-hawaii-mobile-hero.jpg`
+- Bei `390px` muss der Browser als `currentSrc` dieses Mobile-Bild laden.
+
+Aktuelle Mobile-Header-Gestaltung:
+
+- Desktop-Headline und Desktop-Untertext gefallen und sollen als Referenz erhalten bleiben.
+- Mobile Headline soll kompakter sein und weiter oben sitzen.
+- Mobile Untertext soll kleiner sein und unmittelbar über dem Countdown sitzen.
+- Aktuelle Mobile-Zielwerte in `mockups/styles.css`:
+  - `.flow-hero-content` bei Mobile: `padding: 86px 20px 150px`
+  - `.flow-hero h1` bei Mobile: `font-size: clamp(3.4rem, 18vw, 5rem)`, `align-self: start`
+  - `.flow-hero-copy > p` bei Mobile: `font-size: 0.88rem`, `line-height: 1.42`
+  - bei sehr schmalen Screens wird `.flow-hero-content` nicht mehr mit `padding-top: 170px` nach unten gedrückt, sondern nutzt `padding-top: 76px`
+- Verifizierter Stand bei `390px`:
+  - Headline startet ungefähr bei `76px`
+  - Untertext endet ungefähr `10px` über dem Countdown
+  - Navigation bleibt einzeilig
+
+Aktuelle Mobile-Navigation:
+
+- Mobile Navigation soll nicht in zwei Zeilen umbrechen.
+- In den Mobile-Regeln ist deshalb `flex-wrap: nowrap` gesetzt.
+- Schrift und Innenabstände sind mobil reduziert, damit alle Links in eine Zeile passen.
+- Nach Änderungen an Navigation immer bei `390px` und idealerweise `360px` prüfen.
+
+Empfohlener Arbeitsablauf für zukünftige Website-Anpassungen:
+
+1. `PROJECT_CONTEXT.md` lesen.
+2. Server auf Port `4173` prüfen oder starten.
+3. Desktop-Zustand als Referenz ansehen.
+4. Mobile-Zustand bei `390px` ansehen.
+5. Gewünschte Änderung nur im passenden Bereich umsetzen:
+   - Desktop-Regeln außerhalb der Media Query
+   - Mobile-Regeln in `@media (max-width: 720px)` oder `@media (max-width: 560px)`
+6. Browser-Verifikation machen:
+   - Desktop: breite Ansicht, z. B. `1280px`
+   - Mobile: `390px`, bei engen Stellen auch `360px`
+7. Bei Bildwechseln im Browser `currentSrc` prüfen, nicht nur den HTML-Pfad.
+8. Vor Commit `git status --short --branch` und `git diff --stat` prüfen.
+9. Nur bewusst gewünschte Dateien committen.
+
 ## GitHub und Vercel Deployment
 
 Das Projekt ist auf GitHub und Vercel veröffentlicht.
