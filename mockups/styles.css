@@ -542,6 +542,7 @@ a {
   height: 100%;
   display: block;
   object-fit: cover;
+  object-position: center center;
 }
 
 .flow-hero::after {
@@ -572,10 +573,10 @@ a {
 
 .flow-hero h1 {
   align-self: center;
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 0;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(6rem, 16vw, 15rem);
+  font-size: clamp(5.5rem, 14vw, 13rem);
   line-height: 0.78;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -2874,16 +2875,16 @@ a {
   }
 
   .flow-hero img {
-    height: auto;
-    max-height: 58%;
-    object-fit: contain;
-    object-position: center top;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+    object-position: 58% center;
   }
 
   .flow-hero::after {
     background:
-      linear-gradient(180deg, rgba(8, 12, 12, 0.32), rgba(8, 12, 12, 0.1) 34%, rgba(8, 12, 12, 0.9) 64%, rgba(8, 12, 12, 0.96)),
-      linear-gradient(90deg, rgba(8, 12, 12, 0.42), transparent 46%, rgba(8, 12, 12, 0.36));
+      linear-gradient(180deg, rgba(8, 12, 12, 0.56), rgba(8, 12, 12, 0.14) 34%, rgba(8, 12, 12, 0.76) 66%, rgba(8, 12, 12, 0.96)),
+      linear-gradient(90deg, rgba(8, 12, 12, 0.48), transparent 48%, rgba(8, 12, 12, 0.42));
   }
 
   .flow-hero-content {
