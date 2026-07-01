@@ -2902,13 +2902,23 @@ a {
   }
 
   .flow-hero-content {
-    padding: 24px 20px 236px;
+    padding: 86px 20px 150px;
   }
 
   .flow-hero h1 {
-    align-self: end;
-    margin-bottom: 28px;
-    font-size: clamp(4.3rem, 23vw, 6.6rem);
+    align-self: start;
+    margin-bottom: 0;
+    font-size: clamp(3.4rem, 18vw, 5rem);
+  }
+
+  .flow-hero-copy > p {
+    max-width: 340px;
+    font-size: 0.88rem;
+    line-height: 1.42;
+  }
+
+  .flow-hero-copy > p + p {
+    margin-top: 7px;
   }
 
   .kona-countdown {
@@ -3131,7 +3141,7 @@ a {
   }
 
   .flow-hero-content {
-    padding-top: 170px;
+    padding-top: 76px;
   }
 
   .vision-section,
