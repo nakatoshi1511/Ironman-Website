@@ -2519,7 +2519,12 @@ a {
   box-shadow: 0 16px 42px rgba(17, 20, 24, 0.08);
 }
 
+.feed-grid .news-card img {
+  height: clamp(330px, 35vw, 440px);
+}
+
 .feed-grid .news-card div {
+  padding: clamp(16px, 2.2vw, 24px);
   border-top: 1px solid rgba(17, 20, 24, 0.08);
 }
 
@@ -2529,7 +2534,7 @@ a {
 }
 
 .feed-grid .news-card h2 {
-  margin: 14px 0 12px;
+  margin: 0 0 10px;
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(2rem, 4vw, 3.35rem);
   line-height: 0.92;
@@ -3139,6 +3144,14 @@ a {
   .news-card img,
   .news-card-large img {
     height: 250px;
+  }
+
+  .feed-grid .news-card img {
+    height: clamp(285px, 78vw, 340px);
+  }
+
+  .feed-grid .news-card div {
+    padding: 18px 20px 20px;
   }
 
   .contact-form {
