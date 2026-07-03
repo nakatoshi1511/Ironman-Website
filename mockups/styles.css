@@ -1696,6 +1696,7 @@ a {
 
 .sponsor-showcase-head .section-kicker {
   color: var(--ocean);
+  font-size: 16px;
 }
 
 .sponsor-showcase-head span {
@@ -1708,12 +1709,13 @@ a {
 .sponsor-grid {
   min-width: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid rgba(17, 20, 24, 0.14);
   border-left: 1px solid rgba(17, 20, 24, 0.14);
 }
 
 .sponsor-grid > * {
+  min-width: 0;
   min-height: 132px;
   display: grid;
   align-content: space-between;
@@ -1738,7 +1740,7 @@ a {
 .sponsor-logo-card span {
   justify-self: start;
   color: rgba(17, 20, 24, 0.58);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1746,15 +1748,16 @@ a {
 
 .sponsor-logo-card img {
   display: block;
-  width: min(100%, 220px);
+  width: auto;
+  max-width: min(100%, 170px);
   max-height: 72px;
   object-fit: contain;
   mix-blend-mode: multiply;
 }
 
 .sponsor-main img {
-  width: min(100%, 420px);
-  max-height: 104px;
+  max-width: min(100%, 260px);
+  max-height: 86px;
 }
 
 .partner-download {
@@ -2714,6 +2717,7 @@ a {
 }
 
 .legal-contact-form .button.primary {
+  justify-self: center;
   width: fit-content;
   min-height: 46px;
   margin-top: 4px;
