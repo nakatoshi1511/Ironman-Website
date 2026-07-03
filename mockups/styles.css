@@ -1706,44 +1706,82 @@ a {
   line-height: 1.45;
 }
 
-.sponsor-grid {
+.sponsor-tiers {
   min-width: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid rgba(17, 20, 24, 0.14);
-  border-left: 1px solid rgba(17, 20, 24, 0.14);
+  gap: 14px;
 }
 
-.sponsor-grid > * {
+.sponsor-tier {
   min-width: 0;
-  min-height: 132px;
   display: grid;
-  align-content: space-between;
-  justify-items: center;
-  gap: 16px;
-  padding: 18px;
+  grid-template-columns: 190px minmax(0, 1fr);
+  border-top: 1px solid rgba(17, 20, 24, 0.14);
+  border-left: 1px solid rgba(17, 20, 24, 0.14);
+  border-bottom: 1px solid rgba(17, 20, 24, 0.14);
+  background: rgba(255, 253, 248, 0.34);
+}
+
+.sponsor-tier-label {
+  min-width: 0;
+  display: grid;
+  align-content: center;
+  margin: 0;
+  padding: 22px;
+  border-right: 1px solid rgba(17, 20, 24, 0.14);
+  color: rgba(17, 20, 24, 0.58);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sponsor-tier-logos,
+.sponsor-roster {
+  min-width: 0;
+  display: grid;
+}
+
+.sponsor-tier-logos {
+  grid-template-columns: 1fr;
+}
+
+.sponsor-roster {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.sponsor-logo-card {
+  min-width: 0;
+  display: grid;
+  place-items: center;
   border-right: 1px solid rgba(17, 20, 24, 0.14);
   border-bottom: 1px solid rgba(17, 20, 24, 0.14);
   background: rgba(255, 253, 248, 0.34);
   text-align: center;
 }
 
-.sponsor-grid .sponsor-main {
-  grid-column: span 2;
-  min-height: 178px;
+.sponsor-tier-logos .sponsor-logo-card {
+  min-height: 138px;
+}
+
+.sponsor-roster .sponsor-logo-card {
+  min-height: 108px;
+}
+
+.sponsor-tier-logos .sponsor-logo-card,
+.sponsor-roster .sponsor-logo-card:nth-child(4n) {
+  border-right: 0;
+}
+
+.sponsor-roster .sponsor-logo-card:nth-last-child(-n + 4) {
+  border-bottom: 0;
+}
+
+.sponsor-main {
   padding: clamp(20px, 3vw, 30px);
   background:
     linear-gradient(135deg, rgba(231, 91, 50, 0.1), transparent 42%),
     rgba(255, 253, 248, 0.52);
-}
-
-.sponsor-logo-card span {
-  justify-self: start;
-  color: rgba(17, 20, 24, 0.58);
-  font-size: 0.74rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .sponsor-logo-card img {
@@ -1756,8 +1794,8 @@ a {
 }
 
 .sponsor-main img {
-  max-width: min(100%, 260px);
-  max-height: 86px;
+  max-width: min(100%, 320px);
+  max-height: 96px;
 }
 
 .partner-download {
@@ -2857,12 +2895,30 @@ a {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .sponsor-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .sponsor-tier {
+    grid-template-columns: 1fr;
   }
 
-  .sponsor-grid .sponsor-main {
-    grid-column: 1 / -1;
+  .sponsor-tier-label {
+    padding: 16px 18px 12px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(17, 20, 24, 0.14);
+  }
+
+  .sponsor-roster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sponsor-roster .sponsor-logo-card:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .sponsor-roster .sponsor-logo-card:nth-last-child(-n + 4) {
+    border-bottom: 1px solid rgba(17, 20, 24, 0.14);
+  }
+
+  .sponsor-roster .sponsor-logo-card:nth-last-child(-n + 2) {
+    border-bottom: 0;
   }
 
   .news-grid {
@@ -3160,7 +3216,7 @@ a {
   .partner-support-card,
   .sponsor-showcase,
   .sponsor-showcase-head,
-  .sponsor-grid,
+  .sponsor-tiers,
   .partner-visibility {
     width: 100%;
     max-width: 100%;
@@ -3202,12 +3258,12 @@ a {
     grid-template-columns: 1fr 1fr;
   }
 
-  .sponsor-grid {
-    grid-template-columns: 1fr;
+  .sponsor-tier-logos .sponsor-logo-card {
+    min-height: 118px;
   }
 
-  .sponsor-grid .sponsor-main {
-    min-height: 146px;
+  .sponsor-roster .sponsor-logo-card {
+    min-height: 92px;
   }
 
   .supporter-logos span {
