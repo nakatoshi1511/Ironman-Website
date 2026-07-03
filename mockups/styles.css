@@ -1713,10 +1713,12 @@ a {
   border-left: 1px solid rgba(17, 20, 24, 0.14);
 }
 
-.sponsor-grid > div {
-  min-height: 108px;
+.sponsor-grid > * {
+  min-height: 132px;
   display: grid;
-  place-items: center;
+  align-content: space-between;
+  justify-items: center;
+  gap: 16px;
   padding: 18px;
   border-right: 1px solid rgba(17, 20, 24, 0.14);
   border-bottom: 1px solid rgba(17, 20, 24, 0.14);
@@ -1726,13 +1728,15 @@ a {
 
 .sponsor-grid .sponsor-main {
   grid-column: span 2;
-  min-height: 148px;
+  min-height: 178px;
+  padding: clamp(20px, 3vw, 30px);
   background:
     linear-gradient(135deg, rgba(231, 91, 50, 0.1), transparent 42%),
     rgba(255, 253, 248, 0.52);
 }
 
-.sponsor-grid span {
+.sponsor-logo-card span {
+  justify-self: start;
   color: rgba(17, 20, 24, 0.58);
   font-size: 0.78rem;
   font-weight: 900;
@@ -1740,13 +1744,17 @@ a {
   text-transform: uppercase;
 }
 
-.sponsor-grid strong {
+.sponsor-logo-card img {
   display: block;
-  color: var(--site-graphite);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(2rem, 4.2vw, 4rem);
-  line-height: 0.9;
-  text-transform: uppercase;
+  width: min(100%, 220px);
+  max-height: 72px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.sponsor-main img {
+  width: min(100%, 420px);
+  max-height: 104px;
 }
 
 .partner-download {
@@ -2650,6 +2658,71 @@ a {
   overflow-wrap: anywhere;
 }
 
+.legal-contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 760px;
+  margin: 14px 0 8px;
+  padding: clamp(18px, 3vw, 24px);
+  border: 1px solid rgba(17, 20, 24, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.46);
+}
+
+.legal-contact-form label {
+  display: grid;
+  gap: 7px;
+}
+
+.legal-contact-form label span {
+  color: rgba(17, 20, 24, 0.62);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.legal-message-field,
+.legal-contact-form button {
+  grid-column: 1 / -1;
+}
+
+.legal-contact-form input,
+.legal-contact-form textarea {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid rgba(17, 20, 24, 0.18);
+  border-radius: 4px;
+  background: rgba(255, 253, 248, 0.72);
+  color: var(--site-graphite);
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 11px 12px;
+}
+
+.legal-contact-form textarea {
+  min-height: 118px;
+  resize: vertical;
+}
+
+.legal-contact-form input:focus,
+.legal-contact-form textarea:focus {
+  border-color: var(--ocean);
+  outline: 3px solid rgba(15, 79, 93, 0.16);
+}
+
+.legal-contact-form .button.primary {
+  width: fit-content;
+  min-height: 46px;
+  margin-top: 4px;
+  border: 0;
+  background: var(--ocean);
+  color: #fffdf8;
+  cursor: pointer;
+}
+
 @media (max-width: 880px) {
   .hero-shell,
   .kona .hero-shell {
@@ -3157,6 +3230,10 @@ a {
   .contact-form {
     grid-template-columns: 1fr;
     padding: 20px;
+  }
+
+  .legal-contact-form {
+    grid-template-columns: 1fr;
   }
 
   .site-nav {

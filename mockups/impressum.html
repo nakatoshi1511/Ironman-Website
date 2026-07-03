@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=legal-2" />
+    <link rel="stylesheet" href="styles.css?v=legal-3" />
   </head>
   <body class="flow-page legal-page">
     <nav class="legal-nav" aria-label="Seitennavigation">
@@ -27,23 +27,38 @@
         <h2>Angaben gem&auml;&szlig; &sect; 5 DDG</h2>
         <p>
           David Simon<br />
-          [STRASSE UND HAUSNUMMER BITTE EINTRAGEN]<br />
-          [PLZ UND ORT BITTE EINTRAGEN]<br />
+          Herrenstra&szlig;e 4<br />
+          56823 B&uuml;chel<br />
           Deutschland
         </p>
 
         <h2>Kontakt</h2>
         <p>
           E-Mail:
-          <a href="mailto:david91simon@gmail.com">david91simon@gmail.com</a><br />
-          Telefon: [TELEFONNUMMER BITTE EINTRAGEN, FALLS GEWUENSCHT]
+          <a href="mailto:david91simon@gmail.com">david91simon@gmail.com</a>
         </p>
+
+        <form class="legal-contact-form" data-contact-form>
+          <label>
+            <span>Name</span>
+            <input name="name" type="text" autocomplete="name" required />
+          </label>
+          <label>
+            <span>E-Mail</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label class="legal-message-field">
+            <span>Nachricht</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button class="button primary" type="submit">Anfrage senden</button>
+        </form>
 
         <h2>Verantwortlich f&uuml;r den Inhalt nach &sect; 18 Abs. 2 MStV</h2>
         <p>
           David Simon<br />
-          [STRASSE UND HAUSNUMMER BITTE EINTRAGEN]<br />
-          [PLZ UND ORT BITTE EINTRAGEN]<br />
+          Herrenstra&szlig;e 4<br />
+          56823 B&uuml;chel<br />
           Deutschland
         </p>
 
@@ -57,5 +72,27 @@
       </section>
     </main>
 
+    <script>
+      const contactForm = document.querySelector("[data-contact-form]");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(contactForm);
+          const name = String(formData.get("name") || "").trim();
+          const email = String(formData.get("email") || "").trim();
+          const message = String(formData.get("message") || "").trim();
+          const body = [
+            `Name: ${name}`,
+            `E-Mail: ${email}`,
+            "",
+            message,
+          ].join("\n");
+
+          window.location.href = `mailto:david91simon@gmail.com?subject=${encodeURIComponent("Anfrage Road to Hawaii")}&body=${encodeURIComponent(body)}`;
+        });
+      }
+    </script>
   </body>
 </html>
