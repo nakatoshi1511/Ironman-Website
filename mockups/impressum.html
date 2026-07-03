@@ -52,6 +52,7 @@
             <textarea name="message" rows="5" required></textarea>
           </label>
           <button class="button primary" type="submit">Anfrage senden</button>
+          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
         </form>
 
         <h2>Verantwortlich f&uuml;r den Inhalt nach &sect; 18 Abs. 2 MStV</h2>
@@ -76,21 +77,58 @@
       const contactForm = document.querySelector("[data-contact-form]");
 
       if (contactForm) {
-        contactForm.addEventListener("submit", (event) => {
+        const status = contactForm.querySelector("[data-form-status]");
+        const submitButton = contactForm.querySelector("button[type='submit']");
+
+        contactForm.addEventListener("submit", async (event) => {
           event.preventDefault();
 
           const formData = new FormData(contactForm);
-          const name = String(formData.get("name") || "").trim();
-          const email = String(formData.get("email") || "").trim();
-          const message = String(formData.get("message") || "").trim();
-          const body = [
-            `Name: ${name}`,
-            `E-Mail: ${email}`,
-            "",
-            message,
-          ].join("\n");
+          const payload = {
+            name: String(formData.get("name") || "").trim(),
+            email: String(formData.get("email") || "").trim(),
+            message: String(formData.get("message") || "").trim(),
+          };
 
-          window.location.href = `mailto:david91simon@gmail.com?subject=${encodeURIComponent("Anfrage Road to Hawaii")}&body=${encodeURIComponent(body)}`;
+          if (status) {
+            status.textContent = "Anfrage wird gesendet ...";
+            status.dataset.state = "pending";
+          }
+
+          if (submitButton) {
+            submitButton.disabled = true;
+          }
+
+          try {
+            const response = await fetch("/api/contact", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+              throw new Error("request failed");
+            }
+
+            contactForm.reset();
+
+            if (status) {
+              status.textContent = "Vielen Dank. Die Anfrage wurde gesendet.";
+              status.dataset.state = "success";
+            }
+          } catch {
+            if (status) {
+              status.textContent =
+                "Die Anfrage konnte nicht gesendet werden. Bitte nutzen Sie alternativ die oben angegebene E-Mail-Adresse.";
+              status.dataset.state = "error";
+            }
+          } finally {
+            if (submitButton) {
+              submitButton.disabled = false;
+            }
+          }
         });
       }
     </script>

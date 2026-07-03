@@ -2726,7 +2726,8 @@ a {
 }
 
 .legal-message-field,
-.legal-contact-form button {
+.legal-contact-form button,
+.legal-contact-form .form-status {
   grid-column: 1 / -1;
 }
 
@@ -2763,6 +2764,33 @@ a {
   background: var(--ocean);
   color: #fffdf8;
   cursor: pointer;
+}
+
+.legal-contact-form .button.primary:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.form-status {
+  min-height: 1.35em;
+  margin: 0;
+  color: rgba(17, 20, 24, 0.68);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status[data-state="success"] {
+  color: #1f6f43;
+}
+
+.form-status[data-state="error"] {
+  color: #a43b2c;
 }
 
 @media (max-width: 880px) {

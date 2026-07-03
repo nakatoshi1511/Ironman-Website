@@ -122,6 +122,26 @@ Spätere Ausbaustufe:
   - Datum
   - optional Link
 
+## Kontaktformular
+
+Das Kontaktformular im Impressum ist kein `mailto:`-Formular mehr.
+
+Aktueller Stand:
+- Formularseite: `mockups/impressum.html`
+- API-Endpunkt: `api/contact.js`
+- Versandweg: Vercel Function ruft die Resend REST API auf
+- Tests: `tests/contact.test.js`
+
+BenÃ¶tigte Environment Variables in Vercel:
+- `RESEND_API_KEY`
+- `CONTACT_FROM_EMAIL`
+- `CONTACT_TO_EMAIL` (optional, Default im Code: `david91simon@gmail.com`)
+
+Wichtig:
+- `CONTACT_FROM_EMAIL` muss bei Resend als Absender zulÃ¤ssig sein, idealerweise Ã¼ber eine verifizierte Domain.
+- Lokaler Python-Static-Server auf Port `4173` kann `/api/contact` nicht ausfÃ¼hren. FÃ¼r einen echten lokalen Formular-Test muss Vercel Dev oder ein Deployment mit gesetzten Environment Variables genutzt werden.
+- Die DatenschutzerklÃ¤rung wurde angepasst: Das Formular verarbeitet Name, E-Mail-Adresse und Nachricht serverseitig und leitet sie per E-Mail weiter.
+
 ## Wichtige Dateien
 
 Mockups:
