@@ -2568,8 +2568,16 @@ a {
   box-shadow: 0 16px 42px rgba(17, 20, 24, 0.08);
 }
 
+.feed-grid .news-card a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .feed-grid .news-card img {
   height: clamp(330px, 35vw, 440px);
+  background: #e8dfd0;
+  object-fit: contain;
 }
 
 .feed-grid .news-card div {
@@ -2587,6 +2595,205 @@ a {
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(2rem, 4vw, 3.35rem);
   line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.news-card-meta,
+.article-meta {
+  display: block;
+  margin-bottom: 12px;
+  color: #c65f4e;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.article-hero {
+  min-height: 460px;
+  display: flex;
+  align-items: flex-end;
+  background:
+    linear-gradient(135deg, rgba(198, 95, 78, 0.24), transparent 34%),
+    linear-gradient(180deg, #101616 0%, #172437 100%);
+}
+
+.article-hero::after {
+  background:
+    linear-gradient(90deg, rgba(8, 12, 12, 0.16), transparent 52%),
+    linear-gradient(180deg, rgba(248, 244, 234, 0.04), rgba(8, 12, 12, 0.24));
+}
+
+.article-hero-inner {
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.article-hero h1 {
+  max-width: 920px;
+  color: #f8f4ea;
+  font-size: clamp(3rem, 7vw, 6.9rem);
+}
+
+.article-hero-inner > p:last-child {
+  max-width: 720px;
+  margin-top: 18px;
+  color: rgba(248, 244, 234, 0.86);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.article-main {
+  padding: clamp(48px, 8vw, 92px) 24px clamp(76px, 10vw, 132px);
+}
+
+.article-body {
+  max-width: 960px;
+  margin: 0 auto;
+  color: #223041;
+  font-size: clamp(1rem, 1.25vw, 1.13rem);
+  line-height: 1.82;
+}
+
+.article-media {
+  width: min(100%, 920px);
+  margin: 0 auto clamp(36px, 6vw, 62px);
+}
+
+.article-media-inline {
+  width: min(100%, 420px);
+  margin-block: clamp(28px, 5vw, 46px);
+}
+
+.article-image-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(17, 20, 24, 0.14);
+  border-radius: 8px;
+  background: #e8dfd0;
+  cursor: zoom-in;
+  box-shadow: 0 22px 54px rgba(17, 20, 24, 0.14);
+}
+
+.article-image-button img {
+  width: 100%;
+  max-height: min(64vh, 560px);
+  display: block;
+  object-fit: contain;
+}
+
+.article-image-button span {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 4px;
+  background: rgba(13, 17, 17, 0.78);
+  color: #f8f4ea;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.article-media figcaption {
+  margin-top: 12px;
+  color: rgba(34, 48, 65, 0.68);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.article-body p {
+  max-width: 820px;
+  margin: 0 0 24px;
+  margin-inline: auto;
+}
+
+.article-lead {
+  color: #172437;
+  font-size: clamp(1.18rem, 2vw, 1.48rem);
+  line-height: 1.62;
+}
+
+.article-back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 18px;
+  margin-left: calc((100% - min(100%, 820px)) / 2);
+  padding: 0 18px;
+  border: 1px solid rgba(17, 20, 24, 0.16);
+  border-radius: 4px;
+  background: #21384d;
+  color: #f8f4ea;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.lightbox-open {
+  overflow: hidden;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 4vw, 44px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.image-lightbox[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(5, 7, 7, 0.88);
+  cursor: zoom-out;
+}
+
+.image-lightbox-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1120px);
+  max-height: 92vh;
+  margin: 0;
+}
+
+.image-lightbox-panel img {
+  width: 100%;
+  max-height: 92vh;
+  display: block;
+  object-fit: contain;
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(248, 244, 234, 0.24);
+  border-radius: 4px;
+  background: rgba(13, 17, 17, 0.82);
+  color: #f8f4ea;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
