@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Road to Hawaii - News Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=flow-45" />
+  </head>
+  <body class="flow-page editor-page">
+    <header class="editor-topbar">
+      <a href="newsfeed.html">Newsfeed</a>
+      <strong>Artikel Editor</strong>
+      <a href="landingpage-flow.html">Homepage</a>
+    </header>
+
+    <main class="editor-shell">
+      <section class="editor-panel editor-form-panel" aria-labelledby="editor-title">
+        <div class="editor-heading">
+          <p class="section-kicker">Road to Hawaii</p>
+          <h1 id="editor-title">Artikel bauen</h1>
+        </div>
+
+        <form class="editor-form" data-editor-form>
+          <div class="editor-field-grid">
+            <label>
+              <span>Titel</span>
+              <input name="title" type="text" />
+            </label>
+            <label>
+              <span>Slug</span>
+              <input name="slug" type="text" />
+            </label>
+            <label>
+              <span>Kategorie</span>
+              <select name="category">
+                <option value="Training">Training</option>
+                <option value="Wettkampf">Wettkampf</option>
+                <option value="Partner">Partner</option>
+                <option value="Road to Hawaii">Road to Hawaii</option>
+              </select>
+            </label>
+            <label>
+              <span>Datum sichtbar</span>
+              <input name="dateLabel" type="text" placeholder="06.07.2026" />
+            </label>
+            <label>
+              <span>Datum technisch</span>
+              <input name="dateTime" type="date" />
+            </label>
+            <label>
+              <span>Artikel-Datei</span>
+              <input name="url" type="text" />
+            </label>
+          </div>
+
+          <label class="editor-field-wide">
+            <span>Teaser / Untertitel</span>
+            <textarea name="teaser" rows="2"></textarea>
+          </label>
+
+          <div class="editor-block-toolbar" aria-label="Block hinzuf&uuml;gen">
+            <button type="button" data-add-block="lead">Lead-Absatz</button>
+            <button type="button" data-add-block="paragraph">Absatz</button>
+            <button type="button" data-add-block="media">Bild</button>
+          </div>
+
+          <div class="editor-blocks" data-editor-blocks></div>
+        </form>
+      </section>
+
+      <aside class="editor-panel editor-output-panel">
+        <div class="editor-preview-wrap">
+          <div class="editor-preview-head">
+            <span>Live-Vorschau</span>
+            <button type="button" data-copy-output>Export kopieren</button>
+          </div>
+          <article class="article-body editor-preview" data-editor-preview></article>
+        </div>
+
+        <label class="editor-export">
+          <span>Eintrag f&uuml;r <code>news-data.js</code></span>
+          <textarea data-editor-output spellcheck="false"></textarea>
+        </label>
+      </aside>
+    </main>
+
+    <script type="module" src="news-editor.js"></script>
+  </body>
+</html>

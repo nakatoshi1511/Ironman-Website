@@ -100,27 +100,34 @@ Der Newsfeed ist bewusst keine Sektion der Homepage mehr, sondern eine eigene Se
 - `mockups/newsfeed.html`
 
 Aktueller Stand:
-- statische Mockup-Seite
+- statische Seite, deren Kacheln per `mockups/newsfeed-render.js` aus `mockups/news-data.js` gerendert werden
 - Hero mit Navigation zurück zu den Homepage-Sektionen
-- Kategorie-Chips:
-  - Alle
-  - Training
-  - Wettkampf
-  - Partner
-  - Presse
-- mehrere Beispielbeiträge mit vorhandenen Bildern
+- erster echter Beitrag ist angelegt:
+  - Kachel: `17 Stunden zum Ruhm - Mythos Ironman Hawaii`
+  - Detailseite: `mockups/newsfeed-17-stunden-zum-ruhm.html`
+  - Bild: `Bilder Landingpage/Newsfeed/Artikel 01/Mythos Ironman.jpeg`
+- Artikel werden blockbasiert aufgebaut:
+  - `lead`
+  - `paragraph`
+  - `media`
+- Bildblöcke können im Textfluss frei positioniert werden.
+- Bilder werden im Artikel klein eingebettet und per Klick in einer Lightbox groß angezeigt.
+
+Interner Artikel-Editor:
+- Tool-Seite: `mockups/news-editor.html`
+- Script: `mockups/news-editor.js`
+- Zweck:
+  - Titel, Slug, Kategorie, Datum, URL und Teaser pflegen
+  - Artikelblöcke hinzufügen, löschen und hoch/runter verschieben
+  - pro Bildblock Bildpfad, Alt-Text und Bildunterschrift setzen
+  - Live-Vorschau prüfen
+  - fertigen Datenblock für `mockups/news-data.js` exportieren/kopieren
+- Wichtig: Der Editor speichert aktuell noch nicht automatisch in Dateien. Er erzeugt den Datenblock, der anschließend in `mockups/news-data.js` übernommen werden muss.
 
 Spätere Ausbaustufe:
-- dynamischer Newsfeed
-- Admin-Panel
-- Smartphone-taugliches Einpflegen von Beiträgen
-- Beitragfelder:
-  - Titel
-  - Text
-  - Bild
-  - Kategorie
-  - Datum
-  - optional Link
+- echtes Speichern aus dem Editor heraus über ein kleines lokales Backend oder eine Admin/API-Lösung
+- mehrere Artikel-Detailseiten aus Templates erzeugen
+- optional Kategorien/Filter im Newsfeed wieder aktivieren
 
 ## Kontaktformular
 
@@ -149,10 +156,17 @@ Mockups:
 - `mockups/styles.css`
 - `mockups/landingpage-flow.html`
 - `mockups/newsfeed.html`
+- `mockups/newsfeed-17-stunden-zum-ruhm.html`
+- `mockups/news-editor.html`
+- `mockups/news-data.js`
+- `mockups/newsfeed-render.js`
+- `mockups/article-render.js`
+- `mockups/news-editor.js`
 
 Assets:
 - Hero-Bild: `Bilder Landingpage/HeroV1.jpg`
 - weiteres Bildmaterial: `Bilder Landingpage/`
+- Newsfeed-Bilder: `Bilder Landingpage/Newsfeed/`
 - Roadmap-Bild: `Dokumente/Bilder/Roadmap-transparent.png`
 - zusätzlich vorhanden: `RoadmapV2.png`
 
@@ -179,6 +193,8 @@ Mockups wurden zuletzt über diesen Server geprüft:
 Aktuelle URLs:
 - Homepage: `http://127.0.0.1:4173/mockups/landingpage-flow.html`
 - Newsfeed: `http://127.0.0.1:4173/mockups/newsfeed.html`
+- erster Artikel: `http://127.0.0.1:4173/mockups/newsfeed-17-stunden-zum-ruhm.html`
+- interner News-Editor: `http://127.0.0.1:4173/mockups/news-editor.html`
 - Variantenübersicht: `http://127.0.0.1:4173/mockups/`
 
 Vor Arbeiten immer prüfen, ob der Server/Port noch aktiv ist.
@@ -319,11 +335,12 @@ Stand nach diesem Kontext-Update:
 Wenn an diesem Projekt weitergearbeitet wird:
 
 1. Diese Datei zuerst lesen.
-2. `mockups/landingpage-flow.html` und `mockups/newsfeed.html` prüfen.
+2. `mockups/landingpage-flow.html`, `mockups/newsfeed.html` und bei News-Arbeiten `mockups/news-editor.html` prüfen.
 3. Bei visuellen Änderungen Browser oder Headless-Screenshots verwenden.
 4. Nach relevanten Layoutänderungen Desktop und Mobile kurz prüfen.
 5. Unrelated Dateien nicht löschen oder zurücksetzen.
 6. Der User möchte iterativ brainstormen und mocken, bevor final implementiert wird.
+7. News-Artikel werden aktuell in `mockups/news-data.js` gepflegt; der Editor erzeugt dafür den passenden Datenblock, speichert ihn aber noch nicht automatisch.
 
 Guter Startprompt für einen neuen Chat:
 
