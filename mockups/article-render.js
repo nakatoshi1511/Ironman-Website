@@ -110,7 +110,7 @@ function createMedia(articleData, block) {
   image.alt = imageAlt;
 
   const label = document.createElement("span");
-  label.textContent = "Bild vergrÃ¶ÃŸern";
+  label.textContent = "Bild vergrößern";
 
   const caption = document.createElement("figcaption");
   caption.textContent = captionText;
@@ -160,7 +160,7 @@ if (articleRoot && article) {
   const title = document.querySelector("[data-article-title]");
   const teaser = document.querySelector("[data-article-teaser]");
 
-  if (meta) meta.textContent = `${article.category} Â· ${article.dateLabel}`;
+  if (meta) meta.textContent = `${article.category} · ${article.dateLabel}`;
   if (title) setArticleTitle(title, article.title);
   if (teaser) teaser.textContent = article.teaser;
 
@@ -175,7 +175,7 @@ if (articleRoot && article) {
   const backLink = document.createElement("a");
   backLink.className = "article-back-link";
   backLink.href = "newsfeed.html";
-  backLink.textContent = "ZurÃ¼ck zum Newsfeed";
+  backLink.textContent = "Zurück zum Newsfeed";
   articleRoot.append(backLink);
 
   setupLightbox();
