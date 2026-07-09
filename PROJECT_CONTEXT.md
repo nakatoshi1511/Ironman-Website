@@ -124,6 +124,20 @@ Interner Artikel-Editor:
   - fertigen Datenblock für `mockups/news-data.js` exportieren/kopieren
 - Wichtig: Der Editor speichert aktuell noch nicht automatisch in Dateien. Er erzeugt den Datenblock, der anschließend in `mockups/news-data.js` übernommen werden muss.
 
+Google-Docs-Import:
+- Bevorzugter Workflow für neue Artikel: Der User schreibt in Google Docs vor und gibt Codex den Link oder Export.
+- Google Docs ist nur Entwurf, keine automatische Synchronisierung und kein CMS.
+- Detailartikel dürfen kontrollierte Rich-Text-Blöcke verwenden: `rich` mit erlaubtem HTML.
+- Bilder bleiben als `media`-Blöcke im Projektordner `Bilder Landingpage/Newsfeed/Artikel XX/`.
+- Doku: `docs/news-google-docs-import.md`
+
+Learnings aus dem DOCX-Testimport:
+- Nach Änderungen an `mockups/news-data.js` müssen die ES-Module im Browser frisch geladen werden. Der In-App-Browser kann alte Modulversionen hartnäckig behalten; deshalb bei Artikelimporten die Script-/Import-Versionierung bewusst aktualisieren oder mit eindeutigem Cache-Buster prüfen.
+- Nicht nur schauen, ob die Detailseite geöffnet ist. Vor dem Zeigen an den User konkret verifizieren, dass der Artikelkörper gerendert wurde, z. B. Textlänge von `[data-article-slug]`, Anzahl der Lead-/Text-/Media-Blöcke und Position des Footers.
+- Wenn die Seite nur Hero und Footer zeigt, ist sehr wahrscheinlich der Artikeldaten-Import nicht frisch geladen oder der Slug findet keinen Artikel.
+- DOCX-Dateien enthalten nicht automatisch eingebettete Bilder. Beim Import immer prüfen, ob `word/media/` Dateien enthält; wenn nicht, Bildplatzhalter/Caption transparent benennen und nicht so tun, als sei das Bild importiert.
+- Der User bevorzugt einen schlanken Workflow: Google Docs ist der freie Schreib- und Formatierungsentwurf; Codex importiert daraus kontrolliert in `news-data.js` und die statische Detailseite.
+
 Spätere Ausbaustufe:
 - echtes Speichern aus dem Editor heraus über ein kleines lokales Backend oder eine Admin/API-Lösung
 - mehrere Artikel-Detailseiten aus Templates erzeugen
@@ -203,6 +217,8 @@ Vor Arbeiten immer prüfen, ob der Server/Port noch aktiv ist.
 
 Learnings aus der aktuellen Iteration:
 
+- Neue verbindliche Regel: Für visuelle Website-Arbeiten darf nur noch der In-App-Browser genutzt werden. Wenn der In-App-Browser nicht verfügbar ist oder nicht funktioniert, nicht auf Headless-Screenshots, externe Browser oder andere Browser-Workarounds ausweichen, sondern den User explizit darauf hinweisen und fragen, wie fortgefahren werden soll.
+
 - Der In-App-Browser soll für visuelle Änderungen aktiv genutzt werden.
 - Vor visuellen Arbeiten immer die aktuelle lokale URL öffnen:
   `http://127.0.0.1:4173/mockups/landingpage-flow.html`
@@ -273,6 +289,13 @@ Empfohlener Arbeitsablauf für zukünftige Website-Anpassungen:
 8. Vor Commit `git status --short --branch` und `git diff --stat` prüfen.
 9. Nur bewusst gewünschte Dateien committen.
 
+Zusätzliche Regel für News-Artikel:
+
+- Bei jedem neuen oder geänderten Artikel müssen Desktop- und Mobile-Ansicht geprüft werden.
+- Nicht nur prüfen, ob Inhalt vorhanden ist, sondern bewusst auf Satzbau, Absatzlängen, Zeilenumbrüche, Überschriftenumbrüche und Bildpositionen achten.
+- Besonders bei Artikel-Detailseiten darf die Überschrift nicht unruhig umbrechen; Trenner wie `-` sollen nicht unglücklich am Zeilenende hängen.
+- Bilder im Artikel sollen im Textfluss bewusst platziert werden und auf Desktop sowie Mobile als eingebettete Medien funktionieren.
+
 ## GitHub und Vercel Deployment
 
 Das Projekt ist auf GitHub und Vercel veröffentlicht.
@@ -336,7 +359,7 @@ Wenn an diesem Projekt weitergearbeitet wird:
 
 1. Diese Datei zuerst lesen.
 2. `mockups/landingpage-flow.html`, `mockups/newsfeed.html` und bei News-Arbeiten `mockups/news-editor.html` prüfen.
-3. Bei visuellen Änderungen Browser oder Headless-Screenshots verwenden.
+3. Bei visuellen Änderungen ausschließlich den In-App-Browser verwenden. Falls der In-App-Browser nicht verfügbar ist oder nicht funktioniert, den User darauf hinweisen und fragen, wie fortgefahren werden soll.
 4. Nach relevanten Layoutänderungen Desktop und Mobile kurz prüfen.
 5. Unrelated Dateien nicht löschen oder zurücksetzen.
 6. Der User möchte iterativ brainstormen und mocken, bevor final implementiert wird.
