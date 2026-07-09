@@ -124,6 +124,13 @@ Interner Artikel-Editor:
   - fertigen Datenblock für `mockups/news-data.js` exportieren/kopieren
 - Wichtig: Der Editor speichert aktuell noch nicht automatisch in Dateien. Er erzeugt den Datenblock, der anschließend in `mockups/news-data.js` übernommen werden muss.
 
+Google-Docs-Import:
+- Bevorzugter Workflow für neue Artikel: Der User schreibt in Google Docs vor und gibt Codex den Link oder Export.
+- Google Docs ist nur Entwurf, keine automatische Synchronisierung und kein CMS.
+- Detailartikel dürfen kontrollierte Rich-Text-Blöcke verwenden: `rich` mit erlaubtem HTML.
+- Bilder bleiben als `media`-Blöcke im Projektordner `Bilder Landingpage/Newsfeed/Artikel XX/`.
+- Doku: `docs/news-google-docs-import.md`
+
 Spätere Ausbaustufe:
 - echtes Speichern aus dem Editor heraus über ein kleines lokales Backend oder eine Admin/API-Lösung
 - mehrere Artikel-Detailseiten aus Templates erzeugen
