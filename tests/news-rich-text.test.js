@@ -35,6 +35,222 @@ function loadIsSafeHref() {
   return context.isSafeHref;
 }
 
+const NODE_TYPES = {
+  ELEMENT_NODE: 1,
+  TEXT_NODE: 3,
+  DOCUMENT_FRAGMENT_NODE: 11,
+};
+
+class FakeNode {
+  constructor(nodeType) {
+    this.nodeType = nodeType;
+    this.parentNode = null;
+    this.childNodes = [];
+  }
+
+  append(...nodes) {
+    nodes.forEach((node) => {
+      if (node == null) return;
+      if (node.nodeType === NODE_TYPES.DOCUMENT_FRAGMENT_NODE) {
+        node.childNodes.slice().forEach((child) => this.append(child));
+        return;
+      }
+
+      if (node.parentNode) {
+        const siblings = node.parentNode.childNodes;
+        const index = siblings.indexOf(node);
+        if (index >= 0) siblings.splice(index, 1);
+      }
+
+      node.parentNode = this;
+      this.childNodes.push(node);
+    });
+  }
+}
+
+class FakeTextNode extends FakeNode {
+  constructor(text) {
+    super(NODE_TYPES.TEXT_NODE);
+    this.textContent = text;
+  }
+}
+
+class FakeDocumentFragment extends FakeNode {
+  constructor() {
+    super(NODE_TYPES.DOCUMENT_FRAGMENT_NODE);
+  }
+}
+
+class FakeElement extends FakeNode {
+  constructor(tagName) {
+    super(NODE_TYPES.ELEMENT_NODE);
+    this.tagName = tagName.toUpperCase();
+    this.attributes = new Map();
+  }
+
+  set className(value) {
+    this.setAttribute("class", value);
+  }
+
+  get className() {
+    return this.getAttribute("class") || "";
+  }
+
+  setAttribute(name, value) {
+    this.attributes.set(name, String(value));
+  }
+
+  getAttribute(name) {
+    return this.attributes.has(name) ? this.attributes.get(name) : null;
+  }
+
+  removeAttribute(name) {
+    this.attributes.delete(name);
+  }
+
+  set innerHTML(html) {
+    this.childNodes = [];
+    parseHtml(html, this);
+  }
+}
+
+class FakeTemplateElement extends FakeElement {
+  constructor() {
+    super("template");
+    this.content = new FakeDocumentFragment();
+  }
+
+  set innerHTML(html) {
+    this.content.childNodes = [];
+    parseHtml(html, this.content);
+  }
+}
+
+class FakeDocument {
+  constructor() {
+    this.defaultView = { Node: NODE_TYPES };
+  }
+
+  createElement(tagName) {
+    if (tagName === "template") return new FakeTemplateElement();
+    return new FakeElement(tagName);
+  }
+
+  createTextNode(text) {
+    return new FakeTextNode(text);
+  }
+
+  createDocumentFragment() {
+    return new FakeDocumentFragment();
+  }
+
+  querySelector() {
+    return null;
+  }
+}
+
+function parseHtml(html, root) {
+  const stack = [root];
+  const tokenPattern = /<!--[\s\S]*?-->|<\/?[a-zA-Z][^>]*>|[^<]+|</g;
+  let match;
+
+  while ((match = tokenPattern.exec(html || ""))) {
+    const token = match[0];
+    const current = stack[stack.length - 1];
+
+    if (token.startsWith("<!--")) continue;
+
+    if (token[0] !== "<") {
+      current.append(new FakeTextNode(token));
+      continue;
+    }
+
+    if (token === "<") {
+      current.append(new FakeTextNode(token));
+      continue;
+    }
+
+    if (token.startsWith("</")) {
+      const closingTag = token.slice(2, -1).trim().toLowerCase();
+      while (stack.length > 1) {
+        const node = stack.pop();
+        if (node.tagName.toLowerCase() === closingTag) break;
+      }
+      continue;
+    }
+
+    const openMatch = token.match(/^<([a-zA-Z][\w:-]*)([\s\S]*?)(\/?)>$/);
+    if (!openMatch) {
+      current.append(new FakeTextNode(token));
+      continue;
+    }
+
+    const [, tagName, rawAttributes, selfClosingMarker] = openMatch;
+    const element = new FakeElement(tagName);
+    parseAttributes(rawAttributes, element);
+    current.append(element);
+
+    const selfClosing = selfClosingMarker === "/" || tagName.toLowerCase() === "br";
+    if (!selfClosing) stack.push(element);
+  }
+}
+
+function parseAttributes(rawAttributes, element) {
+  const attributePattern = /([^\s=/>]+)(?:\s*=\s*("([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g;
+  let match;
+  while ((match = attributePattern.exec(rawAttributes || ""))) {
+    const [, name, , doubleQuoted, singleQuoted, unquoted] = match;
+    const value = doubleQuoted ?? singleQuoted ?? unquoted ?? "";
+    element.setAttribute(name, value);
+  }
+}
+
+function serializeNode(node) {
+  if (node.nodeType === NODE_TYPES.TEXT_NODE) return escapeHtml(node.textContent);
+
+  const children = node.childNodes.map(serializeNode).join("");
+  if (node.nodeType === NODE_TYPES.DOCUMENT_FRAGMENT_NODE) return children;
+
+  const attributes = Array.from(node.attributes.entries())
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([name, value]) => ` ${name}="${escapeAttribute(value)}"`)
+    .join("");
+
+  return `<${node.tagName.toLowerCase()}${attributes}>${children}</${node.tagName.toLowerCase()}>`;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function escapeAttribute(value) {
+  return escapeHtml(value).replace(/"/g, "&quot;");
+}
+
+async function loadRendererExports() {
+  const stubbedSource = rendererSource.replace(
+    'import { getArticleBySlug } from "./news-data.js";',
+    "const getArticleBySlug = () => null;",
+  );
+
+  const bootstrapDocument = new FakeDocument();
+  const previousDocument = global.document;
+  const previousWindow = global.window;
+
+  global.document = bootstrapDocument;
+  global.window = bootstrapDocument.defaultView;
+
+  try {
+    return await import(`data:text/javascript;base64,${Buffer.from(stubbedSource).toString("base64")}`);
+  } finally {
+    global.document = previousDocument;
+    global.window = previousWindow;
+  }
+}
+
 test("article renderer exposes rich text block support", () => {
   assert.match(rendererSource, /type === "rich"/);
   assert.match(rendererSource, /sanitizeRichHtml/);
@@ -86,4 +302,42 @@ test("article renderer accepts safe hrefs and rejects unsafe ones", () => {
   ["", "   ", "javascript:alert(1)", "data:text/html,alert(1)", "//example.com"].forEach((href) => {
     assert.equal(isSafeHref(href), false, `expected ${JSON.stringify(href)} to be unsafe`);
   });
+});
+
+test("sanitizeRichHtml removes unsafe markup and preserves allowed article structure at runtime", async () => {
+  const { sanitizeRichHtml } = await loadRendererExports();
+  const fakeDocument = new FakeDocument();
+
+  const fragment = sanitizeRichHtml(
+    [
+      '<h2 onclick="evil()">Update</h2>',
+      '<p>Start <strong onclick="evil()">strong</strong> and <a href="newsfeed.html" onclick="evil()">internal</a>.</p>',
+      '<ul><li>One</li><li><script>alert(1)</script><a href="//example.com">proto-relative</a></li></ul>',
+      '<p><a href="javascript:alert(1)">js</a> <a href="data:text/html,x">data</a> <a href="https://example.com" onclick="evil()">external</a></p>',
+    ].join(""),
+    fakeDocument,
+  );
+
+  assert.equal(
+    serializeNode(fragment),
+    '<h2>Update</h2><p>Start <strong>strong</strong> and <a href="newsfeed.html">internal</a>.</p><ul><li>One</li><li>alert(1)<a>proto-relative</a></li></ul><p><a>js</a> <a>data</a> <a href="https://example.com" rel="noopener noreferrer" target="_blank">external</a></p>',
+  );
+});
+
+test("createRichContent wraps sanitized rich content in the renderer container at runtime", async () => {
+  const { createRichContent } = await loadRendererExports();
+  const fakeDocument = new FakeDocument();
+
+  const richContent = createRichContent(
+    {
+      type: "rich",
+      html: '<p onclick="evil()">Lead <a href="https://example.com" onclick="evil()">story</a></p>',
+    },
+    fakeDocument,
+  );
+
+  assert.equal(
+    serializeNode(richContent),
+    '<div class="article-rich-text"><p>Lead <a href="https://example.com" rel="noopener noreferrer" target="_blank">story</a></p></div>',
+  );
 });
