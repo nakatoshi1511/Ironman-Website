@@ -2725,6 +2725,56 @@ a {
   margin-inline: auto;
 }
 
+.article-rich-text {
+  display: grid;
+  gap: 18px;
+  max-width: 820px;
+  margin: 0 auto 30px;
+}
+
+.article-rich-text h2,
+.article-rich-text h3 {
+  margin: 18px 0 0;
+  font-family: "Barlow Condensed", sans-serif;
+  color: #172437;
+  line-height: 1.06;
+}
+
+.article-rich-text h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.article-rich-text h3 {
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+}
+
+.article-rich-text p,
+.article-rich-text li {
+  margin: 0;
+  color: #223041;
+  font-size: clamp(1rem, 1.25vw, 1.13rem);
+  line-height: 1.78;
+}
+
+.article-rich-text ul,
+.article-rich-text ol {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.article-rich-text a {
+  color: #b64a24;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.article-rich-text strong {
+  font-weight: 800;
+}
+
 .article-lead {
   color: #172437;
   font-size: clamp(1.18rem, 2vw, 1.48rem);
