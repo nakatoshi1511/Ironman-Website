@@ -7,14 +7,14 @@ const allowedRichTags = new Set(["p", "br", "h2", "h3", "strong", "em", "u", "ul
 const safeLinkProtocols = new Set(["http:", "https:", "mailto:"]);
 
 function isSafeHref(href) {
-  if (!href) return false;
-  if (href.startsWith("#") || href.startsWith("/") || href.startsWith("./") || href.startsWith("../")) return true;
-
-  try {
-    return safeLinkProtocols.has(new URL(href).protocol);
-  } catch {
-    return false;
-  }
+  const normalizedHref = (href || "").trim();
+  if (!normalizedHref) return false;
+  if (normalizedHref.startsWith("#")) return true;
+  if (normalizedHref.startsWith("//")) return false;
+  if (normalizedHref.startsWith("/") || normalizedHref.startsWith("./") || normalizedHref.startsWith("../")) return true;
+  const schemeMatch = normalizedHref.match(/^([a-zA-Z][a-zA-Z\d+.-]*):/);
+  if (!schemeMatch) return true;
+  return safeLinkProtocols.has(`${schemeMatch[1].toLowerCase()}:`);
 }
 
 function sanitizeRichNode(node, documentRef) {

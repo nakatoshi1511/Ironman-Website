@@ -2,8 +2,38 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
+const vm = require("node:vm");
 
 const rendererSource = fs.readFileSync(path.join(__dirname, "..", "mockups", "article-render.js"), "utf8");
+
+function findFunctionEnd(source, startIndex) {
+  const openBraceIndex = source.indexOf("{", startIndex);
+  assert.ok(openBraceIndex >= 0, "expected function body to start with an open brace");
+
+  let depth = 0;
+  for (let index = openBraceIndex; index < source.length; index += 1) {
+    const character = source[index];
+    if (character === "{") depth += 1;
+    if (character === "}") depth -= 1;
+    if (depth === 0) return index;
+  }
+
+  assert.fail("expected to find the end of the function body");
+}
+
+function loadIsSafeHref() {
+  const start = rendererSource.indexOf("function isSafeHref(href) {");
+  assert.ok(start >= 0, "expected isSafeHref to be present in the renderer source");
+  const end = findFunctionEnd(rendererSource, start);
+
+  const context = {
+    safeLinkProtocols: new Set(["http:", "https:", "mailto:"]),
+  };
+
+  const functionSource = `${rendererSource.slice(start, end + 1)}\nthis.isSafeHref = isSafeHref;`;
+  vm.runInNewContext(functionSource, context);
+  return context.isSafeHref;
+}
 
 test("article renderer exposes rich text block support", () => {
   assert.match(rendererSource, /type === "rich"/);
@@ -35,4 +65,25 @@ test("article renderer sanitizer keeps only allow-listed link protocols and expl
   assert.match(rendererSource, /clean\.setAttribute\("target", "_blank"\)/);
   assert.match(rendererSource, /clean\.setAttribute\("rel", "noopener noreferrer"\)/);
   assert.doesNotMatch(rendererSource, /Array\.from\(node\.attributes\)/);
+});
+
+test("article renderer accepts safe hrefs and rejects unsafe ones", () => {
+  const isSafeHref = loadIsSafeHref();
+
+  [
+    "#fragment",
+    "/newsfeed.html",
+    "newsfeed.html",
+    "./newsfeed.html",
+    "../newsfeed.html",
+    "https://example.com/story",
+    "http://example.com/story",
+    "mailto:hello@example.com",
+  ].forEach((href) => {
+    assert.equal(isSafeHref(href), true, `expected ${href} to be safe`);
+  });
+
+  ["", "   ", "javascript:alert(1)", "data:text/html,alert(1)", "//example.com"].forEach((href) => {
+    assert.equal(isSafeHref(href), false, `expected ${JSON.stringify(href)} to be unsafe`);
+  });
 });
