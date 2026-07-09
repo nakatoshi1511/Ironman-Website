@@ -22,15 +22,19 @@ function findFunctionEnd(source, startIndex) {
 }
 
 function loadIsSafeHref() {
-  const start = rendererSource.indexOf("function isSafeHref(href) {");
-  assert.ok(start >= 0, "expected isSafeHref to be present in the renderer source");
-  const end = findFunctionEnd(rendererSource, start);
+  const normalizeStart = rendererSource.indexOf("function normalizeHref(href) {");
+  assert.ok(normalizeStart >= 0, "expected normalizeHref to be present in the renderer source");
+  const normalizeEnd = findFunctionEnd(rendererSource, normalizeStart);
+
+  const safeHrefStart = rendererSource.indexOf("function isSafeHref(href) {");
+  assert.ok(safeHrefStart >= 0, "expected isSafeHref to be present in the renderer source");
+  const safeHrefEnd = findFunctionEnd(rendererSource, safeHrefStart);
 
   const context = {
     safeLinkProtocols: new Set(["http:", "https:", "mailto:"]),
   };
 
-  const functionSource = `${rendererSource.slice(start, end + 1)}\nthis.isSafeHref = isSafeHref;`;
+  const functionSource = `${rendererSource.slice(normalizeStart, normalizeEnd + 1)}\n${rendererSource.slice(safeHrefStart, safeHrefEnd + 1)}\nthis.isSafeHref = isSafeHref;`;
   vm.runInNewContext(functionSource, context);
   return context.isSafeHref;
 }
@@ -275,7 +279,7 @@ test("article renderer sanitizer keeps only allow-listed link protocols and expl
   });
 
   assert.match(rendererSource, /if \(tagName === "a"\)/);
-  assert.match(rendererSource, /const href = node\.getAttribute\("href"\) \|\| ""/);
+  assert.match(rendererSource, /const href = normalizeHref\(node\.getAttribute\("href"\) \|\| ""\)/);
   assert.match(rendererSource, /if \(isSafeHref\(href\)\)/);
   assert.match(rendererSource, /clean\.setAttribute\("href", href\)/);
   assert.match(rendererSource, /clean\.setAttribute\("target", "_blank"\)/);
@@ -304,6 +308,12 @@ test("article renderer accepts safe hrefs and rejects unsafe ones", () => {
   });
 });
 
+test("article renderer keeps legacy block dispatch branches in place", () => {
+  assert.match(rendererSource, /if \(block\.type === "media"\) return createMedia\(article, block\)/);
+  assert.match(rendererSource, /if \(block\.type === "rich"\) return createRichContent\(block\)/);
+  assert.match(rendererSource, /return createParagraph\(block\)/);
+});
+
 test("sanitizeRichHtml removes unsafe markup and preserves allowed article structure at runtime", async () => {
   const { sanitizeRichHtml } = await loadRendererExports();
   const fakeDocument = new FakeDocument();
@@ -311,16 +321,18 @@ test("sanitizeRichHtml removes unsafe markup and preserves allowed article struc
   const fragment = sanitizeRichHtml(
     [
       '<h2 onclick="evil()">Update</h2>',
-      '<p>Start <strong onclick="evil()">strong</strong> and <a href="newsfeed.html" onclick="evil()">internal</a>.</p>',
+      '<p>Start <strong onclick="evil()">strong</strong> and <a href="  newsfeed.html  " onclick="evil()">internal</a>.</p>',
       '<ul><li>One</li><li><script>alert(1)</script><a href="//example.com">proto-relative</a></li></ul>',
-      '<p><a href="javascript:alert(1)">js</a> <a href="data:text/html,x">data</a> <a href="https://example.com" onclick="evil()">external</a></p>',
+      '<p><a href="javascript:alert(1)">js</a> <a href="data:text/html,x">data</a> <a href="HTTPS://example.com" onclick="evil()">external</a></p>',
     ].join(""),
     fakeDocument,
   );
 
+  assert.doesNotMatch(serializeNode(fragment), /<script/i);
+  assert.equal(serializeNode(fragment).includes("alert(1)"), false);
   assert.equal(
     serializeNode(fragment),
-    '<h2>Update</h2><p>Start <strong>strong</strong> and <a href="newsfeed.html">internal</a>.</p><ul><li>One</li><li>alert(1)<a>proto-relative</a></li></ul><p><a>js</a> <a>data</a> <a href="https://example.com" rel="noopener noreferrer" target="_blank">external</a></p>',
+    '<h2>Update</h2><p>Start <strong>strong</strong> and <a href="newsfeed.html">internal</a>.</p><ul><li>One</li><li><a>proto-relative</a></li></ul><p><a>js</a> <a>data</a> <a href="https://example.com" rel="noopener noreferrer" target="_blank">external</a></p>',
   );
 });
 

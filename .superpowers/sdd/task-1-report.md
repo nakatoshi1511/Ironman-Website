@@ -34,3 +34,8 @@ Implemented rich-text rendering support for news article blocks in `mockups/arti
 
 - Changed files: `tests/news-rich-text.test.js`, `.superpowers/sdd/task-1-report.md`
 - Test result: `npm test` passed (`12` tests, `0` failures)
+
+## Fix 4
+
+- Changed files: `mockups/article-render.js`, `tests/news-rich-text.test.js`, `.superpowers/sdd/task-1-report.md`
+- Test result: `npm test` passed (`13` tests, `0` failures)

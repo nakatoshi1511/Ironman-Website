@@ -6,8 +6,18 @@ const article = articleRoot ? getArticleBySlug(articleRoot.dataset.articleSlug) 
 const allowedRichTags = new Set(["p", "br", "h2", "h3", "strong", "em", "u", "ul", "ol", "li", "a"]);
 const safeLinkProtocols = new Set(["http:", "https:", "mailto:"]);
 
-function isSafeHref(href) {
+function normalizeHref(href) {
   const normalizedHref = (href || "").trim();
+  if (!normalizedHref) return "";
+
+  const schemeMatch = normalizedHref.match(/^([a-zA-Z][a-zA-Z\d+.-]*:)(.*)$/);
+  if (!schemeMatch) return normalizedHref;
+
+  return `${schemeMatch[1].toLowerCase()}${schemeMatch[2]}`;
+}
+
+function isSafeHref(href) {
+  const normalizedHref = normalizeHref(href);
   if (!normalizedHref) return false;
   if (normalizedHref.startsWith("#")) return true;
   if (normalizedHref.startsWith("//")) return false;
@@ -29,20 +39,18 @@ function sanitizeRichNode(node, documentRef) {
   }
 
   const tagName = node.tagName.toLowerCase();
-  const fragment = documentRef.createDocumentFragment();
 
   if (!allowedRichTags.has(tagName)) {
-    Array.from(node.childNodes).forEach((child) => fragment.append(sanitizeRichNode(child, documentRef)));
-    return fragment;
+    return documentRef.createDocumentFragment();
   }
 
   const clean = documentRef.createElement(tagName);
 
   if (tagName === "a") {
-    const href = node.getAttribute("href") || "";
+    const href = normalizeHref(node.getAttribute("href") || "");
     if (isSafeHref(href)) {
       clean.setAttribute("href", href);
-      if (/^https?:/i.test(href)) {
+      if (/^https?:/.test(href)) {
         clean.setAttribute("target", "_blank");
         clean.setAttribute("rel", "noopener noreferrer");
       }
