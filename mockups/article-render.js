@@ -3,11 +3,93 @@ import { getArticleBySlug } from "./news-data.js";
 const articleRoot = document.querySelector("[data-article-slug]");
 const article = articleRoot ? getArticleBySlug(articleRoot.dataset.articleSlug) : null;
 
+const allowedRichTags = new Set(["p", "br", "h2", "h3", "strong", "em", "u", "ul", "ol", "li", "a"]);
+const safeLinkProtocols = new Set(["http:", "https:", "mailto:"]);
+
+function isSafeHref(href) {
+  if (!href) return false;
+  if (href.startsWith("#") || href.startsWith("/") || href.startsWith("./") || href.startsWith("../")) return true;
+
+  try {
+    return safeLinkProtocols.has(new URL(href).protocol);
+  } catch {
+    return false;
+  }
+}
+
+function sanitizeRichNode(node, documentRef) {
+  const nodeConstants = documentRef.defaultView || window;
+
+  if (node.nodeType === nodeConstants.Node.TEXT_NODE) {
+    return documentRef.createTextNode(node.textContent || "");
+  }
+
+  if (node.nodeType !== nodeConstants.Node.ELEMENT_NODE) {
+    return documentRef.createTextNode("");
+  }
+
+  const tagName = node.tagName.toLowerCase();
+  const fragment = documentRef.createDocumentFragment();
+
+  if (!allowedRichTags.has(tagName)) {
+    Array.from(node.childNodes).forEach((child) => fragment.append(sanitizeRichNode(child, documentRef)));
+    return fragment;
+  }
+
+  const clean = documentRef.createElement(tagName);
+
+  if (tagName === "a") {
+    const href = node.getAttribute("href") || "";
+    if (isSafeHref(href)) {
+      clean.setAttribute("href", href);
+      if (/^https?:/i.test(href)) {
+        clean.setAttribute("target", "_blank");
+        clean.setAttribute("rel", "noopener noreferrer");
+      }
+    }
+  }
+
+  Array.from(node.childNodes).forEach((child) => clean.append(sanitizeRichNode(child, documentRef)));
+  return clean;
+}
+
+function sanitizeRichHtml(html, documentRef = document) {
+  const template = documentRef.createElement("template");
+  template.innerHTML = html || "";
+
+  const fragment = documentRef.createDocumentFragment();
+  Array.from(template.content.childNodes).forEach((child) => fragment.append(sanitizeRichNode(child, documentRef)));
+  return fragment;
+}
+
+function createRichContent(block, documentRef = document) {
+  const wrapper = documentRef.createElement("div");
+  wrapper.className = "article-rich-text";
+  wrapper.append(sanitizeRichHtml(block.html || "", documentRef));
+  return wrapper;
+}
+
 function createParagraph(block) {
   const paragraph = document.createElement("p");
   paragraph.textContent = block.text;
   if (block.type === "lead") paragraph.className = "article-lead";
   return paragraph;
+}
+
+function setArticleTitle(element, title) {
+  const [primary, ...rest] = title.split(" - ");
+  if (rest.length === 0) {
+    element.textContent = title;
+    return;
+  }
+
+  const primaryLine = document.createElement("span");
+  primaryLine.textContent = primary;
+
+  const secondaryLine = document.createElement("span");
+  secondaryLine.textContent = `- ${rest.join(" - ")}`;
+
+  element.replaceChildren(primaryLine, secondaryLine);
 }
 
 function createMedia(articleData, block) {
@@ -28,7 +110,7 @@ function createMedia(articleData, block) {
   image.alt = imageAlt;
 
   const label = document.createElement("span");
-  label.textContent = "Bild vergrößern";
+  label.textContent = "Bild vergrÃ¶ÃŸern";
 
   const caption = document.createElement("figcaption");
   caption.textContent = captionText;
@@ -78,19 +160,25 @@ if (articleRoot && article) {
   const title = document.querySelector("[data-article-title]");
   const teaser = document.querySelector("[data-article-teaser]");
 
-  if (meta) meta.textContent = `${article.category} · ${article.dateLabel}`;
-  if (title) title.textContent = article.title;
+  if (meta) meta.textContent = `${article.category} Â· ${article.dateLabel}`;
+  if (title) setArticleTitle(title, article.title);
   if (teaser) teaser.textContent = article.teaser;
 
   articleRoot.replaceChildren(
-    ...article.blocks.map((block) => (block.type === "media" ? createMedia(article, block) : createParagraph(block))),
+    ...article.blocks.map((block) => {
+      if (block.type === "media") return createMedia(article, block);
+      if (block.type === "rich") return createRichContent(block);
+      return createParagraph(block);
+    }),
   );
 
   const backLink = document.createElement("a");
   backLink.className = "article-back-link";
   backLink.href = "newsfeed.html";
-  backLink.textContent = "Zurück zum Newsfeed";
+  backLink.textContent = "ZurÃ¼ck zum Newsfeed";
   articleRoot.append(backLink);
 
   setupLightbox();
 }
+
+export { createRichContent, sanitizeRichHtml };
