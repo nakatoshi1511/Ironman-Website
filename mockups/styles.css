@@ -2802,10 +2802,12 @@ a.sponsor-logo-card:focus-visible {
   width: 100%;
   margin: 0 auto;
   padding-inline: clamp(24px, 7vw, 92px);
+  text-align: center;
 }
 
 .article-hero h1 {
   max-width: 860px;
+  margin-inline: auto;
   color: #f8f4ea;
   font-size: clamp(3.2rem, 7vw, 7rem);
   line-height: 0.9;
@@ -2828,7 +2830,7 @@ a.sponsor-logo-card:focus-visible {
 
 .article-hero-inner > p:last-child {
   max-width: 620px;
-  margin-top: 18px;
+  margin: 18px auto 0;
   color: rgba(248, 244, 234, 0.78);
   font-size: 1rem;
   line-height: 1.55;
@@ -2855,7 +2857,7 @@ a.sponsor-logo-card:focus-visible {
 
 .article-media-inline {
   width: min(100%, 380px);
-  margin: clamp(24px, 4vw, 42px) 0 clamp(26px, 5vw, 48px) auto;
+  margin: clamp(24px, 4vw, 42px) auto clamp(26px, 5vw, 48px);
 }
 
 .article-image-button {

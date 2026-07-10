@@ -95,7 +95,7 @@ function setArticleTitle(element, title) {
   primaryLine.textContent = primary;
 
   const secondaryLine = document.createElement("span");
-  secondaryLine.textContent = `- ${rest.join(" - ")}`;
+  secondaryLine.textContent = rest.join(" - ");
 
   element.replaceChildren(primaryLine, secondaryLine);
 }
