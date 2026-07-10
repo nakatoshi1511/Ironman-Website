@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Road to Hawaii - Artikel Templates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Serif:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800;900&family=Newsreader:opsz,wght@6..72,500;6..72,650;6..72,750&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=flow-45" />
+    <link rel="stylesheet" href="article-design-mockups.css" />
+  </head>
+  <body class="flow-page article-template-page">
+    <nav class="site-nav article-template-nav" aria-label="Hauptnavigation">
+      <div class="site-nav-links">
+        <a href="landingpage-flow.html#profil">Profil</a>
+        <a href="landingpage-flow.html#erfolge">Erfolge</a>
+        <a href="landingpage-flow.html#partner">Partner werden</a>
+        <a href="landingpage-flow.html#social-sponsoren">Social Media</a>
+        <a href="newsfeed.html">Newsfeed</a>
+      </div>
+    </nav>
+
+    <main class="article-template-shell">
+      <header class="template-intro">
+        <p class="template-kicker">Artikel-Templates</p>
+        <h1>Blog statt Zeitung</h1>
+        <p>
+          Vier schlanke Detailseiten-Richtungen fuer denselben Beitrag. Die Inhalte, Bilder und Abschnitte bleiben
+          weiterhin durch dein Google Doc steuerbar.
+        </p>
+      </header>
+
+      <section class="template-switcher" aria-label="Artikel Templates">
+        <button type="button" class="is-active" data-template-target="classic">Classic Blog</button>
+        <button type="button" data-template-target="cover">Cover Blog</button>
+        <button type="button" data-template-target="logbook">Training Log</button>
+        <button type="button" data-template-target="notes">Field Notes</button>
+      </section>
+
+      <section class="template-mockup is-active" data-template="classic" aria-label="Classic Blog Template"></section>
+      <section class="template-mockup" data-template="cover" aria-label="Cover Blog Template"></section>
+      <section class="template-mockup" data-template="logbook" aria-label="Training Log Template"></section>
+      <section class="template-mockup" data-template="notes" aria-label="Field Notes Template"></section>
+    </main>
+
+    <footer class="site-footer" aria-label="Rechtliche Links">
+      <a href="impressum.html?v=legal-5">Impressum</a>
+      <a href="datenschutz.html?v=legal-5">Datenschutz</a>
+    </footer>
+
+    <script type="module" src="article-design-mockups.js"></script>
+  </body>
+</html>
