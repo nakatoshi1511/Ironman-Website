@@ -100,24 +100,31 @@ function setArticleTitle(element, title) {
   element.replaceChildren(primaryLine, secondaryLine);
 }
 
-function createMedia(articleData, block) {
+function addLightboxMetadata(button, block) {
+  if (!block.lightboxGroup || !Array.isArray(block.lightboxImages)) return;
+  button.dataset.lightboxGroup = block.lightboxGroup;
+  button.dataset.lightboxImages = JSON.stringify(block.lightboxImages);
+}
+
+function createMedia(articleData, block, documentRef = document) {
   const imageSrc = block.image || articleData.image;
   const imageAlt = block.imageAlt || articleData.imageAlt;
   const captionText = block.caption || articleData.mediaCaption;
-  const figure = document.createElement("figure");
+  const figure = documentRef.createElement("figure");
   figure.className = "article-media article-media-inline";
 
-  const button = document.createElement("button");
+  const button = documentRef.createElement("button");
   button.className = "article-image-button";
   button.type = "button";
   button.dataset.lightboxSrc = imageSrc;
   button.dataset.lightboxAlt = imageAlt;
+  addLightboxMetadata(button, block);
 
-  const image = document.createElement("img");
+  const image = documentRef.createElement("img");
   image.src = imageSrc;
   image.alt = imageAlt;
 
-  const label = document.createElement("span");
+  const label = documentRef.createElement("span");
   label.textContent = "Bild vergrößern";
 
   button.append(image, label);
@@ -142,6 +149,7 @@ function createGallery(block, documentRef = document) {
     button.type = "button";
     button.dataset.lightboxSrc = imageSrc;
     button.dataset.lightboxAlt = "";
+    addLightboxMetadata(button, block);
 
     const image = documentRef.createElement("img");
     image.src = imageSrc;
@@ -215,4 +223,4 @@ if (articleRoot && article) {
   setupLightbox();
 }
 
-export { createGallery, createRichContent, sanitizeRichHtml };
+export { createGallery, createMedia, createRichContent, sanitizeRichHtml };

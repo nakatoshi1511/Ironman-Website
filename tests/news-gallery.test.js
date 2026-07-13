@@ -27,6 +27,10 @@ class FakeElement {
   append(...nodes) {
     this.childNodes.push(...nodes);
   }
+
+  removeAttribute(name) {
+    delete this[name];
+  }
 }
 
 class FakeDocument {
@@ -83,6 +87,26 @@ test("createGallery renders ordered thumbnail buttons for the existing lightbox"
   );
 });
 
+test("grouped media and thumbnails expose only their explicit lightbox group", async () => {
+  const { createGallery, createMedia } = await loadRendererExports();
+  const images = ["02.jpeg", "01.jpeg", "03.jpeg", "04.jpeg"];
+  const documentRef = new FakeDocument();
+  const main = createMedia({}, { type: "media", image: images[0], lightboxGroup: "mittelmosel", lightboxImages: images }, documentRef);
+  const gallery = createGallery({ type: "gallery", images: images.slice(1), lightboxGroup: "mittelmosel", lightboxImages: images }, documentRef);
+  const singleton = createMedia({}, { type: "media", image: "11.jpeg" }, documentRef);
+
+  assert.deepEqual(
+    [main.childNodes[0], ...gallery.childNodes].map((button) => ({
+      source: button.dataset.lightboxSrc,
+      group: button.dataset.lightboxGroup,
+      images: button.dataset.lightboxImages,
+    })),
+    images.map((source) => ({ source, group: "mittelmosel", images: JSON.stringify(images) })),
+  );
+  assert.equal(singleton.childNodes[0].dataset.lightboxGroup, undefined);
+  assert.equal(singleton.childNodes[0].dataset.lightboxImages, undefined);
+});
+
 test("Toskana article maps the approved main images and thumbnail groups", () => {
   const data = fs.readFileSync(path.join(__dirname, "..", "mockups", "news-data.js"), "utf8");
   const articleStart = data.indexOf('slug: "trainingsauftakt-in-der-toskana"');
@@ -95,4 +119,8 @@ test("Toskana article maps the approved main images and thumbnail groups", () =>
   assert.match(article, /image: "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/15\.jpeg"/);
   assert.match(article, /images: \["\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/10\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/12\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/13\.jpeg"\]/);
   assert.match(article, /image: "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/14\.jpeg"/);
+  assert.match(article, /lightboxGroup: "mittelmosel"/);
+  assert.match(article, /lightboxImages: \["\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/02\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/01\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/03\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/04\.jpeg"\]/);
+  assert.match(article, /lightboxGroup: "toskana"/);
+  assert.match(article, /lightboxImages: \["\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/15\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/10\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/12\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/13\.jpeg"\]/);
 });

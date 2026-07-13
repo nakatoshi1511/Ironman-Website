@@ -29,10 +29,14 @@ export const newsArticles = [
       {
         type: "media",
         image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/02.jpeg",
+        lightboxGroup: "mittelmosel",
+        lightboxImages: ["../Bilder%20Landingpage/Newsfeed/Artikel%2002/02.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/01.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/03.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/04.jpeg"],
       },
       {
         type: "gallery",
         images: ["../Bilder%20Landingpage/Newsfeed/Artikel%2002/01.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/03.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/04.jpeg"],
+        lightboxGroup: "mittelmosel",
+        lightboxImages: ["../Bilder%20Landingpage/Newsfeed/Artikel%2002/02.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/01.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/03.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/04.jpeg"],
       },
       {
         type: "rich",
@@ -53,10 +57,14 @@ export const newsArticles = [
       {
         type: "media",
         image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/15.jpeg",
+        lightboxGroup: "toskana",
+        lightboxImages: ["../Bilder%20Landingpage/Newsfeed/Artikel%2002/15.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/10.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/12.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/13.jpeg"],
       },
       {
         type: "gallery",
         images: ["../Bilder%20Landingpage/Newsfeed/Artikel%2002/10.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/12.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/13.jpeg"],
+        lightboxGroup: "toskana",
+        lightboxImages: ["../Bilder%20Landingpage/Newsfeed/Artikel%2002/15.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/10.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/12.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/13.jpeg"],
       },
       {
         type: "paragraph",
