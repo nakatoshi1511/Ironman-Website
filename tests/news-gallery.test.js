@@ -85,6 +85,21 @@ test("lightbox navigation wraps only inside its active group", async () => {
   assert.equal(getCyclicIndex(2, 1, 4), 3);
 });
 
+test("renderer supports legacy article lightboxes without navigation controls", () => {
+  const legacyArticle = fs.readFileSync(
+    path.join(__dirname, "..", "mockups", "newsfeed-17-stunden-zum-ruhm.html"),
+    "utf8",
+  );
+
+  assert.match(legacyArticle, /class="image-lightbox"/);
+  assert.doesNotMatch(legacyArticle, /image-lightbox-(previous|next|count)/);
+  assert.match(rendererSource, /if \(previousButton\) previousButton\.hidden = !isGrouped;/);
+  assert.match(rendererSource, /if \(nextButton\) nextButton\.hidden = !isGrouped;/);
+  assert.match(rendererSource, /if \(count\) \{\s+count\.hidden = !isGrouped;/);
+  assert.match(rendererSource, /if \(previousButton\) \{/);
+  assert.match(rendererSource, /if \(nextButton\) \{/);
+});
+
 test("createGallery renders ordered thumbnail buttons for the existing lightbox", async () => {
   const { createGallery } = await loadRendererExports();
   const gallery = createGallery(

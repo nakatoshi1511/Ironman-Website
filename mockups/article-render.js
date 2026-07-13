@@ -201,10 +201,12 @@ function setupLightbox() {
     const isGrouped = activeImages.length > 1;
     lightboxImage.src = activeImages[activeIndex];
     lightboxImage.alt = activeAlt;
-    previousButton.hidden = !isGrouped;
-    nextButton.hidden = !isGrouped;
-    count.hidden = !isGrouped;
-    count.textContent = isGrouped ? `${activeIndex + 1} / ${activeImages.length}` : "";
+    if (previousButton) previousButton.hidden = !isGrouped;
+    if (nextButton) nextButton.hidden = !isGrouped;
+    if (count) {
+      count.hidden = !isGrouped;
+      count.textContent = isGrouped ? `${activeIndex + 1} / ${activeImages.length}` : "";
+    }
   }
 
   imageButtons.forEach((button) => {
@@ -219,14 +221,18 @@ function setupLightbox() {
     });
   });
 
-  previousButton.addEventListener("click", () => {
-    activeIndex = getCyclicIndex(activeIndex, -1, activeImages.length);
-    showActiveImage();
-  });
-  nextButton.addEventListener("click", () => {
-    activeIndex = getCyclicIndex(activeIndex, 1, activeImages.length);
-    showActiveImage();
-  });
+  if (previousButton) {
+    previousButton.addEventListener("click", () => {
+      activeIndex = getCyclicIndex(activeIndex, -1, activeImages.length);
+      showActiveImage();
+    });
+  }
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      activeIndex = getCyclicIndex(activeIndex, 1, activeImages.length);
+      showActiveImage();
+    });
+  }
   closeButtons.forEach((button) => button.addEventListener("click", () => closeLightbox(lightbox, lightboxImage)));
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
