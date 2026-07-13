@@ -100,6 +100,17 @@ test("renderer supports legacy article lightboxes without navigation controls", 
   assert.match(rendererSource, /if \(nextButton\) \{/);
 });
 
+test("Toskana lightbox controls start hidden until a grouped image opens", () => {
+  const article = fs.readFileSync(
+    path.join(__dirname, "..", "mockups", "newsfeed-trainingsauftakt-in-der-toskana.html"),
+    "utf8",
+  );
+
+  assert.match(article, /class="image-lightbox-previous"[^>]* hidden/);
+  assert.match(article, /class="image-lightbox-next"[^>]* hidden/);
+  assert.match(article, /class="image-lightbox-count"[^>]* data-lightbox-count[^>]* hidden/);
+});
+
 test("createGallery renders ordered thumbnail buttons for the existing lightbox", async () => {
   const { createGallery } = await loadRendererExports();
   const gallery = createGallery(
