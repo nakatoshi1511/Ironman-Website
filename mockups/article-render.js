@@ -132,6 +132,28 @@ function createMedia(articleData, block) {
   return figure;
 }
 
+function createGallery(block, documentRef = document) {
+  const gallery = documentRef.createElement("div");
+  gallery.className = "article-media-gallery";
+
+  (block.images || []).forEach((imageSrc) => {
+    const button = documentRef.createElement("button");
+    button.className = "article-gallery-thumb";
+    button.type = "button";
+    button.dataset.lightboxSrc = imageSrc;
+    button.dataset.lightboxAlt = "";
+
+    const image = documentRef.createElement("img");
+    image.src = imageSrc;
+    image.alt = "";
+
+    button.append(image);
+    gallery.append(button);
+  });
+
+  return gallery;
+}
+
 function closeLightbox(lightbox, lightboxImage) {
   lightbox.setAttribute("aria-hidden", "true");
   document.body.classList.remove("lightbox-open");
@@ -179,6 +201,7 @@ if (articleRoot && article) {
     ...article.blocks.map((block) => {
       if (block.type === "media") return createMedia(article, block);
       if (block.type === "rich") return createRichContent(block);
+      if (block.type === "gallery") return createGallery(block);
       return createParagraph(block);
     }),
   );
@@ -192,4 +215,4 @@ if (articleRoot && article) {
   setupLightbox();
 }
 
-export { createRichContent, sanitizeRichHtml };
+export { createGallery, createRichContent, sanitizeRichHtml };
