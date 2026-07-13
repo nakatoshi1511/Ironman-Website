@@ -2864,6 +2864,44 @@ a.sponsor-logo-card:focus-visible {
   margin: clamp(24px, 4vw, 42px) auto clamp(26px, 5vw, 48px);
 }
 
+.article-media-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: min(100%, 380px);
+  margin: -30px auto clamp(26px, 5vw, 48px);
+}
+
+.article-gallery-thumb {
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(34, 48, 65, 0.18);
+  border-radius: 8px;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.article-gallery-thumb img {
+  aspect-ratio: 1;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.article-gallery-thumb:focus-visible {
+  outline: 3px solid var(--lava);
+  outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+  .article-media-gallery {
+    gap: 8px;
+    width: min(100%, 320px);
+    margin-top: -20px;
+  }
+}
+
 .article-image-button {
   position: relative;
   display: block;

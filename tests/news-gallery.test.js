@@ -82,3 +82,17 @@ test("createGallery renders ordered thumbnail buttons for the existing lightbox"
     ],
   );
 });
+
+test("Toskana article maps the approved main images and thumbnail groups", () => {
+  const data = fs.readFileSync(path.join(__dirname, "..", "mockups", "news-data.js"), "utf8");
+  const articleStart = data.indexOf('slug: "trainingsauftakt-in-der-toskana"');
+  const articleEnd = data.indexOf("\n  {", articleStart + 1);
+  const article = data.slice(articleStart, articleEnd);
+
+  assert.match(article, /image: "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/02\.jpeg"/);
+  assert.match(article, /images: \["\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/01\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/03\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/04\.jpeg"\]/);
+  assert.match(article, /image: "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/11\.jpeg"/);
+  assert.match(article, /image: "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/15\.jpeg"/);
+  assert.match(article, /images: \["\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/10\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/12\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/13\.jpeg"\]/);
+  assert.match(article, /image: "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/14\.jpeg"/);
+});

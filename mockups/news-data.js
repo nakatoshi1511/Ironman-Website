@@ -31,12 +31,20 @@ export const newsArticles = [
         image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/02.jpeg",
       },
       {
+        type: "gallery",
+        images: ["../Bilder%20Landingpage/Newsfeed/Artikel%2002/01.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/03.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/04.jpeg"],
+      },
+      {
         type: "rich",
         html: "<h2>Toskana: Dolce Vita trifft auf knallhartes Hawaii-Camp</h2>",
       },
       {
         type: "paragraph",
         text: "Lange gefeiert wurde allerdings nicht. Schon am Montag hieß es: Koffer und Räder packen und ab in den Süden. Das Ziel: die Toskana. Die Bedingungen vor Ort waren schlichtweg genial – und verdammt fordernd. Bei hochsommerlichen Temperaturen von bis zu 40 Grad bekamen wir bereits einen sehr realen Vorgeschmack auf die brutale Hitze, die mich im Oktober auf Hawaii erwarten wird. Jede Schweißperle hier war bereits eine Investition für das Rennen auf Pazifik-Boden.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/11.jpeg",
       },
       {
         type: "rich",
@@ -47,16 +55,12 @@ export const newsArticles = [
         image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/15.jpeg",
       },
       {
-        type: "media",
-        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/13.jpeg",
+        type: "gallery",
+        images: ["../Bilder%20Landingpage/Newsfeed/Artikel%2002/10.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/12.jpeg", "../Bilder%20Landingpage/Newsfeed/Artikel%2002/13.jpeg"],
       },
       {
         type: "paragraph",
         text: "Neben all den harten Einheiten kam die Erholung glücklicherweise nicht zu kurz. Die wunderschönen toskanischen Hügel und historischen Dörfer boten grandiose Ausflugsziele, um gemeinsam mit meiner Freundin abzuschalten, die Seele baumeln zu lassen und die Energiespeicher mit italienischer Pasta wieder aufzufüllen.",
-      },
-      {
-        type: "media",
-        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/10.jpeg",
       },
       {
         type: "rich",
