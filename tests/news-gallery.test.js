@@ -189,7 +189,13 @@ test("newsfeed design studies only render published article data", () => {
     path.join(__dirname, "..", "mockups", "newsfeed-design-mockups.js"),
     "utf8",
   );
+  const feedRenderer = fs.readFileSync(
+    path.join(__dirname, "..", "mockups", "newsfeed-render.js"),
+    "utf8",
+  );
 
   assert.match(designMockups, /const designArticles = \[\.\.\.newsArticles\];/);
   assert.doesNotMatch(designMockups, /mock-training|mock-wettkampf|mock-partner|Design-Dummy/);
+  assert.match(feedRenderer, /const feedArticles = \[\.\.\.newsArticles\];/);
+  assert.doesNotMatch(feedRenderer, /placeholderArticles|Platzhalter:/);
 });
