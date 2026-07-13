@@ -120,11 +120,14 @@ function createMedia(articleData, block) {
   const label = document.createElement("span");
   label.textContent = "Bild vergrößern";
 
-  const caption = document.createElement("figcaption");
-  caption.textContent = captionText;
-
   button.append(image, label);
-  figure.append(button, caption);
+  figure.append(button);
+
+  if (captionText) {
+    const caption = document.createElement("figcaption");
+    caption.textContent = captionText;
+    figure.append(caption);
+  }
 
   return figure;
 }

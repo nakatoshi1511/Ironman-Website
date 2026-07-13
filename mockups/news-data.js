@@ -1,5 +1,82 @@
 export const newsArticles = [
   {
+    slug: "trainingsauftakt-in-der-toskana",
+    url: "newsfeed-trainingsauftakt-in-der-toskana.html",
+    title: "Trainingsauftakt in der Toskana",
+    teaser: "Über Schotterpisten und Bergintervalle – der Motor läuft wieder heiß!",
+    category: "Training",
+    dateLabel: "13.07.2026",
+    dateTime: "2026-07-13",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/14.jpeg",
+    imageAlt: "",
+    blocks: [
+      {
+        type: "lead",
+        text: "Vier Wochen ist es nun her, dass ich mir auf den Lavafeldern des Ironman Lanzarote den großen Traum erfüllt habe: die Qualifikation für den Ironman Hawaii. Wenn ich heute zurückblicke, fühlt es sich fast surreal an, wie schnell die Zeit vergeht. Doch der Fokus hat sich längst verschoben. Die erste Euphorie ist verflogen, die Motivation dafür umso größer. Die Road to Hawaii ist offiziell eröffnet!",
+      },
+      {
+        type: "rich",
+        html: "<h2>Überraschend schnelle Regeneration und ein Heimspiel nach Maß</h2>",
+      },
+      {
+        type: "paragraph",
+        text: "Nach einem Langdistanz-Rennen braucht der Körper eigentlich erst einmal Zeit zum Heilen. In den ersten vier Wochen nach Lanzarote stand deshalb „Training nach Lust und Laune“ auf dem Programm. Kein starrer Plan, kein Druck – einfach auf den eigenen Körper hören. Zu meiner eigenen Überraschung habe ich die Strapazen dieses Mal erstaunlich schnell weggesteckt. Schon nach zwei Wochen signalisierte mir mein Körper wieder volle Einsatzbereitschaft, sodass ich sogar schon die ersten intensiveren Einheiten einstreuen konnte.",
+      },
+      {
+        type: "paragraph",
+        text: "Das beste Feedback gab es dann beim Mittelmosel Triathlon in Bullay. Vor heimischem Publikum, angepeitscht von Freunden und Familie, wurde es ein echtes Aufholjagd-Spektakel. Nach dem Schwimmen hatte ich einiges an Boden gutzumachen. Ich habe auf der Strecke alles versucht, um den Rückstand wieder wettzumachen, was mir mit der schnellsten Radzeit und der schnellsten Laufzeit des Tages auch fast gelungen wäre. Am Ende stand ein starker 3. Platz zu Buche. Dieser kurze Ausflug auf die Sprintdistanz hat großen Spaß gemacht, aber nach dem Zielstrich war mir auch klar: Ich freue mich jetzt wieder riesig auf „meine“ Distanz.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/02.jpeg",
+      },
+      {
+        type: "rich",
+        html: "<h2>Toskana: Dolce Vita trifft auf knallhartes Hawaii-Camp</h2>",
+      },
+      {
+        type: "paragraph",
+        text: "Lange gefeiert wurde allerdings nicht. Schon am Montag hieß es: Koffer und Räder packen und ab in den Süden. Das Ziel: die Toskana. Die Bedingungen vor Ort waren schlichtweg genial – und verdammt fordernd. Bei hochsommerlichen Temperaturen von bis zu 40 Grad bekamen wir bereits einen sehr realen Vorgeschmack auf die brutale Hitze, die mich im Oktober auf Hawaii erwarten wird. Jede Schweißperle hier war bereits eine Investition für das Rennen auf Pazifik-Boden.",
+      },
+      {
+        type: "rich",
+        html: "<p>Wir haben die Toskana sportlich voll ausgenutzt:</p><ul><li><strong>Auf den Spuren der Profis:</strong> Ich habe kurzerhand Gravelreifen auf mein Rennrad aufgezogen, um die legendären weißen Schotterstraßen der Strade Bianche unter die Räder zu nehmen. Ein absolut geniales Fahrgefühl in einer Postkartenkulisse!</li><li><strong>Höhenmeter fressen:</strong> Die Hügellandschaften luden regelrecht dazu ein, harte Laufintervalle am Berg zu absolvieren. Genau das Richtige, um die Kraftausdauer auf ein neues Level zu heben.</li><li><strong>Kachelzählen und Wellengang:</strong> Die Schwimmeinheiten wurden flexibel zwischen dem Pool und dem offenen Meer aufgeteilt, um sich auch im Wasser an verschiedene Bedingungen zu gewöhnen.</li></ul>",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/15.jpeg",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/13.jpeg",
+      },
+      {
+        type: "paragraph",
+        text: "Neben all den harten Einheiten kam die Erholung glücklicherweise nicht zu kurz. Die wunderschönen toskanischen Hügel und historischen Dörfer boten grandiose Ausflugsziele, um gemeinsam mit meiner Freundin abzuschalten, die Seele baumeln zu lassen und die Energiespeicher mit italienischer Pasta wieder aufzufüllen.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2002/10.jpeg",
+      },
+      {
+        type: "rich",
+        html: "<h2>Ich will auf Hawaii nicht nur dabei sein!</h2>",
+      },
+      {
+        type: "paragraph",
+        text: "Wenn ich ehrlich bin, brenne ich aktuell mehr denn je für den Sport. Die Motivation ist extrem hoch – so hoch, dass mein Trainer momentan eher die Handbremse anziehen und mich bremsen muss, damit ich nicht zu früh zu viel will.",
+      },
+      {
+        type: "paragraph",
+        text: "Denn eines ist mir in diesem Urlaub klar geworden: Ich fliege nicht nach Hawaii, um nur die Blumenkette im Ziel abzuholen und die Landschaft zu genießen. Ich will dort fit, austrainiert und bereit an der Startlinie stehen, um ein richtig gutes Rennen abzuliefern. Die Toskana war der perfekte Kick-off für diese Mission.",
+      },
+      {
+        type: "paragraph",
+        text: "Die Reise hat erst begonnen – und ich freue mich, wenn ihr mich hier weiterhin auf dem Weg nach Kailua-Kona begleitet!",
+      },
+    ],
+  },
+  {
     slug: "17-stunden-zum-ruhm",
     url: "newsfeed-17-stunden-zum-ruhm.html",
     title: "17 Stunden zum Ruhm - Mythos Ironman Hawaii",

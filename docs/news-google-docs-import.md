@@ -18,7 +18,7 @@ Inside the article section, use normal Google Docs formatting:
 - bullet or numbered lists
 - links
 - image placeholder lines such as `Bild: trainingsauftakt-toskana-01.jpg`
-- caption lines such as `Bildunterschrift: David beim Training in der Toskana`
+- caption lines only when the user has explicitly supplied the caption, such as `Bildunterschrift: David beim Training in der Toskana`
 
 ## Import Rule
 
@@ -29,3 +29,7 @@ Codex converts the Google Doc into `mockups/news-data.js`. Rich article sections
 Supported tags are `p`, `br`, `h2`, `h3`, `strong`, `em`, `u`, `ul`, `ol`, `li`, and `a`.
 
 Images remain normal `media` blocks so the existing lightbox behavior keeps working.
+
+## Content Fidelity Rule
+
+Do not infer, invent, or add article content. This includes captions, alt text, teasers, headings, image choices, and factual details. Import only content explicitly supplied or approved by the user; leave missing fields empty or ask for them before publishing.

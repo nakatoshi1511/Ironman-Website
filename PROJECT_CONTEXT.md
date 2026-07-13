@@ -130,6 +130,7 @@ Google-Docs-Import:
 - Detailartikel dürfen kontrollierte Rich-Text-Blöcke verwenden: `rich` mit erlaubtem HTML.
 - Bilder bleiben als `media`-Blöcke im Projektordner `Bilder Landingpage/Newsfeed/Artikel XX/`.
 - Doku: `docs/news-google-docs-import.md`
+- Verbindliche Inhaltsregel: Bei Artikelimporten keinerlei Inhalte selbst erfinden oder ergÃ¤nzen. Bildunterschriften, Alt-Texte, Teaser, ZwischenÃ¼berschriften, Bildauswahl und sonstige Angaben werden nur Ã¼bernommen, wenn sie vom User ausdrÃ¼cklich geliefert oder freigegeben wurden. Fehlen Angaben, bleiben sie leer oder werden vor dem EinfÃ¼gen abgefragt.
 
 Learnings aus dem DOCX-Testimport:
 - Nach Änderungen an `mockups/news-data.js` müssen die ES-Module im Browser frisch geladen werden. Der In-App-Browser kann alte Modulversionen hartnäckig behalten; deshalb bei Artikelimporten die Script-/Import-Versionierung bewusst aktualisieren oder mit eindeutigem Cache-Buster prüfen.
