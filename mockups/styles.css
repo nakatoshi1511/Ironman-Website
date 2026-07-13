@@ -1643,7 +1643,7 @@ a {
   background:
     radial-gradient(ellipse at 19% 8%, rgba(231, 91, 50, 0.22), transparent 30%),
     linear-gradient(90deg, rgba(15, 79, 93, 0.28), transparent 58%),
-    #2f3435;
+    #474d4d;
   color: var(--lava);
 }
 
@@ -1806,6 +1806,10 @@ a {
 
 .sponsor-tier-exclusive .sponsor-tier-logos {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sponsor-tier-supporters .sponsor-tier-logos {
+  grid-template-columns: 1fr;
 }
 
 .sponsor-roster {

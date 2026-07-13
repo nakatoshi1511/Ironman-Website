@@ -15,6 +15,7 @@ const expectedSponsors = [
   ["Ollis Radladen", "https://www.ollis-radladen.de"],
   ["Powerhouse", "https://www.powerhouse-maifeld-gym.com"],
   ["Schnorbach", "https://zimmerei-schnorbach.de"],
+  ["KFZ Meisterbetrieb Eisfeld", "https://www.kfz-eisfeld.de/"],
 ];
 
 function sponsorLinkPattern(name, href) {
@@ -42,6 +43,10 @@ test("sponsor tier labels include compact category icons", () => {
     html,
     /<p class="sponsor-tier-label">\s*<img\s+class="sponsor-tier-icon"\s+src="\.\.\/Bilder%20Landingpage\/Logos\/Partner\.jpeg"\s+alt=""\s+aria-hidden="true"\s*\/>\s*<span>Partner<\/span>\s*<\/p>/,
   );
+  assert.match(
+    html,
+    /<p class="sponsor-tier-label">\s*<img\s+class="sponsor-tier-icon"\s+src="\.\.\/Bilder%20Landingpage\/Logos\/Unterst%C3%BCtzer\.jpeg"\s+alt=""\s+aria-hidden="true"\s*\/>\s*<span>Unterstützer<\/span>\s*<\/p>/,
+  );
 });
 
 test("sponsor tier layout keeps labels readable and exclusive cards equal", () => {
@@ -58,5 +63,9 @@ test("sponsor tier layout keeps labels readable and exclusive cards equal", () =
   assert.match(
     css,
     /\.sponsor-tier-exclusive\s+\.sponsor-tier-logos\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/,
+  );
+  assert.match(
+    css,
+    /\.sponsor-tier-supporters\s+\.sponsor-tier-logos\s*\{[\s\S]*?grid-template-columns:\s*1fr;/,
   );
 });
