@@ -1,44 +1,7 @@
 import { newsArticles } from "./news-data.js";
 
 const categories = ["Alle", "Training", "Wettkampf", "Partner", "Road to Hawaii"];
-const fallbackImage = "../Bilder%20Landingpage/Hero/final-variants/hero-final-H-no-bars-clean-filter-warm-sunrise.jpg";
-
-const designArticles = [
-  ...newsArticles,
-  {
-    slug: "mock-training",
-    isDesignDummy: true,
-    title: "Trainingsblock: Hitze, Umfang und Kona-Rhythmus",
-    teaser: "Design-Dummy f&uuml;r Trainingsupdates mit kurzen, regelm&auml;&szlig;igen Einblicken in Davids Vorbereitung.",
-    category: "Training",
-    dateLabel: "02.07.2026",
-    dateTime: "2026-07-02",
-    image: fallbackImage,
-    imageAlt: "Triathlon Training als Platzhalterbild",
-  },
-  {
-    slug: "mock-wettkampf",
-    isDesignDummy: true,
-    title: "Rennbericht: Formtest vor dem gro&szlig;en Ziel",
-    teaser: "Design-Dummy f&uuml;r Wettk&auml;mpfe, Ergebnisse und Rennerfahrungen auf dem Weg zur Weltmeisterschaft.",
-    category: "Wettkampf",
-    dateLabel: "28.06.2026",
-    dateTime: "2026-06-28",
-    image: fallbackImage,
-    imageAlt: "Triathlon Wettkampf als Platzhalterbild",
-  },
-  {
-    slug: "mock-partner",
-    isDesignDummy: true,
-    title: "Partnerstory: Sichtbarkeit mit echter Geschichte",
-    teaser: "Design-Dummy f&uuml;r Sponsorenbeitr&auml;ge, regionale Partner und gemeinsame Aktivierungen.",
-    category: "Partner",
-    dateLabel: "18.06.2026",
-    dateTime: "2026-06-18",
-    image: fallbackImage,
-    imageAlt: "Partnerstory als Platzhalterbild",
-  },
-];
+const designArticles = [...newsArticles];
 
 const variantButtons = document.querySelectorAll("[data-variant-target]");
 const variants = document.querySelectorAll("[data-variant]");
@@ -90,11 +53,9 @@ function createCard(article, variant, index) {
   const card = document.createElement("article");
   card.className = `${variant === "race-control" ? "race-card" : variant === "sponsor-journal" ? "journal-card" : "editorial-card"}`;
 
-  const link = document.createElement(article.isDesignDummy ? "div" : "a");
-  if (!article.isDesignDummy) {
-    link.href = article.url;
-    link.setAttribute("aria-label", `Artikel &ouml;ffnen: ${article.title}`);
-  }
+  const link = document.createElement("a");
+  link.href = article.url;
+  link.setAttribute("aria-label", `Artikel &ouml;ffnen: ${article.title}`);
 
   const image = document.createElement("img");
   image.src = article.image;

@@ -183,3 +183,13 @@ test("Toskana article maps the approved main images and thumbnail groups", () =>
   assert.match(article, /lightboxGroup: "toskana"/);
   assert.match(article, /lightboxImages: \["\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/15\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/10\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/12\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/13\.jpeg"\]/);
 });
+
+test("newsfeed design studies only render published article data", () => {
+  const designMockups = fs.readFileSync(
+    path.join(__dirname, "..", "mockups", "newsfeed-design-mockups.js"),
+    "utf8",
+  );
+
+  assert.match(designMockups, /const designArticles = \[\.\.\.newsArticles\];/);
+  assert.doesNotMatch(designMockups, /mock-training|mock-wettkampf|mock-partner|Design-Dummy/);
+});
