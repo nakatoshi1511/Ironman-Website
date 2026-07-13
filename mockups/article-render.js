@@ -169,23 +169,64 @@ function closeLightbox(lightbox, lightboxImage) {
   lightboxImage.alt = "";
 }
 
+function getLightboxState(button) {
+  const images = JSON.parse(button.dataset.lightboxImages || "[]");
+  const index = images.indexOf(button.dataset.lightboxSrc);
+  return {
+    images: index >= 0 ? images : [button.dataset.lightboxSrc],
+    index: index >= 0 ? index : 0,
+    isGrouped: index >= 0 && images.length > 1,
+  };
+}
+
+function getCyclicIndex(index, change, length) {
+  return (index + change + length) % length;
+}
+
 function setupLightbox() {
   const lightbox = document.querySelector(".image-lightbox");
   if (!lightbox) return;
 
   const lightboxImage = lightbox.querySelector("img");
-  const closeButtons = lightbox.querySelectorAll("button");
+  const previousButton = lightbox.querySelector(".image-lightbox-previous");
+  const nextButton = lightbox.querySelector(".image-lightbox-next");
+  const count = lightbox.querySelector("[data-lightbox-count]");
+  const closeButtons = lightbox.querySelectorAll(".image-lightbox-backdrop, .image-lightbox-close");
   const imageButtons = document.querySelectorAll("[data-lightbox-src]");
+  let activeImages = [];
+  let activeIndex = 0;
+  let activeAlt = "";
+
+  function showActiveImage() {
+    const isGrouped = activeImages.length > 1;
+    lightboxImage.src = activeImages[activeIndex];
+    lightboxImage.alt = activeAlt;
+    previousButton.hidden = !isGrouped;
+    nextButton.hidden = !isGrouped;
+    count.hidden = !isGrouped;
+    count.textContent = isGrouped ? `${activeIndex + 1} / ${activeImages.length}` : "";
+  }
 
   imageButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      lightboxImage.src = button.dataset.lightboxSrc;
-      lightboxImage.alt = button.dataset.lightboxAlt || "";
+      const state = getLightboxState(button);
+      activeImages = state.images;
+      activeIndex = state.index;
+      activeAlt = button.dataset.lightboxAlt || "";
+      showActiveImage();
       lightbox.setAttribute("aria-hidden", "false");
       document.body.classList.add("lightbox-open");
     });
   });
 
+  previousButton.addEventListener("click", () => {
+    activeIndex = getCyclicIndex(activeIndex, -1, activeImages.length);
+    showActiveImage();
+  });
+  nextButton.addEventListener("click", () => {
+    activeIndex = getCyclicIndex(activeIndex, 1, activeImages.length);
+    showActiveImage();
+  });
   closeButtons.forEach((button) => button.addEventListener("click", () => closeLightbox(lightbox, lightboxImage)));
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
@@ -223,4 +264,4 @@ if (articleRoot && article) {
   setupLightbox();
 }
 
-export { createGallery, createMedia, createRichContent, sanitizeRichHtml };
+export { createGallery, createMedia, createRichContent, getCyclicIndex, getLightboxState, sanitizeRichHtml };

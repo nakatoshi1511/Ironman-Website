@@ -61,6 +61,30 @@ async function loadRendererExports() {
   }
 }
 
+test("group lightbox state starts at the selected source and excludes other article images", async () => {
+  const { getLightboxState } = await loadRendererExports();
+  const state = getLightboxState({
+    dataset: {
+      lightboxSrc: "03.jpeg",
+      lightboxGroup: "mittelmosel",
+      lightboxImages: JSON.stringify(["02.jpeg", "01.jpeg", "03.jpeg", "04.jpeg"]),
+    },
+  });
+
+  assert.deepEqual(state, {
+    images: ["02.jpeg", "01.jpeg", "03.jpeg", "04.jpeg"],
+    index: 2,
+    isGrouped: true,
+  });
+});
+
+test("lightbox navigation wraps only inside its active group", async () => {
+  const { getCyclicIndex } = await loadRendererExports();
+  assert.equal(getCyclicIndex(0, -1, 4), 3);
+  assert.equal(getCyclicIndex(3, 1, 4), 0);
+  assert.equal(getCyclicIndex(2, 1, 4), 3);
+});
+
 test("createGallery renders ordered thumbnail buttons for the existing lightbox", async () => {
   const { createGallery } = await loadRendererExports();
   const gallery = createGallery(
