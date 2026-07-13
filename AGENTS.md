@@ -16,7 +16,7 @@ When the user writes `go` as a standalone command in this project:
 ## Ongoing Project Work
 
 - Read `PROJECT_CONTEXT.md` first.
-- Check `mockups/landingpage-flow.html`, `mockups/newsfeed.html`, and, for news work, `mockups/news-editor.html`.
+- Check `mockups/landingpage-flow.html`, `mockups/newsfeed.html`, and, for news work, `mockups/news-data.js` plus the affected article detail page.
 - Verify visual changes in the in-app browser.
 - After relevant layout changes, check both desktop and mobile.
 - Do not delete, reset, or clean up unrelated files.

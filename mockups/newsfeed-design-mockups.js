@@ -7,7 +7,7 @@ const designArticles = [
   ...newsArticles,
   {
     slug: "mock-training",
-    url: "news-editor.html",
+    isDesignDummy: true,
     title: "Trainingsblock: Hitze, Umfang und Kona-Rhythmus",
     teaser: "Design-Dummy f&uuml;r Trainingsupdates mit kurzen, regelm&auml;&szlig;igen Einblicken in Davids Vorbereitung.",
     category: "Training",
@@ -18,7 +18,7 @@ const designArticles = [
   },
   {
     slug: "mock-wettkampf",
-    url: "news-editor.html",
+    isDesignDummy: true,
     title: "Rennbericht: Formtest vor dem gro&szlig;en Ziel",
     teaser: "Design-Dummy f&uuml;r Wettk&auml;mpfe, Ergebnisse und Rennerfahrungen auf dem Weg zur Weltmeisterschaft.",
     category: "Wettkampf",
@@ -29,7 +29,7 @@ const designArticles = [
   },
   {
     slug: "mock-partner",
-    url: "news-editor.html",
+    isDesignDummy: true,
     title: "Partnerstory: Sichtbarkeit mit echter Geschichte",
     teaser: "Design-Dummy f&uuml;r Sponsorenbeitr&auml;ge, regionale Partner und gemeinsame Aktivierungen.",
     category: "Partner",
@@ -90,9 +90,11 @@ function createCard(article, variant, index) {
   const card = document.createElement("article");
   card.className = `${variant === "race-control" ? "race-card" : variant === "sponsor-journal" ? "journal-card" : "editorial-card"}`;
 
-  const link = document.createElement("a");
-  link.href = article.url;
-  link.setAttribute("aria-label", `Artikel &ouml;ffnen: ${article.title}`);
+  const link = document.createElement(article.isDesignDummy ? "div" : "a");
+  if (!article.isDesignDummy) {
+    link.href = article.url;
+    link.setAttribute("aria-label", `Artikel &ouml;ffnen: ${article.title}`);
+  }
 
   const image = document.createElement("img");
   image.src = article.image;

@@ -115,17 +115,12 @@ Aktueller Stand:
 - Bilder werden im Artikel klein eingebettet und per Klick in einer Lightbox groß angezeigt.
 - Für Bildgalerien werden Hauptbild und Vorschau-Block mit derselben `lightboxGroup` und derselben `lightboxImages`-Reihenfolge gepflegt. In der Lightbox ist nur diese explizite Gruppe zyklisch blätterbar; Einzelbilder bleiben ohne diese beiden Angaben.
 
-Interner Artikel-Editor:
-- Tool-Seite: `mockups/news-editor.html`
-- Script: `mockups/news-editor.js`
-- Zweck:
-  - Titel, Slug, Kategorie, Datum, URL und Teaser pflegen
-  - Artikelblöcke hinzufügen, löschen und hoch/runter verschieben
-  - pro Bildblock Bildpfad, Alt-Text, Bildunterschrift und optionale Galerie-ID/Reihenfolge setzen
-  - Bildervorschauen als `gallery`-Block anlegen
-  - Live-Vorschau prüfen
-  - fertigen Datenblock für `mockups/news-data.js` exportieren/kopieren
-- Wichtig: Der Editor speichert aktuell noch nicht automatisch in Dateien. Er erzeugt den Datenblock, der anschließend in `mockups/news-data.js` übernommen werden muss.
+Artikelpflege:
+- Neue Artikel werden direkt in `mockups/news-data.js` und der passenden statischen Detailseite gepflegt.
+- Artikel-Metadaten: `slug`, `url`, `title`, `teaser`, `category`, `dateLabel`, `dateTime`, `image`, `imageAlt` und bei Bedarf `mediaCaption`.
+- Aktuelle Kategorien: `Training`, `Wettkampf`, `Partner` und `Road to Hawaii`.
+- Der Textaufbau nutzt die oben genannten Blocktypen. `rich` ist für kontrollierte Rich-Text-Blöcke mit erlaubtem HTML verfügbar.
+- Für jeden Artikel muss die Kachel im Newsfeed auf die passende Detailseite verweisen.
 
 Google-Docs-Import:
 - Bevorzugter Workflow für neue Artikel: Der User schreibt in Google Docs vor und gibt Codex den Link oder Export.
@@ -143,7 +138,6 @@ Learnings aus dem DOCX-Testimport:
 - Der User bevorzugt einen schlanken Workflow: Google Docs ist der freie Schreib- und Formatierungsentwurf; Codex importiert daraus kontrolliert in `news-data.js` und die statische Detailseite.
 
 Spätere Ausbaustufe:
-- echtes Speichern aus dem Editor heraus über ein kleines lokales Backend oder eine Admin/API-Lösung
 - mehrere Artikel-Detailseiten aus Templates erzeugen
 - optional Kategorien/Filter im Newsfeed wieder aktivieren
 
@@ -175,11 +169,9 @@ Mockups:
 - `mockups/landingpage-flow.html`
 - `mockups/newsfeed.html`
 - `mockups/newsfeed-17-stunden-zum-ruhm.html`
-- `mockups/news-editor.html`
 - `mockups/news-data.js`
 - `mockups/newsfeed-render.js`
 - `mockups/article-render.js`
-- `mockups/news-editor.js`
 
 Assets:
 - Hero-Bild: `Bilder Landingpage/HeroV1.jpg`
@@ -212,7 +204,6 @@ Aktuelle URLs:
 - Homepage: `http://127.0.0.1:4173/mockups/landingpage-flow.html`
 - Newsfeed: `http://127.0.0.1:4173/mockups/newsfeed.html`
 - erster Artikel: `http://127.0.0.1:4173/mockups/newsfeed-17-stunden-zum-ruhm.html`
-- interner News-Editor: `http://127.0.0.1:4173/mockups/news-editor.html`
 - Variantenübersicht: `http://127.0.0.1:4173/mockups/`
 
 Vor Arbeiten immer prüfen, ob der Server/Port noch aktiv ist.
@@ -371,12 +362,12 @@ Wenn der User zu Beginn einer neuen Session als alleinstehenden Befehl `go` schr
 Wenn an diesem Projekt weitergearbeitet wird:
 
 1. Diese Datei zuerst lesen.
-2. `mockups/landingpage-flow.html`, `mockups/newsfeed.html` und bei News-Arbeiten `mockups/news-editor.html` prüfen.
+2. `mockups/landingpage-flow.html`, `mockups/newsfeed.html` und bei News-Arbeiten `mockups/news-data.js` sowie die betroffene Detailseite prüfen.
 3. Bei visuellen Änderungen ausschließlich den In-App-Browser verwenden. Falls der In-App-Browser nicht verfügbar ist oder nicht funktioniert, den User darauf hinweisen und fragen, wie fortgefahren werden soll.
 4. Nach relevanten Layoutänderungen Desktop und Mobile kurz prüfen.
 5. Unrelated Dateien nicht löschen oder zurücksetzen.
 6. Der User möchte iterativ brainstormen und mocken, bevor final implementiert wird.
-7. News-Artikel werden aktuell in `mockups/news-data.js` gepflegt; der Editor erzeugt dafür den passenden Datenblock, speichert ihn aber noch nicht automatisch.
+7. News-Artikel werden direkt in `mockups/news-data.js` und der jeweiligen statischen Detailseite gepflegt.
 
 Guter Startprompt für einen neuen Chat:
 

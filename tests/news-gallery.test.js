@@ -183,15 +183,3 @@ test("Toskana article maps the approved main images and thumbnail groups", () =>
   assert.match(article, /lightboxGroup: "toskana"/);
   assert.match(article, /lightboxImages: \["\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/15\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/10\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/12\.jpeg", "\.\.\/Bilder%20Landingpage\/Newsfeed\/Artikel%2002\/13\.jpeg"\]/);
 });
-
-test("news editor offers explicit gallery fields without adding editorial fallback content", () => {
-  const editorMarkup = fs.readFileSync(path.join(__dirname, "..", "mockups", "news-editor.html"), "utf8");
-  const editorSource = fs.readFileSync(path.join(__dirname, "..", "mockups", "news-editor.js"), "utf8");
-
-  assert.match(editorMarkup, /data-add-block="gallery"/);
-  assert.match(editorSource, /type === "gallery"/);
-  assert.match(editorSource, /lightboxGroup/);
-  assert.match(editorSource, /lightboxImages/);
-  assert.match(editorSource, /images: listFromValue\(block\.images\)/);
-  assert.doesNotMatch(editorSource, /caption:.*Galerie|imageAlt:.*Galerie/);
-});
