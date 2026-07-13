@@ -355,6 +355,15 @@ Stand nach diesem Kontext-Update:
 
 ## Hinweise für neue Chats
 
+### Session-Start-Kürzel `go`
+
+Wenn der User zu Beginn einer neuen Session als alleinstehenden Befehl `go` schreibt, ist das als folgende Arbeitsanweisung zu verstehen:
+
+1. `PROJECT_CONTEXT.md` vollständig lesen.
+2. Prüfen, ob der lokale Server auf Port `4173` läuft; falls nicht, ihn wie unter **Lokaler Server** beschrieben starten.
+3. Die aktuelle Homepage unter `http://127.0.0.1:4173/mockups/landingpage-flow.html` im sichtbaren In-App-Browser öffnen.
+4. Für diesen Startvorgang ausschließlich den In-App-Browser verwenden und nicht auf einen anderen Browser ausweichen.
+
 Wenn an diesem Projekt weitergearbeitet wird:
 
 1. Diese Datei zuerst lesen.
