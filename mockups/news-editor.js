@@ -34,7 +34,20 @@ function syncStateFromFields() {
 function labelForBlock(type) {
   if (type === "lead") return "Lead-Absatz";
   if (type === "media") return "Bild";
+  if (type === "gallery") return "Bildervorschau";
   return "Absatz";
+}
+
+function listValue(value) {
+  return Array.isArray(value) ? value.join("\n") : value || "";
+}
+
+function listFromValue(value) {
+  if (Array.isArray(value)) return value.map((item) => String(item).trim()).filter(Boolean);
+  return String(value || "")
+    .split(/\r?\n/)
+    .map((item) => item.trim())
+    .filter(Boolean);
 }
 
 function createBlockEditor(block, index) {
@@ -71,6 +84,14 @@ function createBlockEditor(block, index) {
       createInput(index, "image", "Bildpfad", block.image || state.image || ""),
       createInput(index, "imageAlt", "Alt-Text", block.imageAlt || state.imageAlt || ""),
       createTextarea(index, "caption", "Bildunterschrift", block.caption || block.mediaCaption || state.mediaCaption || "", 2),
+      createInput(index, "lightboxGroup", "Galerie-ID (optional)", block.lightboxGroup || ""),
+      createTextarea(index, "lightboxImages", "Bl&auml;tter-Reihenfolge (eine Zeile pro Bild, inkl. Hauptbild)", listValue(block.lightboxImages), 4),
+    );
+  } else if (block.type === "gallery") {
+    item.append(
+      createTextarea(index, "images", "Vorschau-Bilder (eine Zeile pro Bild)", listValue(block.images), 4),
+      createInput(index, "lightboxGroup", "Galerie-ID (wie beim Hauptbild)", block.lightboxGroup || ""),
+      createTextarea(index, "lightboxImages", "Bl&auml;tter-Reihenfolge (eine Zeile pro Bild, inkl. Hauptbild)", listValue(block.lightboxImages), 4),
     );
   } else {
     item.append(createTextarea(index, "text", "Text", block.text || "", block.type === "lead" ? 4 : 6));
@@ -129,9 +150,27 @@ function createPreviewMedia(block) {
   return figure;
 }
 
+function createPreviewGallery(block) {
+  const gallery = document.createElement("div");
+  gallery.className = "article-media-gallery";
+
+  listFromValue(block.images).forEach((imageSrc) => {
+    const image = document.createElement("img");
+    image.src = imageSrc;
+    image.alt = "";
+    gallery.append(image);
+  });
+
+  return gallery;
+}
+
 function renderPreview() {
   previewRoot.replaceChildren(
-    ...state.blocks.map((block) => (block.type === "media" ? createPreviewMedia(block) : createPreviewParagraph(block))),
+    ...state.blocks.map((block) => {
+      if (block.type === "media") return createPreviewMedia(block);
+      if (block.type === "gallery") return createPreviewGallery(block);
+      return createPreviewParagraph(block);
+    }),
   );
 }
 
@@ -141,11 +180,21 @@ function exportArticle() {
   article.imageAlt = article.imageAlt || "";
   article.mediaCaption = article.mediaCaption || "";
   article.blocks = article.blocks.map((block) => {
+    if (block.type === "gallery") {
+      const galleryBlock = { type: "gallery", images: listFromValue(block.images) };
+      if (block.lightboxGroup) galleryBlock.lightboxGroup = block.lightboxGroup;
+      const lightboxImages = listFromValue(block.lightboxImages);
+      if (lightboxImages.length) galleryBlock.lightboxImages = lightboxImages;
+      return galleryBlock;
+    }
     if (block.type !== "media") return { type: block.type, text: block.text || "" };
     const mediaBlock = { type: "media" };
     if (block.image) mediaBlock.image = block.image;
     if (block.imageAlt) mediaBlock.imageAlt = block.imageAlt;
     if (block.caption) mediaBlock.caption = block.caption;
+    if (block.lightboxGroup) mediaBlock.lightboxGroup = block.lightboxGroup;
+    const lightboxImages = listFromValue(block.lightboxImages);
+    if (lightboxImages.length) mediaBlock.lightboxImages = lightboxImages;
     return mediaBlock;
   });
   return JSON.stringify(article, null, 2);
@@ -180,7 +229,7 @@ form.addEventListener("input", (event) => {
 document.querySelectorAll("[data-add-block]").forEach((button) => {
   button.addEventListener("click", () => {
     const type = button.dataset.addBlock;
-    state.blocks.push(type === "media" ? { type } : { type, text: "" });
+    state.blocks.push(type === "media" || type === "gallery" ? { type } : { type, text: "" });
     renderAll();
   });
 });

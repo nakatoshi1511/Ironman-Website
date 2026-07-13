@@ -110,8 +110,10 @@ Aktueller Stand:
   - `lead`
   - `paragraph`
   - `media`
+  - `gallery`
 - Bildblöcke können im Textfluss frei positioniert werden.
 - Bilder werden im Artikel klein eingebettet und per Klick in einer Lightbox groß angezeigt.
+- Für Bildgalerien werden Hauptbild und Vorschau-Block mit derselben `lightboxGroup` und derselben `lightboxImages`-Reihenfolge gepflegt. In der Lightbox ist nur diese explizite Gruppe zyklisch blätterbar; Einzelbilder bleiben ohne diese beiden Angaben.
 
 Interner Artikel-Editor:
 - Tool-Seite: `mockups/news-editor.html`
@@ -119,7 +121,8 @@ Interner Artikel-Editor:
 - Zweck:
   - Titel, Slug, Kategorie, Datum, URL und Teaser pflegen
   - Artikelblöcke hinzufügen, löschen und hoch/runter verschieben
-  - pro Bildblock Bildpfad, Alt-Text und Bildunterschrift setzen
+  - pro Bildblock Bildpfad, Alt-Text, Bildunterschrift und optionale Galerie-ID/Reihenfolge setzen
+  - Bildervorschauen als `gallery`-Block anlegen
   - Live-Vorschau prüfen
   - fertigen Datenblock für `mockups/news-data.js` exportieren/kopieren
 - Wichtig: Der Editor speichert aktuell noch nicht automatisch in Dateien. Er erzeugt den Datenblock, der anschließend in `mockups/news-data.js` übernommen werden muss.
