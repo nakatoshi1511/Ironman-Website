@@ -131,7 +131,7 @@ function createMedia(articleData, block, documentRef = document) {
   figure.append(button);
 
   if (captionText) {
-    const caption = document.createElement("figcaption");
+    const caption = documentRef.createElement("figcaption");
     caption.textContent = captionText;
     figure.append(caption);
   }

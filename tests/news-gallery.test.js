@@ -107,6 +107,15 @@ test("grouped media and thumbnails expose only their explicit lightbox group", a
   assert.equal(singleton.childNodes[0].dataset.lightboxImages, undefined);
 });
 
+test("createMedia uses its injected document for captions", async () => {
+  const { createMedia } = await loadRendererExports();
+  const documentRef = new FakeDocument();
+  const media = createMedia({}, { type: "media", image: "01.jpeg", caption: "Caption" }, documentRef);
+
+  assert.equal(media.childNodes[1].tagName, "FIGCAPTION");
+  assert.equal(media.childNodes[1].textContent, "Caption");
+});
+
 test("Toskana article maps the approved main images and thumbnail groups", () => {
   const data = fs.readFileSync(path.join(__dirname, "..", "mockups", "news-data.js"), "utf8");
   const articleStart = data.indexOf('slug: "trainingsauftakt-in-der-toskana"');
