@@ -23,7 +23,7 @@ function cssRule(css, selector) {
 test("roadmap milestones are connected to the route illustration in the approved order", () => {
   const html = fs.readFileSync(pagePath, "utf8");
 
-  assert.match(html, /<link rel="stylesheet" href="styles\.css\?v=flow-62" \/>/);
+  assert.match(html, /<link rel="stylesheet" href="styles\.css\?v=flow-64" \/>/);
   assert.match(html, /<div class="roadmap-scene" aria-label="Roadmap von B&uuml;chel bis Hawaii">/);
   assert.match(html, /<div class="roadmap-route-stage">/);
   assert.match(html, /<ol class="roadmap-credentials" aria-label="Roadmap Meilensteine">/);
@@ -60,7 +60,9 @@ test("roadmap scene connects staggered credentials directly to the route", () =>
   assert.match(scene, /overflow-x:\s*auto;/);
   assert.match(content, /position:\s*relative;/);
   assert.match(content, /min-width:\s*940px;/);
+  assert.match(content, /--roadmap-stage-lift:\s*clamp\(176px,\s*20vw,\s*256px\);/);
   assert.match(stage, /position:\s*relative;/);
+  assert.match(stage, /margin-top:\s*calc\(-1\s*\*\s*var\(--roadmap-stage-lift\)\);/);
   assert.match(routeArt, /transform:\s*translateY\(-3%\);/);
   assert.match(credentials, /position:\s*absolute;/);
   assert.match(credentials, /top:\s*64\.5%;/);
@@ -80,4 +82,5 @@ test("roadmap scene connects staggered credentials directly to the route", () =>
   assert.match(card, /box-sizing:\s*border-box;/);
   assert.match(heading, /overflow-wrap:\s*anywhere;/);
   assert.match(css, /@media \(max-width:\s*560px\)\s*\{[\s\S]*?\.roadmap-scene-content\s*\{[\s\S]*?min-width:\s*780px;/);
+  assert.match(css, /@media \(max-width:\s*560px\)\s*\{[\s\S]*?\.roadmap-scene-content\s*\{[\s\S]*?--roadmap-stage-lift:\s*176px;/);
 });

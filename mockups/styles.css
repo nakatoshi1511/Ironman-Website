@@ -1529,6 +1529,7 @@ a {
 }
 
 .roadmap-scene-content {
+  --roadmap-stage-lift: clamp(176px, 20vw, 256px);
   position: relative;
   min-width: 940px;
   padding: clamp(18px, 2vw, 26px) clamp(18px, 2vw, 26px) clamp(52px, 5vw, 72px);
@@ -1536,6 +1537,7 @@ a {
 
 .roadmap-route-stage {
   position: relative;
+  margin-top: calc(-1 * var(--roadmap-stage-lift));
 }
 
 .roadmap-route-art {
@@ -4309,6 +4311,7 @@ a.sponsor-logo-card:focus-visible {
   }
 
   .roadmap-scene-content {
+    --roadmap-stage-lift: 176px;
     min-width: 780px;
     padding: 12px 12px 64px;
   }
