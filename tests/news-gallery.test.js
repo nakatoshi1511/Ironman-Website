@@ -109,6 +109,8 @@ test("Toskana lightbox controls start hidden until a grouped image opens", () =>
   assert.match(article, /class="image-lightbox-previous"[^>]* hidden/);
   assert.match(article, /class="image-lightbox-next"[^>]* hidden/);
   assert.match(article, /class="image-lightbox-count"[^>]* data-lightbox-count[^>]* hidden/);
+  assert.match(article, /class="image-lightbox-previous"[\s\S]*src="\.\.\/Bilder%20Landingpage\/Newsfeed\/UI\/news-lightbox-arrow-left\.png"[^>]*alt=""/);
+  assert.match(article, /class="image-lightbox-next"[\s\S]*src="\.\.\/Bilder%20Landingpage\/Newsfeed\/UI\/news-lightbox-arrow-right\.png"[^>]*alt=""/);
 });
 
 test("createGallery renders ordered thumbnail buttons for the existing lightbox", async () => {
