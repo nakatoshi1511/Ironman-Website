@@ -1531,7 +1531,11 @@ a {
 .roadmap-scene-content {
   position: relative;
   min-width: 940px;
-  padding: clamp(18px, 2vw, 26px);
+  padding: clamp(18px, 2vw, 26px) clamp(18px, 2vw, 26px) clamp(52px, 5vw, 72px);
+}
+
+.roadmap-route-stage {
+  position: relative;
 }
 
 .roadmap-route-art {
@@ -1541,21 +1545,41 @@ a {
 }
 
 .roadmap-credentials {
-  position: relative;
+  position: absolute;
+  top: 64.5%;
+  right: 4.5%;
+  left: 4.5%;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: stretch;
+  align-items: start;
   gap: clamp(12px, 1.6vw, 22px);
   margin: 0;
-  padding: clamp(24px, 3vw, 36px) 0 0;
+  padding: 0;
   list-style: none;
 }
 
 .roadmap-credential {
+  --roadmap-drop: 56px;
   --roadmap-line: rgba(17, 20, 24, 0.76);
   position: relative;
   min-width: 0;
-  padding-top: 18px;
+  padding-top: var(--roadmap-drop);
+}
+
+.roadmap-credential-lanzarote {
+  --roadmap-drop: 74px;
+}
+
+.roadmap-credential-mittelmosel {
+  --roadmap-drop: 38px;
+}
+
+.roadmap-credential-diagnostik {
+  --roadmap-drop: 84px;
+}
+
+.roadmap-credential-vorbereitung {
+  --roadmap-drop: 48px;
 }
 
 .roadmap-credential::before {
@@ -1564,7 +1588,7 @@ a {
   top: 0;
   left: 50%;
   width: 2px;
-  height: 18px;
+  height: var(--roadmap-drop);
   transform: translateX(-50%);
   background: var(--roadmap-line);
 }
@@ -1583,11 +1607,10 @@ a {
 }
 
 .roadmap-credential-card {
-  height: 100%;
+  height: 116px;
   box-sizing: border-box;
   display: grid;
   place-items: center;
-  min-height: 122px;
   padding: clamp(12px, 1.35vw, 18px);
   border: 1px solid rgba(17, 20, 24, 0.24);
   border-top: 4px solid var(--lava);
@@ -4286,15 +4309,11 @@ a.sponsor-logo-card:focus-visible {
 
   .roadmap-scene-content {
     min-width: 780px;
-    padding: 12px;
-  }
-
-  .roadmap-credential {
-    padding-top: 16px;
+    padding: 12px 12px 64px;
   }
 
   .roadmap-credential-card {
-    min-height: 116px;
+    height: 116px;
     padding: 10px;
   }
 
