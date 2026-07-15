@@ -109,8 +109,16 @@ test("Toskana lightbox controls start hidden until a grouped image opens", () =>
   assert.match(article, /class="image-lightbox-previous"[^>]* hidden/);
   assert.match(article, /class="image-lightbox-next"[^>]* hidden/);
   assert.match(article, /class="image-lightbox-count"[^>]* data-lightbox-count[^>]* hidden/);
-  assert.match(article, /class="image-lightbox-previous"[\s\S]*src="\.\.\/Bilder%20Landingpage\/Newsfeed\/UI\/news-lightbox-arrow-left\.png"[^>]*alt=""/);
-  assert.match(article, /class="image-lightbox-next"[\s\S]*src="\.\.\/Bilder%20Landingpage\/Newsfeed\/UI\/news-lightbox-arrow-right\.png"[^>]*alt=""/);
+  assert.match(article, /class="image-lightbox-previous"[^>]* hidden>←<\/button>/);
+  assert.match(article, /class="image-lightbox-next"[^>]* hidden>→<\/button>/);
+  assert.doesNotMatch(article, /Newsfeed\/UI\/news-lightbox-arrow/);
+});
+
+test("lightbox navigation uses thick CSS line arrows without a circular button treatment", () => {
+  const styles = fs.readFileSync(path.join(__dirname, "..", "mockups", "styles.css"), "utf8");
+
+  assert.match(styles, /\.image-lightbox-previous::before,\s*\.image-lightbox-next::before\s*\{[\s\S]*height: 3px;/);
+  assert.match(styles, /\.image-lightbox-previous::after,\s*\.image-lightbox-next::after\s*\{[\s\S]*border-top: 3px solid currentColor;/);
 });
 
 test("createGallery renders ordered thumbnail buttons for the existing lightbox", async () => {

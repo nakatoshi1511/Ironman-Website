@@ -20,3 +20,7 @@ Die Anpassung beschränkt sich auf die Lightbox-Struktur der Artikel-Detailseite
 - Einen Artikel mit Bildgruppe auf Desktop öffnen und beide Richtungen testen.
 - Dieselbe Lightbox bei 390 px Breite prüfen.
 - Sicherstellen, dass die Buttons weiterhin per Tastatur erreichbar sind und ihre `aria-label`-Texte beibehalten.
+
+## Revision: Freie Linienpfeile
+
+Die bereitgestellten Bilddateien werden nicht verwendet und sind aus dem Projekt entfernt. Die bestehenden Navigationsbuttons behalten ihre Textinhalte als Fallback, erhalten aber ausschließlich per CSS kräftige Linienpfeile ohne Kreis oder Bild-Asset. Damit bleibt die Lightbox-Struktur unverändert und der Renderer findet weiterhin das korrekte Hauptbild.
