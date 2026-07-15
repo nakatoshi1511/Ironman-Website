@@ -23,7 +23,7 @@ function cssRule(css, selector) {
 test("roadmap milestones are connected to the route illustration in the approved order", () => {
   const html = fs.readFileSync(pagePath, "utf8");
 
-  assert.match(html, /<link rel="stylesheet" href="styles\.css\?v=flow-61" \/>/);
+  assert.match(html, /<link rel="stylesheet" href="styles\.css\?v=flow-62" \/>/);
   assert.match(html, /<div class="roadmap-scene" aria-label="Roadmap von B&uuml;chel bis Hawaii">/);
   assert.match(html, /<div class="roadmap-route-stage">/);
   assert.match(html, /<ol class="roadmap-credentials" aria-label="Roadmap Meilensteine">/);
@@ -51,6 +51,7 @@ test("roadmap scene connects staggered credentials directly to the route", () =>
   const scene = cssRule(css, ".roadmap-scene");
   const content = cssRule(css, ".roadmap-scene-content");
   const stage = cssRule(css, ".roadmap-route-stage");
+  const routeArt = cssRule(css, ".roadmap-route-art");
   const credentials = cssRule(css, ".roadmap-credentials");
   const credential = cssRule(css, ".roadmap-credential");
   const card = cssRule(css, ".roadmap-credential-card");
@@ -60,6 +61,7 @@ test("roadmap scene connects staggered credentials directly to the route", () =>
   assert.match(content, /position:\s*relative;/);
   assert.match(content, /min-width:\s*940px;/);
   assert.match(stage, /position:\s*relative;/);
+  assert.match(routeArt, /transform:\s*translateY\(-3%\);/);
   assert.match(credentials, /position:\s*absolute;/);
   assert.match(credentials, /top:\s*64\.5%;/);
   assert.match(credentials, /display:\s*grid;/);

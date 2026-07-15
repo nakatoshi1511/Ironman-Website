@@ -1542,6 +1542,7 @@ a {
   display: block;
   width: 100%;
   height: auto;
+  transform: translateY(-3%);
 }
 
 .roadmap-credentials {
