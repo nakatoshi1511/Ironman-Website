@@ -4,10 +4,9 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const pagePath = path.join(__dirname, "..", "mockups", "landingpage-flow.html");
-const stylesPath = path.join(__dirname, "..", "mockups", "styles.css");
 
 const milestones = [
-  "Ironman Lanzarote â€“ Qualifikation fÃ¼r Hawaii",
+  "Ironman Lanzarote – Qualifikation für Hawaii",
   "Mittelmosel Triathlon",
   "Leistungsdiagnostik (September)",
   "Finaler Vorbereitungswettkampf (August)",
@@ -23,7 +22,9 @@ test("roadmap milestones are embedded in the route illustration in the approved 
   let previousIndex = -1;
   for (const milestone of milestones) {
     const index = html.indexOf(milestone);
-    assert.ok(index > previousIndex, `${milestone} should appear once in approved route order`);
+    assert.ok(index >= 0, `${milestone} should appear in the roadmap`);
+    assert.equal(index, html.lastIndexOf(milestone), `${milestone} should appear only once`);
+    assert.ok(index > previousIndex, `${milestone} should appear in approved route order`);
     previousIndex = index;
   }
 
