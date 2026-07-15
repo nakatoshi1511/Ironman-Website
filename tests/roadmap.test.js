@@ -15,6 +15,7 @@ const milestones = [
 test("roadmap milestones are embedded in the route illustration in the approved order", () => {
   const html = fs.readFileSync(pagePath, "utf8");
 
+  assert.match(html, /<link rel="stylesheet" href="styles\.css\?v=flow-59" \/>/);
   assert.match(html, /<div class="roadmap-scene" aria-label="Roadmap von B&uuml;chel bis Hawaii">/);
   assert.match(html, /<ol class="roadmap-credentials" aria-label="Roadmap Meilensteine">/);
   assert.doesNotMatch(html, /class="roadmap-milestones"/);
