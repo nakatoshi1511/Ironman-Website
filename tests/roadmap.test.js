@@ -8,8 +8,8 @@ const pagePath = path.join(__dirname, "..", "mockups", "landingpage-flow.html");
 const milestones = [
   "Ironman Lanzarote",
   "Mittelmosel Triathlon",
-  "Leistungs&shy;diagnostik",
   "Finaler Vorbereitungs&shy;wettkampf",
+  "Leistungs&shy;diagnostik",
   "IRONMAN Hawaii",
 ];
 
@@ -24,7 +24,7 @@ function cssRule(css, selector) {
 test("roadmap milestones are connected to the route illustration in the approved order", () => {
   const html = fs.readFileSync(pagePath, "utf8");
 
-  assert.match(html, /<link rel="stylesheet" href="styles\.css\?v=flow-65" \/>/);
+  assert.match(html, /<link rel="stylesheet" href="styles\.css\?v=flow-66" \/>/);
   assert.match(html, /<div class="roadmap-scene" aria-label="Roadmap von B&uuml;chel bis Hawaii">/);
   assert.match(html, /<div class="roadmap-route-stage">/);
   assert.match(html, /<ol class="roadmap-credentials" aria-label="Roadmap Meilensteine">/);
@@ -77,8 +77,8 @@ test("roadmap scene connects staggered credentials directly to the route", () =>
   assert.match(credential, /padding-top:\s*var\(--roadmap-drop\);/);
   assert.match(css, /\.roadmap-credential-lanzarote\s*\{[\s\S]*?--roadmap-drop:\s*74px;/);
   assert.match(css, /\.roadmap-credential-mittelmosel\s*\{[\s\S]*?--roadmap-drop:\s*38px;/);
-  assert.match(css, /\.roadmap-credential-diagnostik\s*\{[\s\S]*?--roadmap-drop:\s*84px;/);
-  assert.match(css, /\.roadmap-credential-vorbereitung\s*\{[\s\S]*?--roadmap-drop:\s*48px;/);
+  assert.match(css, /\.roadmap-credential-vorbereitung\s*\{[\s\S]*?--roadmap-drop:\s*84px;/);
+  assert.match(css, /\.roadmap-credential-diagnostik\s*\{[\s\S]*?--roadmap-drop:\s*48px;/);
   assert.match(css, /\.roadmap-credential-hawaii\s*\{[\s\S]*?--roadmap-drop:\s*64px;/);
   assert.match(css, /\.roadmap-credential::before\s*\{[\s\S]*?background:\s*var\(--roadmap-line\);/);
   assert.match(css, /\.roadmap-credential::before\s*\{[\s\S]*?height:\s*var\(--roadmap-drop\);/);
