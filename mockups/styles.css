@@ -1821,9 +1821,19 @@ a {
   border-top: 1px solid rgba(17, 20, 24, 0.16);
 }
 
-.sponsor-showcase-head .section-kicker {
-  color: var(--ocean);
-  font-size: 16px;
+.sponsor-showcase-thanks {
+  margin: 0 0 18px;
+  color: var(--site-graphite);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(1.25rem, 1.9vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.28;
+  text-transform: none;
+}
+
+.sponsor-showcase-head {
+  align-self: center;
 }
 
 .sponsor-showcase-head span {
@@ -1884,7 +1894,7 @@ a {
 }
 
 .sponsor-tier-exclusive .sponsor-tier-logos {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .sponsor-tier-supporters .sponsor-tier-logos {
@@ -1942,6 +1952,18 @@ a.sponsor-logo-card:focus-visible {
   border-bottom: 0;
 }
 
+.sponsor-tier-exclusive .sponsor-logo-card:nth-child(2n) {
+  border-right: 1px solid rgba(17, 20, 24, 0.14);
+}
+
+.sponsor-tier-exclusive .sponsor-logo-card:nth-child(3n) {
+  border-right: 0;
+}
+
+.sponsor-tier-exclusive .sponsor-logo-card {
+  border-bottom: 0;
+}
+
 .sponsor-main {
   padding: clamp(20px, 3vw, 30px);
   background:
@@ -1955,6 +1977,10 @@ a.sponsor-logo-card:focus-visible {
   height: 66px;
   object-fit: contain;
   mix-blend-mode: multiply;
+}
+
+.sponsor-roster .sponsor-logo-card[href="https://berenz-burggraf-stb.de"] img {
+  transform: scale(1.1);
 }
 
 .sponsor-logo-card-dark img {
@@ -3815,6 +3841,10 @@ a.sponsor-logo-card:focus-visible {
 
   .sponsor-tier {
     grid-template-columns: 1fr;
+  }
+
+  .sponsor-showcase-head {
+    text-align: center;
   }
 
   .sponsor-tier-label {
