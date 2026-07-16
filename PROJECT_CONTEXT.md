@@ -295,6 +295,21 @@ Zusätzliche Regel für News-Artikel:
 - Besonders bei Artikel-Detailseiten darf die Überschrift nicht unruhig umbrechen; Trenner wie `-` sollen nicht unglücklich am Zeilenende hängen.
 - Bilder im Artikel sollen im Textfluss bewusst platziert werden und auf Desktop sowie Mobile als eingebettete Medien funktionieren.
 
+## Vercel-Veröffentlichungsgrenze
+
+Die Datei `.vercelignore` arbeitet als Freigabeliste: Git darf weiterhin Projektunterlagen, Tests, Werkzeuge und Quelldateien enthalten, Vercel erhält aber nur die produktive Laufzeitoberfläche.
+
+Regeln für neue Inhalte:
+
+- neue Artikelseiten: `mockups/newsfeed-<slug>.html`
+- neue Artikelbilder: `Bilder Landingpage/Newsfeed/Artikel XX/`
+- neue Sponsorenlogos: passender Unterordner unter `Bilder Landingpage/Logos/`
+- in den beiden erweiterbaren Bildbereichen werden nur Web-Bildformate veröffentlicht: JPG, JPEG, PNG, WebP, AVIF und SVG
+- DOCX-, ZIP-, Arbeits- und Quelldateien bleiben auch innerhalb dieser Ordner vom Deployment ausgeschlossen
+- nur das aktive Sponsoring-PDF ist ausdrücklich für das Deployment freigegeben
+
+Der Test `tests/vercel-deployment-boundary.test.js` kontrolliert die Regeln und alle lokalen Referenzen der aktiven Seiten sowie der Newsdaten. Bei einer neuen Produktionskategorie muss zuerst die Sicherheitsgrenze bewusst erweitert und der Test angepasst werden.
+
 ## GitHub und Vercel Deployment
 
 Das Projekt ist auf GitHub und Vercel veröffentlicht.
