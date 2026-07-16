@@ -317,6 +317,10 @@ Regeln für neue Inhalte:
 
 Der Test `tests/vercel-deployment-boundary.test.js` kontrolliert die Regeln und alle lokalen Referenzen der aktiven Seiten sowie der Newsdaten. Bei einer neuen Produktionskategorie muss zuerst die Sicherheitsgrenze bewusst erweitert und der Test angepasst werden.
 
+Wichtig für die Vercel-Allowlist:
+- Verzeichnisfreigaben werden ohne abschließenden Slash geschrieben, zum Beispiel `!mockups` statt `!/mockups/`. Vercel prüft Ordner während der rekursiven Traversierung ohne Slash und würde sie sonst vollständig überspringen.
+- Der Deployment-Grenztest verwendet das npm-Paket `ignore`, also dieselbe Regel-Engine wie Vercel, und prüft zusätzlich alle übergeordneten Laufzeitordner.
+
 ## GitHub und Vercel Deployment
 
 Das Projekt ist auf GitHub und Vercel veröffentlicht.

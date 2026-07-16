@@ -6,11 +6,11 @@
 !RoadmapV2.png
 !vercel.json
 
-!/api/
+!api
 api/*
 !api/contact.js
 
-!/mockups/
+!mockups
 mockups/*
 !mockups/landingpage-flow.html
 !mockups/newsfeed.html
@@ -24,23 +24,24 @@ mockups/*
 !mockups/article-render.js
 mockups/newsfeed-design-mockups.html
 
-!/Bilder Landingpage/
+!Bilder Landingpage
 Bilder Landingpage/*
 !Bilder Landingpage/Profilbild.jpg
 !Bilder Landingpage/Zieleinlauf.JPG
 
-!Bilder Landingpage/Hero/
+!Bilder Landingpage/Hero
 Bilder Landingpage/Hero/*
-!Bilder Landingpage/Hero/final-variants/
+!Bilder Landingpage/Hero/final-variants
 Bilder Landingpage/Hero/final-variants/*
 !Bilder Landingpage/Hero/final-variants/hero-final-H-no-bars-clean-filter-warm-sunrise.jpg
-!Bilder Landingpage/Hero/mobile-hero/
+!Bilder Landingpage/Hero/mobile-hero
 Bilder Landingpage/Hero/mobile-hero/*
 !Bilder Landingpage/Hero/mobile-hero/road-to-hawaii-mobile-hero.jpg
 
-!Bilder Landingpage/Logos/
+!Bilder Landingpage/Logos
 Bilder Landingpage/Logos/**
-!Bilder Landingpage/Logos/**/
+!Bilder Landingpage/Logos/**
+Bilder Landingpage/Logos/**/*.*
 !Bilder Landingpage/Logos/*.[jJ][pP][gG]
 !Bilder Landingpage/Logos/**/*.[jJ][pP][gG]
 !Bilder Landingpage/Logos/*.[jJ][pP][eE][gG]
@@ -54,9 +55,10 @@ Bilder Landingpage/Logos/**
 !Bilder Landingpage/Logos/*.[sS][vV][gG]
 !Bilder Landingpage/Logos/**/*.[sS][vV][gG]
 
-!Bilder Landingpage/Newsfeed/
+!Bilder Landingpage/Newsfeed
 Bilder Landingpage/Newsfeed/**
-!Bilder Landingpage/Newsfeed/**/
+!Bilder Landingpage/Newsfeed/**
+Bilder Landingpage/Newsfeed/**/*.*
 !Bilder Landingpage/Newsfeed/*.[jJ][pP][gG]
 !Bilder Landingpage/Newsfeed/**/*.[jJ][pP][gG]
 !Bilder Landingpage/Newsfeed/*.[jJ][pP][eE][gG]
@@ -70,6 +72,6 @@ Bilder Landingpage/Newsfeed/**
 !Bilder Landingpage/Newsfeed/*.[sS][vV][gG]
 !Bilder Landingpage/Newsfeed/**/*.[sS][vV][gG]
 
-!/Dokumente/
+!Dokumente
 Dokumente/*
 !Dokumente/Partner- und Unterstuetzerkonzept_Road to Hawaii_David Simon.pdf

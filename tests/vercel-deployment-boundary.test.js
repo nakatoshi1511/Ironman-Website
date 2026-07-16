@@ -1,8 +1,8 @@
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
-const { spawnSync } = require("node:child_process");
 const test = require("node:test");
+const ignore = require("ignore");
 
 const projectRoot = path.join(__dirname, "..");
 const vercelIgnorePath = path.join(projectRoot, ".vercelignore");
@@ -23,27 +23,8 @@ function read(relativePath) {
 
 function isDeploymentIgnored(relativePath) {
   assert.ok(fs.existsSync(vercelIgnorePath), ".vercelignore must exist");
-
-  const excludesFile = vercelIgnorePath.replace(/\\/g, "/");
-  const result = spawnSync(
-    "git",
-    [
-      "-c",
-      `core.excludesFile=${excludesFile}`,
-      "check-ignore",
-      "--no-index",
-      "--quiet",
-      "--",
-      relativePath.replace(/\\/g, "/"),
-    ],
-    { cwd: projectRoot, encoding: "utf8" },
-  );
-
-  assert.ok(
-    result.status === 0 || result.status === 1,
-    `git check-ignore failed for ${relativePath}: ${result.stderr}`,
-  );
-  return result.status === 0;
+  const rules = ignore().add(read(".vercelignore"));
+  return rules.test(relativePath.replace(/\\/g, "/")).ignored;
 }
 
 function assertPublished(relativePath) {
@@ -60,6 +41,18 @@ function assertPrivate(relativePath) {
     true,
     `${relativePath} must be excluded from the Vercel deployment`,
   );
+}
+
+function parentDirectories(relativePath) {
+  const directories = [];
+  let current = path.posix.dirname(relativePath.replace(/\\/g, "/"));
+
+  while (current && current !== ".") {
+    directories.unshift(current);
+    current = path.posix.dirname(current);
+  }
+
+  return directories;
 }
 
 function toProjectPath(sourceFile, reference) {
@@ -124,6 +117,23 @@ test("publishes only the approved runtime surface", () => {
   ];
 
   for (const relativePath of privateFiles) assertPrivate(relativePath);
+});
+
+test("keeps every runtime parent directory traversable by Vercel", () => {
+  const runtimeFiles = [
+    "api/contact.js",
+    "mockups/landingpage-flow.html",
+    "Bilder Landingpage/Hero/final-variants/hero-final-H-no-bars-clean-filter-warm-sunrise.jpg",
+    "Bilder Landingpage/Logos/Partner/Neuer Sponsor.svg",
+    "Bilder Landingpage/Newsfeed/Artikel 03/neues-bild.webp",
+    "Dokumente/Partner- und Unterstuetzerkonzept_Road to Hawaii_David Simon.pdf",
+  ];
+
+  for (const relativePath of runtimeFiles) {
+    for (const directory of parentDirectories(relativePath)) {
+      assertPublished(directory);
+    }
+  }
 });
 
 test("accepts future articles and web images without exposing source files", () => {
