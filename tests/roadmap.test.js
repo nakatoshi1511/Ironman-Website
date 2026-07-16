@@ -24,12 +24,16 @@ function cssRule(css, selector) {
 test("roadmap milestones are connected to the route illustration in the approved order", () => {
   const html = fs.readFileSync(pagePath, "utf8");
 
-  assert.match(html, /<link rel="stylesheet" href="styles\.css\?v=flow-66" \/>/);
+  assert.match(html, /<link rel="stylesheet" href="styles\.css\?v=flow-67" \/>/);
   assert.match(html, /<div class="roadmap-scene" aria-label="Roadmap von B&uuml;chel bis Hawaii">/);
   assert.match(html, /<div class="roadmap-route-stage">/);
   assert.match(html, /<ol class="roadmap-credentials" aria-label="Roadmap Meilensteine">/);
   assert.doesNotMatch(html, /class="roadmap-milestones"/);
   assert.equal((html.match(/class="roadmap-credential roadmap-credential-/g) || []).length, 5);
+  assert.match(html, /<span class="roadmap-credential-meta">\(Qualifikation für Hawaii\)<\/span>/);
+  assert.match(html, /<span class="roadmap-credential-meta">\(Juni\)<\/span>/);
+  assert.match(html, /<span class="roadmap-credential-meta">\(10\.10\.2026\)<\/span>/);
+  assert.doesNotMatch(html, /– Qualifikation für Hawaii/);
 
   let previousIndex = -1;
   for (const milestone of milestones) {
