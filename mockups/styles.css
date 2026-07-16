@@ -3633,6 +3633,14 @@ a.sponsor-logo-card:focus-visible {
   gap: 7px;
 }
 
+.legal-contact-form .contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .legal-contact-form label span {
   color: rgba(17, 20, 24, 0.62);
   font-size: 0.72rem;

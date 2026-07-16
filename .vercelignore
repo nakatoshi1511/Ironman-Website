@@ -18,6 +18,7 @@ mockups/*
 !mockups/impressum.html
 !mockups/datenschutz.html
 !mockups/styles.css
+!mockups/contact-form.js
 !mockups/news-data.js
 !mockups/newsfeed-render.js
 !mockups/article-render.js
