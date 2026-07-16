@@ -3,7 +3,7 @@ const path = require("node:path");
 const { spawn } = require("node:child_process");
 
 const projectRoot = path.resolve(__dirname, "..");
-const outDir = path.join(projectRoot, "mockup-screenshots");
+const outDir = path.join(projectRoot, "_local-archive", "mockup-screenshots");
 const url = process.env.MOCKUP_URL || "http://127.0.0.1:4173/mockups/";
 const port = Number(process.env.CHROME_DEBUG_PORT || 9224);
 const profile = path.join(outDir, "_chrome-profile");

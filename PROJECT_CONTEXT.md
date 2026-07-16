@@ -183,14 +183,18 @@ Assets:
 Screenshot-Export:
 - Skript: `tools/export-mockup-screenshots.js`
 - Doku: `docs/mockup-screenshot-export.md`
-- Export-Ziel: `mockup-screenshots/`
+- Lokales, von Git ignoriertes Export-Ziel: `_local-archive/mockup-screenshots/`
+- Das Exportskript bleibt nur für lokal archivierte Vergleichsbilder erhalten. Verbindliche visuelle Website-Prüfungen erfolgen ausschließlich im sichtbaren In-App-Browser.
 
-Aktuelle Prüfbilder:
-- `mockup-screenshots/landingpage-flow-desktop.png`
-- `mockup-screenshots/landingpage-flow-mobile.png`
-- `mockup-screenshots/newsfeed-desktop.png`
-- `mockup-screenshots/newsfeed-mobile.png`
-- `mockup-screenshots/structure-check.json`
+Lokale Prüfbilder:
+- bisherige Exporte liegen nur lokal unter `_local-archive/mockup-screenshots/`
+- sie werden nicht mehr von Git oder Vercel erfasst
+
+Lokales Archiv:
+- Root: `_local-archive/`
+- der gesamte Ordner wird durch `.gitignore` ausgeschlossen
+- generierte Ausgaben, temporäre Dateien und klar nicht produktive Altdateien werden dort lokal aufbewahrt
+- die Inhalte sind nicht durch Git gesichert und müssen bei langfristigem Bedarf separat gesichert werden
 
 ## Lokaler Server
 

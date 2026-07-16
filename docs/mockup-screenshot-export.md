@@ -2,6 +2,8 @@
 
 This project uses a Chrome DevTools Protocol export for the mockup screenshots. This is more reliable than taking one full-page screenshot and cropping it afterward, because Chrome captures each `.mockup` section directly from the rendered page.
 
+> This exporter is retained for local archived comparison images. Current visual website verification must use the visible in-app browser as required by `PROJECT_CONTEXT.md`.
+
 ## When To Use
 
 Use this workflow whenever the four hero mockups need to be exported again as high-resolution PNG files.
@@ -28,10 +30,10 @@ Run this from the project root:
 & "C:\Users\radem\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe" .\tools\export-mockup-screenshots.js
 ```
 
-The script exports all `.mockup` sections into:
+The script exports all `.mockup` sections into the local Git-ignored archive:
 
 ```text
-mockup-screenshots/
+_local-archive/mockup-screenshots/
 ```
 
 ## Output Files
@@ -50,7 +52,7 @@ The PNG files are exported with a device scale factor of `2`, using a `1920x1600
 
 ## Notes
 
-- Chrome is launched headless with a temporary profile inside `mockup-screenshots/_chrome-profile`.
+- Chrome is launched headless with a temporary profile inside `_local-archive/mockup-screenshots/_chrome-profile`.
 - The temporary profile is deleted after export.
 - If Chrome is not installed in a standard location, set `CHROME_PATH` before running the script.
 - If the local server URL changes, set `MOCKUP_URL`.

@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import { SpreadsheetFile, Workbook } from "@oai/artifact-tool";
 
-const outputDir = "outputs/road_to_hawaii_tracker";
+const outputDir = "_local-archive/outputs/road_to_hawaii_tracker";
 const outputPath = `${outputDir}/road_to_hawaii_todos_aenderungen.xlsx`;
 
 await fs.mkdir(outputDir, { recursive: true });
