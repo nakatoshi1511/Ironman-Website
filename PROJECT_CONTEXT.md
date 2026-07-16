@@ -149,7 +149,12 @@ Aktueller Stand:
 - Formularseite: `mockups/impressum.html`
 - API-Endpunkt: `api/contact.js`
 - Versandweg: Vercel Function ruft die Resend REST API auf
-- Tests: `tests/contact.test.js`
+- Browserlogik: `mockups/contact-form.js`
+- Tests: `tests/contact.test.js` und `tests/contact-form-page.test.js`
+- API akzeptiert ausschließlich JSON bis 12.000 Bytes und setzt `Cache-Control: no-store`.
+- Feldgrenzen: Name 120, E-Mail 180, Nachricht 4.000 Zeichen.
+- Ein unsichtbares Feld `company_website` dient als Honeypot; Treffer lösen keinen Resend-Aufruf aus.
+- Resend-Aufrufe werden nach 8 Sekunden abgebrochen; Fehlerlogs enthalten keine Formulardaten.
 
 BenÃ¶tigte Environment Variables in Vercel:
 - `RESEND_API_KEY`
@@ -160,6 +165,8 @@ Wichtig:
 - `CONTACT_FROM_EMAIL` muss bei Resend als Absender zulÃ¤ssig sein, idealerweise Ã¼ber eine verifizierte Domain.
 - Lokaler Python-Static-Server auf Port `4173` kann `/api/contact` nicht ausfÃ¼hren. FÃ¼r einen echten lokalen Formular-Test muss Vercel Dev oder ein Deployment mit gesetzten Environment Variables genutzt werden.
 - Die DatenschutzerklÃ¤rung wurde angepasst: Das Formular verarbeitet Name, E-Mail-Adresse und Nachricht serverseitig und leitet sie per E-Mail weiter.
+- Die Datenschutzerklärung nennt jetzt außerdem den E-Mail-Dienst Resend und beschreibt die Weitergabe der Formulardaten für den Versand.
+- Offen als Plattformschritt: Vercel Rate Limiting für `POST /api/contact`, Resend-Schlüssel mit `sending_access` und Prüfung der Absenderdomain.
 
 ## Wichtige Dateien
 
