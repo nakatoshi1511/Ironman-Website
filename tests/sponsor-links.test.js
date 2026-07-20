@@ -16,6 +16,9 @@ const expectedSponsors = [
   ["Powerhouse", "https://www.powerhouse-maifeld-gym.com"],
   ["Schnorbach", "https://zimmerei-schnorbach.de"],
   ["KFZ Meisterbetrieb Eisfeld", "https://www.kfz-eisfeld.de/"],
+  ["Ortsgemeinde Büchel", "https://www.buechel.de/"],
+  ["Gerade deshalb. Cochem-Zell", "https://www.kurvenkreis.de/"],
+  ["Timo Bertram Energieberatung", "http://www.timo-bertram.de/index.html"],
 ];
 
 function sponsorLinkPattern(name, href) {
@@ -49,7 +52,32 @@ test("sponsor tier labels include compact category icons", () => {
   );
 });
 
-test("sponsor tier layout keeps labels readable and exclusive cards equal", () => {
+test("supporter tier includes all four logos", () => {
+  const html = fs.readFileSync(pagePath, "utf8");
+
+  const supporterLogos = [
+    ["Eisfeld.png", "KFZ Meisterbetrieb Eisfeld"],
+    ["Buechel.png", "Ortsgemeinde Büchel"],
+    ["CochemZell.png", "Gerade deshalb. Cochem-Zell"],
+    ["Timo%20Bertram.jpg", "Timo Bertram Energieberatung"],
+  ];
+
+  for (const [filename, alt] of supporterLogos) {
+    assert.match(
+      html,
+      new RegExp(`Unterst%C3%BCtzer/${filename}"\\s+alt="${alt}"`),
+      `${filename} should appear in the supporter tier`,
+    );
+  }
+
+  assert.match(
+    html,
+    /<section class="sponsor-tier sponsor-tier-supporters"[\s\S]*?<div class="sponsor-roster">/,
+    "supporters should use the same roster layout as partners",
+  );
+});
+
+test("sponsor tier layout keeps labels readable and logo cards balanced", () => {
   const css = fs.readFileSync(stylesPath, "utf8");
 
   assert.match(
@@ -62,9 +90,9 @@ test("sponsor tier layout keeps labels readable and exclusive cards equal", () =
   );
   assert.match(
     css,
-    /\.sponsor-tier-exclusive\s+\.sponsor-tier-logos\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/,
+    /\.sponsor-tier-exclusive\s+\.sponsor-tier-logos\s*\{[\s\S]*?grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);/,
   );
-  assert.match(
+  assert.doesNotMatch(
     css,
     /\.sponsor-tier-supporters\s+\.sponsor-tier-logos\s*\{[\s\S]*?grid-template-columns:\s*1fr;/,
   );

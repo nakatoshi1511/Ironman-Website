@@ -1897,10 +1897,6 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.sponsor-tier-supporters .sponsor-tier-logos {
-  grid-template-columns: 1fr;
-}
-
 .sponsor-roster {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
