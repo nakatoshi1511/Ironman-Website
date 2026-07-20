@@ -161,6 +161,9 @@ BenÃ¶tigte Environment Variables in Vercel:
 - `CONTACT_FROM_EMAIL`
 - `CONTACT_TO_EMAIL` (optional, Default im Code: `david91simon@gmail.com`)
 
+Fehlerüberwachung:
+- In Vercel ist für `ironman-website` eine Fehleranomalie-Alarmregel für 5xx-Antworten eingerichtet. Sie benachrichtigt die Team-Owner per E-Mail, Inbox und Push.
+
 Wichtig:
 - `CONTACT_FROM_EMAIL` muss bei Resend als Absender zulÃ¤ssig sein, idealerweise Ã¼ber eine verifizierte Domain.
 - Lokaler Python-Static-Server auf Port `4173` kann `/api/contact` nicht ausfÃ¼hren. FÃ¼r einen echten lokalen Formular-Test muss Vercel Dev oder ein Deployment mit gesetzten Environment Variables genutzt werden.

@@ -121,6 +121,7 @@ test("publishes only the approved runtime surface", () => {
   const privateFiles = [
     "PROJECT_CONTEXT.md",
     "package.json",
+    "package-lock.json",
     ".env.example",
     "tests/contact.test.js",
     "tools/export-mockup-screenshots.js",
@@ -235,6 +236,22 @@ test("gives every public page a unique search description", () => {
   });
 
   assert.equal(new Set(descriptions).size, descriptions.length);
+});
+
+test("publishes one SVG favicon for every public page", () => {
+  const favicon = "favicon.svg";
+
+  assert.ok(fs.existsSync(path.join(projectRoot, favicon)), "favicon.svg must exist");
+  assertPublished(favicon);
+  assert.match(read(favicon), /<svg\b/i);
+
+  for (const page of productionPages) {
+    assert.match(
+      read(page),
+      /<link\s+rel="icon"\s+href="\/favicon\.svg"\s+type="image\/svg\+xml"\s*\/>/i,
+      `${page} must link the shared SVG favicon`,
+    );
+  }
 });
 
 test("keeps every runtime parent directory traversable by Vercel", () => {

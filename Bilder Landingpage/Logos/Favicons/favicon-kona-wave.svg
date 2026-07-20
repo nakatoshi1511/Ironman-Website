@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Road to Hawaii – Kona Welle</title>
+  <rect width="64" height="64" rx="14" fill="#171c1b"/>
+  <circle cx="27" cy="25" r="10" fill="#e75b32"/>
+  <path fill="#171c1b" d="m10 37 12-10 7 4 5-3 9 9z"/>
+  <path fill="#f8f4ea" d="M8 39c10-3 18-2 25 2 7 4 13 4 20-1-2 8-9 14-18 14-10 0-19-5-27-15z"/>
+  <path fill="#0f6675" d="M9 39c9 0 15 2 21 6 8 5 15 4 23-5-1 10-8 17-18 17-12 0-21-7-26-18z"/>
+  <path fill="#f8f4ea" d="M31 44c7 3 13 2 19-2-4 8-11 11-19 8-3-1-6-3-9-6 3-1 6-1 9 0z"/>
+</svg>

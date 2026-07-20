@@ -12,7 +12,7 @@ test("contact page uses an invisible honeypot and external script", () => {
 
   assert.match(html, /name="company_website"/);
   assert.match(html, /class="contact-honeypot"[^>]*aria-hidden="true"/);
-  assert.match(html, /href="styles\.css\?v=legal-6"/);
+  assert.match(html, /href="styles\.css\?v=legal-7"/);
   assert.match(html, /<script src="contact-form\.js\?v=contact-1" defer><\/script>/);
   assert.doesNotMatch(html, /const contactForm =/);
   assert.match(
@@ -38,7 +38,16 @@ test("privacy notice documents Resend and the current revision date", () => {
   assert.match(privacy, /E-Mail-Dienst Resend/);
   assert.match(privacy, /https:\/\/resend\.com\/legal\/privacy-policy/);
   assert.match(privacy, /Stand: 16\.07\.2026/);
-  assert.match(privacy, /href="styles\.css\?v=legal-6"/);
+  assert.match(privacy, /href="styles\.css\?v=legal-7"/);
+});
+
+test("legal page heading remains readable inside its content column", () => {
+  const css = read("mockups/styles.css");
+
+  assert.match(
+    css,
+    /\.legal-hero h1\s*\{[^}]*font-size:\s*clamp\(2\.2rem,\s*6vw,\s*5rem\);/s,
+  );
 });
 
 test("Vercel deployment includes the external contact script", () => {

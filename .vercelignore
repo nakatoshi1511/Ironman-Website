@@ -3,6 +3,7 @@
 
 !.vercelignore
 !index.html
+!favicon.svg
 !RoadmapV2.png
 !vercel.json
 !robots.txt

@@ -3574,7 +3574,7 @@ a.sponsor-logo-card:focus-visible {
 .legal-hero h1 {
   margin: 0;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(4.3rem, 10vw, 8.6rem);
+  font-size: clamp(2.2rem, 6vw, 5rem);
   line-height: 0.82;
   letter-spacing: 0;
   text-transform: uppercase;
