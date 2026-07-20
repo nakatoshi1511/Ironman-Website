@@ -18,7 +18,7 @@
   - SPF und DKIM prüfen.
   - DMARC nach Möglichkeit ergänzen.
 
-- [ ] Site-weite Security Header einrichten und testen
+- [x] Site-weite Security Header einrichten und testen
   - Content Security Policy (CSP)
   - `X-Content-Type-Options`
   - `Referrer-Policy`
@@ -36,10 +36,10 @@
 ## Sinnvolle Veröffentlichungsthemen
 
 - [x] Eigene Domain verbinden.
-- [ ] Seitentitel und Meta-Descriptions abschließend prüfen.
-- [ ] Social-Media-Vorschaubilder und Open-Graph-Daten ergänzen.
+- [x] Seitentitel und Meta-Descriptions abschließend prüfen.
+- [x] Social-Media-Vorschaubilder und Open-Graph-Daten ergänzen.
 - [ ] Favicon ergänzen.
-- [ ] `robots.txt` und Sitemap ergänzen.
+- [x] `robots.txt` und Sitemap ergänzen.
 - [ ] Fehlerüberwachung oder Benachrichtigungen für Produktionsfehler einrichten.
 
 ## Nur bei tatsächlichem Bedarf
