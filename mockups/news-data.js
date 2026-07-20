@@ -1,7 +1,7 @@
 export const newsArticles = [
   {
     slug: "trainingsauftakt-in-der-toskana",
-    url: "newsfeed-trainingsauftakt-in-der-toskana.html",
+    url: "/news/trainingsauftakt-in-der-toskana",
     title: "Trainingsauftakt in der Toskana",
     teaser: "Über Schotterpisten und Bergintervalle – der Motor läuft wieder heiß!",
     category: "Training",
@@ -90,7 +90,7 @@ export const newsArticles = [
   },
   {
     slug: "17-stunden-zum-ruhm",
-    url: "newsfeed-17-stunden-zum-ruhm.html",
+    url: "/news/17-stunden-zum-ruhm",
     title: "17 Stunden zum Ruhm - Mythos Ironman Hawaii",
     teaser: "Wie alles begann - Ein Buch, ein Polizeieinsatz und ein großer Traum",
     category: "Road to Hawaii",

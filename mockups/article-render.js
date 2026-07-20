@@ -263,7 +263,7 @@ if (articleRoot && article) {
 
   const backLink = document.createElement("a");
   backLink.className = "article-back-link";
-  backLink.href = "newsfeed.html";
+  backLink.href = "/news";
   backLink.textContent = "Zurück zum Newsfeed";
   articleRoot.append(backLink);
 

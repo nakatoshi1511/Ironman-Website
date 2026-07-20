@@ -23,6 +23,12 @@ const indexablePages = [
   "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
 ];
+const publicPathByPage = {
+  "mockups/landingpage-flow.html": "/",
+  "mockups/newsfeed.html": "/news",
+  "mockups/newsfeed-17-stunden-zum-ruhm.html": "/news/17-stunden-zum-ruhm",
+  "mockups/newsfeed-trainingsauftakt-in-der-toskana.html": "/news/trainingsauftakt-in-der-toskana",
+};
 
 function read(relativePath) {
   return fs.readFileSync(path.join(projectRoot, relativePath), "utf8");
@@ -66,6 +72,7 @@ function toProjectPath(sourceFile, reference) {
   const withoutQuery = reference.split(/[?#]/, 1)[0].trim();
   if (
     !withoutQuery ||
+    withoutQuery.startsWith("/") ||
     withoutQuery.startsWith("#") ||
     /^(?:https?:|mailto:|tel:|data:)/i.test(withoutQuery)
   ) {
@@ -133,7 +140,7 @@ test("publishes only the approved runtime surface", () => {
 test("publishes www.roadtohawaii.de canonical and social URLs for indexable pages", () => {
   for (const page of indexablePages) {
     const html = read(page);
-    const pageUrl = `${canonicalBaseUrl}/${page}`;
+    const pageUrl = `${canonicalBaseUrl}${publicPathByPage[page]}`;
 
     assert.match(html, new RegExp(`<link\\s+rel="canonical"\\s+href="${pageUrl}"\\s*/>`));
     assert.match(html, new RegExp(`<meta\\s+property="og:url"\\s+content="${pageUrl}"\\s*/>`));
@@ -147,9 +154,41 @@ test("publishes a crawlable sitemap for www.roadtohawaii.de", () => {
 
   assert.match(robots, /Sitemap: https:\/\/www\.roadtohawaii\.de\/sitemap\.xml/);
   for (const page of indexablePages) {
-    assert.match(sitemap, new RegExp(`<loc>${canonicalBaseUrl}/${page}</loc>`));
+    assert.match(sitemap, new RegExp(`<loc>${canonicalBaseUrl}${publicPathByPage[page]}</loc>`));
   }
   assert.doesNotMatch(sitemap, /impressum\.html|datenschutz\.html/);
+});
+
+test("serves clean public URLs and redirects legacy mockup pages", () => {
+  const config = JSON.parse(read("vercel.json"));
+  const expectedRewrites = [
+    { source: "/", destination: "/mockups/landingpage-flow.html" },
+    { source: "/news", destination: "/mockups/newsfeed.html" },
+    { source: "/news/17-stunden-zum-ruhm", destination: "/mockups/newsfeed-17-stunden-zum-ruhm.html" },
+    { source: "/news/trainingsauftakt-in-der-toskana", destination: "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html" },
+    { source: "/impressum", destination: "/mockups/impressum.html" },
+    { source: "/datenschutz", destination: "/mockups/datenschutz.html" },
+  ];
+  const expectedRedirects = [
+    { source: "/index.html", destination: "/", permanent: true },
+    { source: "/mockups/landingpage-flow.html", destination: "/", permanent: true },
+    { source: "/mockups/newsfeed.html", destination: "/news", permanent: true },
+    { source: "/mockups/newsfeed-17-stunden-zum-ruhm.html", destination: "/news/17-stunden-zum-ruhm", permanent: true },
+    { source: "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html", destination: "/news/trainingsauftakt-in-der-toskana", permanent: true },
+    { source: "/mockups/impressum.html", destination: "/impressum", permanent: true },
+    { source: "/mockups/datenschutz.html", destination: "/datenschutz", permanent: true },
+  ];
+
+  assert.deepEqual(config.rewrites, expectedRewrites);
+  assert.deepEqual(config.redirects, expectedRedirects);
+
+  for (const page of productionPages.filter((page) => page.startsWith("mockups/"))) {
+    assert.match(read(page), /<base href="\/mockups\/" \/>/);
+  }
+
+  assert.doesNotMatch(read("index.html"), /http-equiv="refresh"/i);
+  assert.match(read("mockups/news-data.js"), /url: "\/news\/17-stunden-zum-ruhm"/);
+  assert.match(read("mockups/news-data.js"), /url: "\/news\/trainingsauftakt-in-der-toskana"/);
 });
 
 test("applies strict security headers to every deployed route", () => {
@@ -238,9 +277,10 @@ test("keeps every active local page reference deployable", () => {
 
 test("keeps every news article page and image deployable", () => {
   const newsData = read("mockups/news-data.js");
-  const articleUrls = [...newsData.matchAll(/\burl:\s*["']([^"']+)["']/g)].map(
-    (match) => `mockups/${match[1]}`,
-  );
+  const articleUrls = [...newsData.matchAll(/\burl:\s*["']([^"']+)["']/g)].map((match) => {
+    assert.match(match[1], /^\/news\/[a-z0-9-]+$/);
+    return `mockups/newsfeed-${match[1].split("/").at(-1)}.html`;
+  });
   const newsImages = [
     ...newsData.matchAll(/["'](\.\.\/Bilder%20Landingpage\/[^"']+)["']/g),
   ].map((match) => decodeURIComponent(match[1]).replace(/^\.\.\//, ""));

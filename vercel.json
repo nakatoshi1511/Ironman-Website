@@ -25,5 +25,68 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/mockups/landingpage-flow.html"
+    },
+    {
+      "source": "/news",
+      "destination": "/mockups/newsfeed.html"
+    },
+    {
+      "source": "/news/17-stunden-zum-ruhm",
+      "destination": "/mockups/newsfeed-17-stunden-zum-ruhm.html"
+    },
+    {
+      "source": "/news/trainingsauftakt-in-der-toskana",
+      "destination": "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html"
+    },
+    {
+      "source": "/impressum",
+      "destination": "/mockups/impressum.html"
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/mockups/datenschutz.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/mockups/landingpage-flow.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/mockups/newsfeed.html",
+      "destination": "/news",
+      "permanent": true
+    },
+    {
+      "source": "/mockups/newsfeed-17-stunden-zum-ruhm.html",
+      "destination": "/news/17-stunden-zum-ruhm",
+      "permanent": true
+    },
+    {
+      "source": "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
+      "destination": "/news/trainingsauftakt-in-der-toskana",
+      "permanent": true
+    },
+    {
+      "source": "/mockups/impressum.html",
+      "destination": "/impressum",
+      "permanent": true
+    },
+    {
+      "source": "/mockups/datenschutz.html",
+      "destination": "/datenschutz",
+      "permanent": true
+    }
   ]
 }
