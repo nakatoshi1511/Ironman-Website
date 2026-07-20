@@ -16,6 +16,13 @@ const productionPages = [
   "mockups/impressum.html",
   "mockups/datenschutz.html",
 ];
+const canonicalBaseUrl = "https://www.roadtohawaii.de";
+const indexablePages = [
+  "mockups/landingpage-flow.html",
+  "mockups/newsfeed.html",
+  "mockups/newsfeed-17-stunden-zum-ruhm.html",
+  "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
+];
 
 function read(relativePath) {
   return fs.readFileSync(path.join(projectRoot, relativePath), "utf8");
@@ -88,8 +95,12 @@ function localHtmlReferences(sourceFile) {
 test("publishes only the approved runtime surface", () => {
   const requiredRuntimeFiles = [
     ".vercelignore",
+    "vercel.json",
+    "robots.txt",
+    "sitemap.xml",
     ...productionPages,
     "mockups/styles.css",
+    "mockups/landingpage-flow.js",
     "mockups/news-data.js",
     "mockups/newsfeed-render.js",
     "mockups/article-render.js",
@@ -117,6 +128,67 @@ test("publishes only the approved runtime surface", () => {
   ];
 
   for (const relativePath of privateFiles) assertPrivate(relativePath);
+});
+
+test("publishes www.roadtohawaii.de canonical and social URLs for indexable pages", () => {
+  for (const page of indexablePages) {
+    const html = read(page);
+    const pageUrl = `${canonicalBaseUrl}/${page}`;
+
+    assert.match(html, new RegExp(`<link\\s+rel="canonical"\\s+href="${pageUrl}"\\s*/>`));
+    assert.match(html, new RegExp(`<meta\\s+property="og:url"\\s+content="${pageUrl}"\\s*/>`));
+    assert.match(html, new RegExp(`<meta\\s+property="og:image"\\s+content="${canonicalBaseUrl}/`));
+  }
+});
+
+test("publishes a crawlable sitemap for www.roadtohawaii.de", () => {
+  const robots = read("robots.txt");
+  const sitemap = read("sitemap.xml");
+
+  assert.match(robots, /Sitemap: https:\/\/www\.roadtohawaii\.de\/sitemap\.xml/);
+  for (const page of indexablePages) {
+    assert.match(sitemap, new RegExp(`<loc>${canonicalBaseUrl}/${page}</loc>`));
+  }
+  assert.doesNotMatch(sitemap, /impressum\.html|datenschutz\.html/);
+});
+
+test("applies strict security headers to every deployed route", () => {
+  const config = JSON.parse(read("vercel.json"));
+  const globalHeaders = config.headers.find((rule) => rule.source === "/(.*)");
+
+  assert.ok(globalHeaders, "vercel.json must define a global header rule");
+
+  const headers = new Map(
+    globalHeaders.headers.map((header) => [header.key.toLowerCase(), header.value]),
+  );
+
+  assert.equal(headers.get("x-content-type-options"), "nosniff");
+  assert.equal(headers.get("referrer-policy"), "strict-origin-when-cross-origin");
+  assert.equal(headers.get("permissions-policy"), "camera=(), geolocation=(), microphone=()");
+  assert.equal(headers.get("x-frame-options"), "DENY");
+  assert.match(headers.get("content-security-policy"), /default-src 'self'/);
+  assert.match(headers.get("content-security-policy"), /frame-ancestors 'none'/);
+  assert.doesNotMatch(headers.get("content-security-policy"), /unsafe-inline/);
+});
+
+test("keeps the landingpage executable under the strict content security policy", () => {
+  const landingpage = read("mockups/landingpage-flow.html");
+
+  assert.doesNotMatch(landingpage, /<script(?![^>]*\bsrc=)[^>]*>/i);
+  assert.match(landingpage, /<script\s+src="landingpage-flow\.js\?v=landing-1"\s+defer><\/script>/i);
+});
+
+test("gives every public page a unique search description", () => {
+  const descriptions = productionPages.map((page) => {
+    const html = read(page);
+    const match = html.match(/<meta\s+name="description"\s+content="([^"]+)"\s*\/>/i);
+
+    assert.ok(match, `${page} must define a meta description`);
+    assert.ok(match[1].trim().length >= 70, `${page} needs a useful meta description`);
+    return match[1];
+  });
+
+  assert.equal(new Set(descriptions).size, descriptions.length);
 });
 
 test("keeps every runtime parent directory traversable by Vercel", () => {
