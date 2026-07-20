@@ -161,26 +161,29 @@ test("publishes a crawlable sitemap for www.roadtohawaii.de", () => {
 
 test("serves clean public URLs and redirects legacy mockup pages", () => {
   const config = JSON.parse(read("vercel.json"));
-  const expectedRewrites = [
-    { source: "/", destination: "/mockups/landingpage-flow.html" },
-    { source: "/news", destination: "/mockups/newsfeed.html" },
-    { source: "/news/17-stunden-zum-ruhm", destination: "/mockups/newsfeed-17-stunden-zum-ruhm.html" },
-    { source: "/news/trainingsauftakt-in-der-toskana", destination: "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html" },
-    { source: "/impressum", destination: "/mockups/impressum.html" },
-    { source: "/datenschutz", destination: "/mockups/datenschutz.html" },
+  const expectedLegacyRedirects = [
+    { src: "/index\\.html", headers: { Location: "/" }, status: 308 },
+    { src: "/mockups/landingpage-flow\\.html", headers: { Location: "/" }, status: 308 },
+    { src: "/mockups/newsfeed\\.html", headers: { Location: "/news" }, status: 308 },
+    { src: "/mockups/newsfeed-17-stunden-zum-ruhm\\.html", headers: { Location: "/news/17-stunden-zum-ruhm" }, status: 308 },
+    { src: "/mockups/newsfeed-trainingsauftakt-in-der-toskana\\.html", headers: { Location: "/news/trainingsauftakt-in-der-toskana" }, status: 308 },
+    { src: "/mockups/impressum\\.html", headers: { Location: "/impressum" }, status: 308 },
+    { src: "/mockups/datenschutz\\.html", headers: { Location: "/datenschutz" }, status: 308 },
   ];
-  const expectedRedirects = [
-    { source: "/index.html", destination: "/", permanent: true },
-    { source: "/mockups/landingpage-flow.html", destination: "/", permanent: true },
-    { source: "/mockups/newsfeed.html", destination: "/news", permanent: true },
-    { source: "/mockups/newsfeed-17-stunden-zum-ruhm.html", destination: "/news/17-stunden-zum-ruhm", permanent: true },
-    { source: "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html", destination: "/news/trainingsauftakt-in-der-toskana", permanent: true },
-    { source: "/mockups/impressum.html", destination: "/impressum", permanent: true },
-    { source: "/mockups/datenschutz.html", destination: "/datenschutz", permanent: true },
+  const expectedRewrites = [
+    { src: "/", dest: "/mockups/landingpage-flow.html" },
+    { src: "/news", dest: "/mockups/newsfeed.html" },
+    { src: "/news/17-stunden-zum-ruhm", dest: "/mockups/newsfeed-17-stunden-zum-ruhm.html" },
+    { src: "/news/trainingsauftakt-in-der-toskana", dest: "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html" },
+    { src: "/impressum", dest: "/mockups/impressum.html" },
+    { src: "/datenschutz", dest: "/mockups/datenschutz.html" },
   ];
 
-  assert.deepEqual(config.rewrites, expectedRewrites);
-  assert.deepEqual(config.redirects, expectedRedirects);
+  assert.equal(config.routes?.[0]?.src, "/(.*)");
+  assert.equal(config.routes?.[0]?.continue, true);
+  assert.deepEqual(config.routes?.slice(1, 8), expectedLegacyRedirects);
+  assert.deepEqual(config.routes?.slice(8, 14), expectedRewrites);
+  assert.deepEqual(config.routes?.at(-1), { handle: "filesystem" });
 
   for (const page of productionPages.filter((page) => page.startsWith("mockups/"))) {
     assert.match(read(page), /<base href="\/mockups\/" \/>/);
@@ -193,12 +196,14 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
 
 test("applies strict security headers to every deployed route", () => {
   const config = JSON.parse(read("vercel.json"));
-  const globalHeaders = config.headers.find((rule) => rule.source === "/(.*)");
+  const globalHeaders = config.routes?.find(
+    (rule) => rule.src === "/(.*)" && rule.continue === true,
+  );
 
-  assert.ok(globalHeaders, "vercel.json must define a global header rule");
+  assert.ok(globalHeaders, "vercel.json must define a global header route");
 
   const headers = new Map(
-    globalHeaders.headers.map((header) => [header.key.toLowerCase(), header.value]),
+    Object.entries(globalHeaders.headers).map(([key, value]) => [key.toLowerCase(), value]),
   );
 
   assert.equal(headers.get("x-content-type-options"), "nosniff");

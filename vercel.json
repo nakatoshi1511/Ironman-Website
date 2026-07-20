@@ -1,92 +1,91 @@
 {
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self' https://fonts.gstatic.com; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; upgrade-insecure-requests"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), geolocation=(), microphone=()"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/mockups/landingpage-flow.html"
+      "src": "/(.*)",
+      "headers": {
+        "Content-Security-Policy": "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self' https://fonts.gstatic.com; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; upgrade-insecure-requests",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "X-Frame-Options": "DENY"
+      },
+      "continue": true
     },
     {
-      "source": "/news",
-      "destination": "/mockups/newsfeed.html"
+      "src": "/index\\.html",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
     },
     {
-      "source": "/news/17-stunden-zum-ruhm",
-      "destination": "/mockups/newsfeed-17-stunden-zum-ruhm.html"
+      "src": "/mockups/landingpage-flow\\.html",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
     },
     {
-      "source": "/news/trainingsauftakt-in-der-toskana",
-      "destination": "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html"
+      "src": "/mockups/newsfeed\\.html",
+      "headers": {
+        "Location": "/news"
+      },
+      "status": 308
     },
     {
-      "source": "/impressum",
-      "destination": "/mockups/impressum.html"
+      "src": "/mockups/newsfeed-17-stunden-zum-ruhm\\.html",
+      "headers": {
+        "Location": "/news/17-stunden-zum-ruhm"
+      },
+      "status": 308
     },
     {
-      "source": "/datenschutz",
-      "destination": "/mockups/datenschutz.html"
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/index.html",
-      "destination": "/",
-      "permanent": true
+      "src": "/mockups/newsfeed-trainingsauftakt-in-der-toskana\\.html",
+      "headers": {
+        "Location": "/news/trainingsauftakt-in-der-toskana"
+      },
+      "status": 308
     },
     {
-      "source": "/mockups/landingpage-flow.html",
-      "destination": "/",
-      "permanent": true
+      "src": "/mockups/impressum\\.html",
+      "headers": {
+        "Location": "/impressum"
+      },
+      "status": 308
     },
     {
-      "source": "/mockups/newsfeed.html",
-      "destination": "/news",
-      "permanent": true
+      "src": "/mockups/datenschutz\\.html",
+      "headers": {
+        "Location": "/datenschutz"
+      },
+      "status": 308
     },
     {
-      "source": "/mockups/newsfeed-17-stunden-zum-ruhm.html",
-      "destination": "/news/17-stunden-zum-ruhm",
-      "permanent": true
+      "src": "/",
+      "dest": "/mockups/landingpage-flow.html"
     },
     {
-      "source": "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
-      "destination": "/news/trainingsauftakt-in-der-toskana",
-      "permanent": true
+      "src": "/news",
+      "dest": "/mockups/newsfeed.html"
     },
     {
-      "source": "/mockups/impressum.html",
-      "destination": "/impressum",
-      "permanent": true
+      "src": "/news/17-stunden-zum-ruhm",
+      "dest": "/mockups/newsfeed-17-stunden-zum-ruhm.html"
     },
     {
-      "source": "/mockups/datenschutz.html",
-      "destination": "/datenschutz",
-      "permanent": true
+      "src": "/news/trainingsauftakt-in-der-toskana",
+      "dest": "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html"
+    },
+    {
+      "src": "/impressum",
+      "dest": "/mockups/impressum.html"
+    },
+    {
+      "src": "/datenschutz",
+      "dest": "/mockups/datenschutz.html"
+    },
+    {
+      "handle": "filesystem"
     }
   ]
 }
