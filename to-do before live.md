@@ -2,7 +2,7 @@
 
 ## Vor dem aktiven Bewerben der Website
 
-- [ ] Kontaktformular einmal vollständig live testen
+- [x] Kontaktformular einmal vollständig live testen
   - Testanfrage über die Produktionswebsite absenden.
   - Eingang im vorgesehenen Postfach prüfen.
   - Absender, Antwortadresse und Inhalt der E-Mail kontrollieren.
