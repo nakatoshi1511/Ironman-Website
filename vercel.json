@@ -19,6 +19,20 @@
       "status": 308
     },
     {
+      "src": "/mockups",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "src": "/mockups/",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
       "src": "/mockups/landingpage-flow\\.html",
       "headers": {
         "Location": "/"

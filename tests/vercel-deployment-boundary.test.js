@@ -163,6 +163,8 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   const config = JSON.parse(read("vercel.json"));
   const expectedLegacyRedirects = [
     { src: "/index\\.html", headers: { Location: "/" }, status: 308 },
+    { src: "/mockups", headers: { Location: "/" }, status: 308 },
+    { src: "/mockups/", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/landingpage-flow\\.html", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/newsfeed\\.html", headers: { Location: "/news" }, status: 308 },
     { src: "/mockups/newsfeed-17-stunden-zum-ruhm\\.html", headers: { Location: "/news/17-stunden-zum-ruhm" }, status: 308 },
@@ -181,8 +183,8 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
 
   assert.equal(config.routes?.[0]?.src, "/(.*)");
   assert.equal(config.routes?.[0]?.continue, true);
-  assert.deepEqual(config.routes?.slice(1, 8), expectedLegacyRedirects);
-  assert.deepEqual(config.routes?.slice(8, 14), expectedRewrites);
+  assert.deepEqual(config.routes?.slice(1, 10), expectedLegacyRedirects);
+  assert.deepEqual(config.routes?.slice(10, 16), expectedRewrites);
   assert.deepEqual(config.routes?.at(-1), { handle: "filesystem" });
 
   for (const page of productionPages.filter((page) => page.startsWith("mockups/"))) {
