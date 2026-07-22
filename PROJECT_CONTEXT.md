@@ -2,6 +2,22 @@
 
 Diese Datei fasst den aktuellen Stand des Projekts zusammen und soll in neuen Chats zuerst gelesen werden.
 
+## Live-Status und Production-Sicherheit
+
+Die Website ist öffentlich live und wird von echten Besuchern genutzt. Der Branch `main` ist deshalb als Production-Branch zu behandeln: Ein Push kann automatisch ein öffentliches Vercel-Deployment auslösen.
+
+Verbindliche Grundregeln:
+
+- Keine ungetesteten oder nur teilweise geprüften Änderungen pushen.
+- Änderungen klein und nachvollziehbar halten; keine sachfremden Dateien mitnehmen.
+- Vor jedem Commit und insbesondere vor jedem Push alle für die Änderung relevanten automatisierten Tests ausführen. Als vollständiger lokaler Testlauf steht `npm test` zur Verfügung.
+- Ein fehlgeschlagener Test, ein ungeklärter Browserfehler, eine kaputte Referenz oder eine unvollständige visuelle Prüfung blockiert den Push.
+- Visuelle Änderungen vor dem Push im sichtbaren In-App-Browser mindestens auf Desktop und Mobile prüfen; bei Navigation oder engen Layouts zusätzlich `360px` testen.
+- Bei Änderungen an mehreren Seiten jede betroffene Seite einzeln prüfen. Gemeinsame Navigation, Footer, Styles oder Rendering-Skripte außerdem auf allen davon abhängigen aktiven Seiten gegenprüfen.
+- Vor dem Commit den vollständigen Diff, den Git-Status und die tatsächlich enthaltenen Dateien kontrollieren.
+- Nach einem Push das Vercel-Deployment abwarten und anschließend einen Smoke-Test auf der öffentlichen Live-URL durchführen. Erst danach gilt die Veröffentlichung als abgeschlossen.
+- Wenn eine notwendige Prüfung nicht zuverlässig möglich ist, nicht pushen, sondern den User transparent auf das verbleibende Risiko oder den Blocker hinweisen.
+
 ## Projektziel
 
 Es entsteht eine Sponsoren-Landingpage für David Simon, einen Amateur-Triathleten aus Büchel, der sich für die IRONMAN Weltmeisterschaft Hawaii 2026 qualifiziert hat.
@@ -84,7 +100,11 @@ Aktuelle Struktur:
 
 5. Roadmap
    - Countdown bis zur IRONMAN WM
-   - Zielzeit im Code: `2026-10-10T07:00:00+02:00`
+   - Aktuelle Zielzeit im Code: `2026-10-10T06:30:00-10:00`
+   - Das entspricht dem 10. Oktober 2026 um 06:30 Uhr in Hawaii (HST) beziehungsweise 18:30 Uhr deutscher Sommerzeit (CEST).
+   - Die Zielzeit ist vorläufig: Die konkrete Startzeit beziehungsweise Startwelle für Davids Altersklasse M35 ist von IRONMAN noch nicht veröffentlicht.
+   - Die offizielle IRONMAN-Seite nennt aktuell `TUNE IN: 7 am HST`; das ist die angekündigte Übertragungszeit und keine bestätigte M35-Startzeit.
+   - Sobald der Zeitplan oder Athlete Guide 2026 veröffentlicht wird, muss die Countdown-Zielzeit mit der tatsächlichen Startwelle abgeglichen werden.
    - Roadmap-Bild: `Dokumente/Bilder/Roadmap-transparent.png`
    - Mobile aktuell horizontal scrollbares Roadmap-Visual
 
@@ -166,7 +186,7 @@ Fehlerüberwachung:
 
 Wichtig:
 - `CONTACT_FROM_EMAIL` muss bei Resend als Absender zulÃ¤ssig sein, idealerweise Ã¼ber eine verifizierte Domain.
-- Lokaler Python-Static-Server auf Port `4173` kann `/api/contact` nicht ausfÃ¼hren. FÃ¼r einen echten lokalen Formular-Test muss Vercel Dev oder ein Deployment mit gesetzten Environment Variables genutzt werden.
+- Der lokale Vorschau-Server auf Port `4173` kann `/api/contact` nicht ausführen. Für einen echten lokalen Formular-Test muss Vercel Dev oder ein Deployment mit gesetzten Environment Variables genutzt werden.
 - Die DatenschutzerklÃ¤rung wurde angepasst: Das Formular verarbeitet Name, E-Mail-Adresse und Nachricht serverseitig und leitet sie per E-Mail weiter.
 - Die Datenschutzerklärung nennt jetzt außerdem den E-Mail-Dienst Resend und beschreibt die Weitergabe der Formulardaten für den Versand.
 - Offen als Plattformschritt: Vercel Rate Limiting für `POST /api/contact`, Resend-Schlüssel mit `sending_access` und Prüfung der Absenderdomain.
@@ -208,16 +228,19 @@ Lokales Archiv:
 
 ## Lokaler Server
 
-Mockups wurden zuletzt über diesen Server geprüft:
+Der lokale Vorschau-Server bildet die sauberen Vercel-Routen (`/`, `/news`, Artikel- und Rechtsseiten) auf die statischen Projektdateien ab. Dadurch funktionieren die Production-Links auch lokal, ohne die veröffentlichten HTML-Dateien zu verändern.
+
+Mockups werden über diesen Server geprüft:
 
 ```powershell
-& "C:\Users\radem\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" -m http.server 4173 --bind 127.0.0.1
+node tools/local-preview-server.js
 ```
 
 Aktuelle URLs:
-- Homepage: `http://127.0.0.1:4173/mockups/landingpage-flow.html`
-- Newsfeed: `http://127.0.0.1:4173/mockups/newsfeed.html`
-- erster Artikel: `http://127.0.0.1:4173/mockups/newsfeed-17-stunden-zum-ruhm.html`
+- Homepage: `http://127.0.0.1:4173/`
+- Newsfeed: `http://127.0.0.1:4173/news`
+- erster Artikel: `http://127.0.0.1:4173/news/17-stunden-zum-ruhm`
+- Kompatible Mockup-URL für bestehende Startabläufe: `http://127.0.0.1:4173/mockups/landingpage-flow.html`
 - Variantenübersicht: `http://127.0.0.1:4173/mockups/`
 
 Vor Arbeiten immer prüfen, ob der Server/Port noch aktiv ist.
@@ -231,7 +254,7 @@ Learnings aus der aktuellen Iteration:
 - Der In-App-Browser soll für visuelle Änderungen aktiv genutzt werden.
 - Vor visuellen Arbeiten immer die aktuelle lokale URL öffnen:
   `http://127.0.0.1:4173/mockups/landingpage-flow.html`
-- Wenn der lokale Server nicht läuft, wieder mit Python auf Port `4173` starten.
+- Wenn der lokale Server nicht läuft, den lokalen Vorschau-Server mit `node tools/local-preview-server.js` auf Port `4173` starten.
 - Für Mobile-Prüfungen ist `390px` eine gute Standardbreite.
 - Zusätzlich kurz bei `360px` gegenprüfen, wenn Navigation, Headline oder enge Textbereiche betroffen sind.
 - Für Desktop-Prüfungen eine breite Ansicht verwenden, z. B. `1280px`.
@@ -286,17 +309,21 @@ Empfohlener Arbeitsablauf für zukünftige Website-Anpassungen:
 
 1. `PROJECT_CONTEXT.md` lesen.
 2. Server auf Port `4173` prüfen oder starten.
-3. Desktop-Zustand als Referenz ansehen.
-4. Mobile-Zustand bei `390px` ansehen.
-5. Gewünschte Änderung nur im passenden Bereich umsetzen:
+3. Betroffene Dateien, Seiten und Abhängigkeiten bestimmen; bei visuellen Arbeiten den aktuellen Desktop- und Mobile-Zustand als Referenz ansehen.
+4. Gewünschte Änderung klein und nur im passenden Bereich umsetzen:
    - Desktop-Regeln außerhalb der Media Query
    - Mobile-Regeln in `@media (max-width: 720px)` oder `@media (max-width: 560px)`
-6. Browser-Verifikation machen:
+5. Relevante automatisierte Tests ausführen; vor einem Push grundsätzlich `npm test` vollständig erfolgreich abschließen.
+6. Im sichtbaren In-App-Browser jede betroffene Seite funktional und visuell verifizieren:
    - Desktop: breite Ansicht, z. B. `1280px`
    - Mobile: `390px`, bei engen Stellen auch `360px`
-7. Bei Bildwechseln im Browser `currentSrc` prüfen, nicht nur den HTML-Pfad.
-8. Vor Commit `git status --short --branch` und `git diff --stat` prüfen.
-9. Nur bewusst gewünschte Dateien committen.
+   - Navigation, Links, Buttons und geänderte Interaktionen tatsächlich benutzen
+   - Browser-Konsole auf neue Fehler prüfen
+7. Bei Bildwechseln im Browser `currentSrc` und den erfolgreichen Bildabruf prüfen, nicht nur den HTML-Pfad.
+8. Vor Commit `git diff --check`, `git status --short --branch`, `git diff --stat` und den vollständigen relevanten Diff prüfen.
+9. Nur bewusst gewünschte und vollständig geprüfte Dateien committen.
+10. Unmittelbar vor dem Push sicherstellen, dass seit dem Testlauf keine weiteren Änderungen hinzugekommen sind und alle Prüfungen weiterhin grün sind.
+11. Nach dem Push das erfolgreiche Vercel-Deployment kontrollieren und die betroffenen Abläufe auf `https://ironman-website.vercel.app` erneut als Smoke-Test prüfen.
 
 Zusätzliche Regel für News-Artikel:
 
@@ -326,7 +353,7 @@ Wichtig für die Vercel-Allowlist:
 
 ## GitHub und Vercel Deployment
 
-Das Projekt ist auf GitHub und Vercel veröffentlicht.
+Das Projekt ist auf GitHub und Vercel veröffentlicht und öffentlich in Production. Echte Besucher greifen auf die Website zu; Stabilität und Fehlerfreiheit haben daher vor Veröffentlichung jeder Änderung Vorrang.
 
 GitHub:
 - Repository: `nakatoshi1511/Ironman-Website`
@@ -349,16 +376,20 @@ Wichtige Deployment-Details:
 - Der erste Production-Deploy wurde per `npx vercel --prod --yes --name ironman-website` erstellt.
 - Beim direkten CLI-Deploy wurde der Alias `https://ironman-website.vercel.app` gesetzt.
 
-Typischer Update-Flow:
+Verbindlicher Update-Flow für die Live-Website:
 
 ```powershell
+npm test
+git diff --check
 git status --short --branch
+git diff --stat
+git diff
 git add <geänderte-dateien>
 git commit -m "<kurze beschreibung>"
 git push
 ```
 
-Nach dem Push im Vercel Dashboard oder unter der Live-URL prüfen, ob das automatische Deployment durchgelaufen ist.
+`git push` darf erst ausgeführt werden, wenn die automatisierten Tests, die funktionale Prüfung und die erforderlichen Desktop-/Mobile-Prüfungen erfolgreich abgeschlossen sind. Nach dem Push im Vercel Dashboard prüfen, ob das automatische Deployment erfolgreich durchgelaufen ist, und anschließend die betroffenen Seiten und Abläufe unter der Live-URL testen.
 
 ## Designpräferenzen
 
@@ -401,6 +432,7 @@ Wenn an diesem Projekt weitergearbeitet wird:
 5. Unrelated Dateien nicht löschen oder zurücksetzen.
 6. Der User möchte iterativ brainstormen und mocken, bevor final implementiert wird.
 7. News-Artikel werden direkt in `mockups/news-data.js` und der jeweiligen statischen Detailseite gepflegt.
+8. Die Website ist live: Vor jedem Push den vollständigen Production-Sicherheitsablauf aus diesem Dokument durchführen. Bei fehlgeschlagenen oder nicht möglichen Prüfungen nicht pushen.
 
 Guter Startprompt für einen neuen Chat:
 
