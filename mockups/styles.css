@@ -1744,8 +1744,8 @@ a {
 
 .partner-actions {
   min-width: 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: max-content max-content;
   align-items: center;
   gap: 14px 18px;
   width: fit-content;
@@ -1777,6 +1777,16 @@ a {
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.paypal-support-button {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.paypal-support-button:focus-visible {
+  outline: 2px solid var(--lava);
+  outline-offset: 3px;
 }
 
 .partner-support-card {
@@ -4011,6 +4021,15 @@ a.sponsor-logo-card:focus-visible {
 
   .button {
     width: 100%;
+  }
+
+  .partner-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .paypal-support-button {
+    grid-column: 1;
+    justify-self: stretch;
   }
 
   .stats-bar {

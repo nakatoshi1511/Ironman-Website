@@ -48,7 +48,7 @@ test("sponsor tier labels include compact category icons", () => {
   );
   assert.match(
     html,
-    /<p class="sponsor-tier-label">\s*<img\s+class="sponsor-tier-icon"\s+src="\.\.\/Bilder%20Landingpage\/Logos\/Unterst%C3%BCtzer\.jpeg"\s+alt=""\s+aria-hidden="true"\s*\/>\s*<span>Unterstützer<\/span>\s*<\/p>/,
+    /<p class="sponsor-tier-label">\s*<img\s+class="sponsor-tier-icon"\s+src="\.\.\/Bilder%20Landingpage\/Logos\/Unterstuetzer\.jpeg"\s+alt=""\s+aria-hidden="true"\s*\/>\s*<span>Unterstützer<\/span>\s*<\/p>/,
   );
 });
 
@@ -65,7 +65,7 @@ test("supporter tier includes all four logos", () => {
   for (const [filename, alt] of supporterLogos) {
     assert.match(
       html,
-      new RegExp(`Unterst%C3%BCtzer/${filename}"\\s+alt="${alt}"`),
+      new RegExp(`Unterstuetzer/${filename}"\\s+alt="${alt}"`),
       `${filename} should appear in the supporter tier`,
     );
   }

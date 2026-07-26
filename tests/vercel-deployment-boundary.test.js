@@ -299,6 +299,20 @@ test("keeps every active local page reference deployable", () => {
   }
 });
 
+test("keeps deployable page asset paths ASCII-safe for Vercel CLI previews", () => {
+  for (const page of productionPages) {
+    for (const reference of localHtmlReferences(page)) {
+      if (isDeploymentIgnored(reference)) continue;
+
+      assert.match(
+        reference,
+        /^[\x00-\x7f]+$/,
+        `${page} uses a non-ASCII deployment path: ${reference}`,
+      );
+    }
+  }
+});
+
 test("keeps every news article page and image deployable", () => {
   const newsData = read("mockups/news-data.js");
   const articleUrls = [...newsData.matchAll(/\burl:\s*["']([^"']+)["']/g)].map((match) => {
