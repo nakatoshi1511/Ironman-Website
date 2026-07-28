@@ -9,12 +9,14 @@ const navigationPages = [
   "mockups/newsfeed.html",
   "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
+  "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html",
 ];
 const expectedNavigationTargets = {
   "mockups/landingpage-flow.html": ["#profil", "#erfolge", "#partner", "#social-sponsoren", "/news"],
   "mockups/newsfeed.html": ["/#profil", "/#erfolge", "/#partner", "/#social-sponsoren", "/news"],
   "mockups/newsfeed-17-stunden-zum-ruhm.html": ["/#profil", "/#erfolge", "/#partner", "/#social-sponsoren", "/news"],
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html": ["/#profil", "/#erfolge", "/#partner", "/#social-sponsoren", "/news"],
+  "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html": ["/#profil", "/#erfolge", "/#partner", "/#social-sponsoren", "/news"],
 };
 
 function read(relativePath) {

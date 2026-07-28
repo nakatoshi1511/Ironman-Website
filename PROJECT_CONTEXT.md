@@ -122,10 +122,16 @@ Der Newsfeed ist bewusst keine Sektion der Homepage mehr, sondern eine eigene Se
 Aktueller Stand:
 - statische Seite, deren Kacheln per `mockups/newsfeed-render.js` aus `mockups/news-data.js` gerendert werden
 - Hero mit Navigation zurück zu den Homepage-Sektionen
-- erster echter Beitrag ist angelegt:
-  - Kachel: `17 Stunden zum Ruhm - Mythos Ironman Hawaii`
-  - Detailseite: `mockups/newsfeed-17-stunden-zum-ruhm.html`
-  - Bild: `Bilder Landingpage/Newsfeed/Artikel 01/Mythos Ironman.jpeg`
+- drei echte Beiträge sind angelegt:
+  - `17 Stunden zum Ruhm - Mythos Ironman Hawaii`
+    - Detailseite: `mockups/newsfeed-17-stunden-zum-ruhm.html`
+    - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 01/`
+  - `Trainingsauftakt in der Toskana`
+    - Detailseite: `mockups/newsfeed-trainingsauftakt-in-der-toskana.html`
+    - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 02/`
+  - `Zu Gast im Podcast MoselMomente`
+    - Detailseite: `mockups/newsfeed-zu-gast-im-podcast-moselmomente.html`
+    - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 03/`
 - Artikel werden blockbasiert aufgebaut:
   - `lead`
   - `paragraph`

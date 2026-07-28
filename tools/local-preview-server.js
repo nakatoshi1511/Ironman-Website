@@ -7,6 +7,7 @@ const publicRoutes = {
   "/news": "mockups/newsfeed.html",
   "/news/17-stunden-zum-ruhm": "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "/news/trainingsauftakt-in-der-toskana": "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
+  "/news/zu-gast-im-podcast-moselmomente": "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html",
   "/impressum": "mockups/impressum.html",
   "/datenschutz": "mockups/datenschutz.html",
 };

@@ -61,6 +61,13 @@
       "status": 308
     },
     {
+      "src": "/mockups/newsfeed-zu-gast-im-podcast-moselmomente\\.html",
+      "headers": {
+        "Location": "/news/zu-gast-im-podcast-moselmomente"
+      },
+      "status": 308
+    },
+    {
       "src": "/mockups/impressum\\.html",
       "headers": {
         "Location": "/impressum"
@@ -89,6 +96,10 @@
     {
       "src": "/news/trainingsauftakt-in-der-toskana",
       "dest": "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html"
+    },
+    {
+      "src": "/news/zu-gast-im-podcast-moselmomente",
+      "dest": "/mockups/newsfeed-zu-gast-im-podcast-moselmomente.html"
     },
     {
       "src": "/impressum",

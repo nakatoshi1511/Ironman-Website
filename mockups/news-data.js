@@ -1,5 +1,58 @@
 export const newsArticles = [
   {
+    slug: "zu-gast-im-podcast-moselmomente",
+    url: "/news/zu-gast-im-podcast-moselmomente",
+    title: "Zu Gast im Podcast MoselMomente",
+    teaser: "Was haben Golf und Triathlon eigentlich gemeinsam?",
+    category: "Road to Hawaii",
+    dateLabel: "28.07.2026",
+    dateTime: "2026-07-28",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2003/cf887347-697b-4c82-a1dd-7d31b23d9bb0.jpeg",
+    imageAlt: "Jannik und ich mit Rad und Golfausrüstung",
+    blocks: [
+      {
+        type: "rich",
+        html: "<p><strong>Was haben Golf und Triathlon eigentlich gemeinsam?</strong></p>",
+      },
+      {
+        type: "rich",
+        html: "<p>Mehr, als man auf den ersten Blick vielleicht vermuten würde – genau darüber durfte ich bei einer neuen Folge von <strong>„MoselMomente – Der Podcast aus dem Ferienland Cochem“</strong> sprechen.</p>",
+      },
+      {
+        type: "paragraph",
+        text: "Auf Einladung von Jens Weber war ich gemeinsam mit Jannik Oster, Geschäftsführer und Clubmanager des Golfclubs Cochem/Mosel, zu Gast. Im Rahmen meiner Vorbereitung auf Hawaii darf ich aktuell immer wieder neue Dinge erleben und Erfahrungen sammeln, die für mich alles andere als alltäglich sind. Die Teilnahme an einem Podcast gehörte definitiv dazu – und entsprechend gespannt war ich auf das Gespräch.",
+      },
+      {
+        type: "paragraph",
+        text: "Schnell wurde deutlich, dass Golf und Triathlon zwar zunächst sehr unterschiedlich wirken, uns aber vor allem eines verbindet: die große Liebe zum Sport. Gemeinsam mit Jens und Jannik entstand ein kurzweiliges und spannendes Gespräch über Leidenschaft, Motivation, mentale Stärke, Ausdauer und die Bereitschaft, immer wieder an sich zu arbeiten und neue Herausforderungen anzunehmen.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2003/70f4deba-a0e5-495a-9be9-fa630fed775b.jpeg",
+        imageAlt: "Während der Podcast Aufnahme",
+        caption: "Podcastaufnahme mit Blick über das Ferienland Cochem",
+      },
+      {
+        type: "paragraph",
+        text: "Im Anschluss durfte ich mich selbst noch ein wenig im Golf ausprobieren und einen ersten Eindruck von diesem für mich völlig neuen Sport gewinnen. Dabei habe ich schnell gemerkt, dass es auch hier auf Konzentration, Geduld und natürlich die richtige Technik ankommt.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2003/2eb6f5bd-49df-4c79-beca-55860f0cdbfe.jpeg",
+        imageAlt: "Jannik und ich beim Golfen",
+        caption: "Meine ersten Versuche als Golfer",
+      },
+      {
+        type: "paragraph",
+        text: "Vielen Dank an Jens und Jannik für die Einladung, den offenen Austausch und die schöne Zeit. Für mich war die Teilnahme am Podcast eine wirklich spannende und ganz neue Erfahrung, die mir noch lange in Erinnerung bleiben wird!",
+      },
+      {
+        type: "rich",
+        html: '<p><strong>Hört gerne in die neue Folge von „<a href="https://www.youtube.com/watch?v=RkCXUnSEOec&amp;list=PL4KFC1FsSWgFgMHp725bSDHlXkC-1HqNW&amp;index=1">MoselMomente</a>“ rein – es lohnt sich!</strong></p>',
+      },
+    ],
+  },
+  {
     slug: "trainingsauftakt-in-der-toskana",
     url: "/news/trainingsauftakt-in-der-toskana",
     title: "Trainingsauftakt in der Toskana",

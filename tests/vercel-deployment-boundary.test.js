@@ -13,6 +13,7 @@ const productionPages = [
   "mockups/newsfeed.html",
   "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
+  "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html",
   "mockups/impressum.html",
   "mockups/datenschutz.html",
 ];
@@ -22,12 +23,14 @@ const indexablePages = [
   "mockups/newsfeed.html",
   "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
+  "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html",
 ];
 const publicPathByPage = {
   "mockups/landingpage-flow.html": "/",
   "mockups/newsfeed.html": "/news",
   "mockups/newsfeed-17-stunden-zum-ruhm.html": "/news/17-stunden-zum-ruhm",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html": "/news/trainingsauftakt-in-der-toskana",
+  "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html": "/news/zu-gast-im-podcast-moselmomente",
 };
 
 function read(relativePath) {
@@ -170,6 +173,7 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
     { src: "/mockups/newsfeed\\.html", headers: { Location: "/news" }, status: 308 },
     { src: "/mockups/newsfeed-17-stunden-zum-ruhm\\.html", headers: { Location: "/news/17-stunden-zum-ruhm" }, status: 308 },
     { src: "/mockups/newsfeed-trainingsauftakt-in-der-toskana\\.html", headers: { Location: "/news/trainingsauftakt-in-der-toskana" }, status: 308 },
+    { src: "/mockups/newsfeed-zu-gast-im-podcast-moselmomente\\.html", headers: { Location: "/news/zu-gast-im-podcast-moselmomente" }, status: 308 },
     { src: "/mockups/impressum\\.html", headers: { Location: "/impressum" }, status: 308 },
     { src: "/mockups/datenschutz\\.html", headers: { Location: "/datenschutz" }, status: 308 },
   ];
@@ -178,14 +182,15 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
     { src: "/news", dest: "/mockups/newsfeed.html" },
     { src: "/news/17-stunden-zum-ruhm", dest: "/mockups/newsfeed-17-stunden-zum-ruhm.html" },
     { src: "/news/trainingsauftakt-in-der-toskana", dest: "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html" },
+    { src: "/news/zu-gast-im-podcast-moselmomente", dest: "/mockups/newsfeed-zu-gast-im-podcast-moselmomente.html" },
     { src: "/impressum", dest: "/mockups/impressum.html" },
     { src: "/datenschutz", dest: "/mockups/datenschutz.html" },
   ];
 
   assert.equal(config.routes?.[0]?.src, "/(.*)");
   assert.equal(config.routes?.[0]?.continue, true);
-  assert.deepEqual(config.routes?.slice(1, 10), expectedLegacyRedirects);
-  assert.deepEqual(config.routes?.slice(10, 16), expectedRewrites);
+  assert.deepEqual(config.routes?.slice(1, 11), expectedLegacyRedirects);
+  assert.deepEqual(config.routes?.slice(11, 18), expectedRewrites);
   assert.deepEqual(config.routes?.at(-1), { handle: "filesystem" });
 
   for (const page of productionPages.filter((page) => page.startsWith("mockups/"))) {
@@ -195,6 +200,7 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   assert.doesNotMatch(read("index.html"), /http-equiv="refresh"/i);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/17-stunden-zum-ruhm"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/trainingsauftakt-in-der-toskana"/);
+  assert.match(read("mockups/news-data.js"), /url: "\/news\/zu-gast-im-podcast-moselmomente"/);
 });
 
 test("applies strict security headers to every deployed route", () => {
