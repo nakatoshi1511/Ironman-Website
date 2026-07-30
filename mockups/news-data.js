@@ -3,6 +3,7 @@ export const newsArticles = [
     slug: "eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
     url: "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
     title: "Die traditionsreiche Eisdiele Bortolot als Partner auf dem Weg nach Hawaii",
+    titleVariant: "compact",
     teaser: "Ein wenig olympischer Geist kann nicht schaden",
     category: "Road to Hawaii",
     dateLabel: "31.07.2026",

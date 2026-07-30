@@ -58,3 +58,33 @@ test("article rich text wraps long external links inside narrow content columns"
     /\.article-rich-text a\s*\{[^}]*overflow-wrap:\s*anywhere;[^}]*\}/,
   );
 });
+
+test("Bortolot uses compact headlines only at the desktop breakpoint", async () => {
+  const { getArticleBySlug } = await loadNewsData();
+  const article = getArticleBySlug("eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii");
+  const renderer = fs.readFileSync(path.join(projectRoot, "mockups", "newsfeed-render.js"), "utf8");
+  const detailPage = fs.readFileSync(
+    path.join(
+      projectRoot,
+      "mockups",
+      "newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
+    ),
+    "utf8",
+  );
+  const newsfeedPage = fs.readFileSync(path.join(projectRoot, "mockups", "newsfeed.html"), "utf8");
+  const css = fs.readFileSync(path.join(projectRoot, "mockups", "styles.css"), "utf8");
+
+  assert.equal(article.titleVariant, "compact");
+  assert.match(renderer, /article\.titleVariant === "compact"/);
+  assert.match(renderer, /news-card-title-compact/);
+  assert.match(detailPage, /<body class="[^"]*article-title-compact[^"]*">/);
+  assert.match(detailPage, /styles\.css\?v=bortolot-title-1/);
+  assert.match(newsfeedPage, /styles\.css\?v=bortolot-title-1/);
+  assert.match(newsfeedPage, /newsfeed-render\.js\?v=news-6/);
+  assert.match(renderer, /news-data\.js\?v=article-04-3/);
+
+  assert.match(
+    css,
+    /@media \(min-width: 881px\) \{\s*\.feed-grid \.news-card-large\.news-card-title-compact h2\s*\{[^}]*font-size: clamp\(2\.1rem, 3\.3vw, 3\.5rem\);[^}]*line-height: 0\.98;[^}]*\}\s*\.article-page\.article-title-compact \.article-hero h1\s*\{[^}]*font-size: clamp\(2\.6rem, 4\.5vw, 4\.8rem\);[^}]*line-height: 0\.96;[^}]*\}\s*\}/s,
+  );
+});

@@ -1,4 +1,4 @@
-import { newsArticles } from "./news-data.js?v=article-04-1";
+import { newsArticles } from "./news-data.js?v=article-04-3";
 
 const feedGrid = document.querySelector("[data-news-feed]");
 const feedFilter = document.querySelector("[data-news-filter]");
@@ -20,6 +20,9 @@ function sortedArticles() {
 function createNewsCard(article, index) {
   const card = document.createElement("article");
   card.className = `news-card${index === 0 ? " news-card-large" : ""}`;
+  if (article.titleVariant === "compact") {
+    card.classList.add("news-card-title-compact");
+  }
 
   const link = document.createElement("a");
   link.href = article.url;
