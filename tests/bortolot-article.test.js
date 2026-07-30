@@ -78,13 +78,17 @@ test("Bortolot uses compact headlines only at the desktop breakpoint", async () 
   assert.match(renderer, /article\.titleVariant === "compact"/);
   assert.match(renderer, /news-card-title-compact/);
   assert.match(detailPage, /<body class="[^"]*article-title-compact[^"]*">/);
-  assert.match(detailPage, /styles\.css\?v=bortolot-title-1/);
-  assert.match(newsfeedPage, /styles\.css\?v=bortolot-title-1/);
+  assert.match(detailPage, /styles\.css\?v=bortolot-title-2/);
+  assert.match(newsfeedPage, /styles\.css\?v=bortolot-title-2/);
   assert.match(newsfeedPage, /newsfeed-render\.js\?v=news-6/);
   assert.match(renderer, /news-data\.js\?v=article-04-3/);
 
   assert.match(
     css,
-    /@media \(min-width: 881px\) \{\s*\.feed-grid \.news-card-large\.news-card-title-compact h2\s*\{[^}]*font-size: clamp\(2\.1rem, 3\.3vw, 3\.5rem\);[^}]*line-height: 0\.98;[^}]*\}\s*\.article-page\.article-title-compact \.article-hero h1\s*\{[^}]*font-size: clamp\(2\.6rem, 4\.5vw, 4\.8rem\);[^}]*line-height: 0\.96;[^}]*\}\s*\}/s,
+    /@media \(min-width: 881px\) \{\s*\.feed-grid \.news-card-large\.news-card-title-compact h2\s*\{[^}]*font-size: clamp\(2\.2rem, 3vw, 2\.8rem\);[^}]*line-height: 1;[^}]*overflow-wrap: normal;[^}]*word-break: normal;[^}]*hyphens: none;[^}]*\}\s*\.article-page\.article-title-compact \.article-hero h1\s*\{[^}]*font-size: clamp\(2\.6rem, 4\.5vw, 4\.8rem\);[^}]*line-height: 0\.96;[^}]*\}\s*\}/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 880px\) \{\s*\.article-page\.article-title-compact \.article-hero h1\s*\{[^}]*font-size: clamp\(2\.15rem, 10vw, 2\.55rem\);[^}]*line-height: 0\.95;[^}]*\}\s*\}/s,
   );
 });
