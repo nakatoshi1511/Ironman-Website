@@ -5,6 +5,8 @@ const path = require("node:path");
 const publicRoutes = {
   "/": "mockups/landingpage-flow.html",
   "/news": "mockups/newsfeed.html",
+  "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii":
+    "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
   "/news/17-stunden-zum-ruhm": "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "/news/trainingsauftakt-in-der-toskana": "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
   "/news/zu-gast-im-podcast-moselmomente": "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html",

@@ -11,6 +11,7 @@ const productionPages = [
   "index.html",
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
   "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html",
@@ -21,6 +22,7 @@ const canonicalBaseUrl = "https://www.roadtohawaii.de";
 const indexablePages = [
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
   "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html",
@@ -28,6 +30,8 @@ const indexablePages = [
 const publicPathByPage = {
   "mockups/landingpage-flow.html": "/",
   "mockups/newsfeed.html": "/news",
+  "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html":
+    "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
   "mockups/newsfeed-17-stunden-zum-ruhm.html": "/news/17-stunden-zum-ruhm",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html": "/news/trainingsauftakt-in-der-toskana",
   "mockups/newsfeed-zu-gast-im-podcast-moselmomente.html": "/news/zu-gast-im-podcast-moselmomente",
@@ -171,6 +175,11 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
     { src: "/mockups/", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/landingpage-flow\\.html", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/newsfeed\\.html", headers: { Location: "/news" }, status: 308 },
+    {
+      src: "/mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      headers: { Location: "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii" },
+      status: 308,
+    },
     { src: "/mockups/newsfeed-17-stunden-zum-ruhm\\.html", headers: { Location: "/news/17-stunden-zum-ruhm" }, status: 308 },
     { src: "/mockups/newsfeed-trainingsauftakt-in-der-toskana\\.html", headers: { Location: "/news/trainingsauftakt-in-der-toskana" }, status: 308 },
     { src: "/mockups/newsfeed-zu-gast-im-podcast-moselmomente\\.html", headers: { Location: "/news/zu-gast-im-podcast-moselmomente" }, status: 308 },
@@ -180,6 +189,10 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   const expectedRewrites = [
     { src: "/", dest: "/mockups/landingpage-flow.html" },
     { src: "/news", dest: "/mockups/newsfeed.html" },
+    {
+      src: "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
+      dest: "/mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
+    },
     { src: "/news/17-stunden-zum-ruhm", dest: "/mockups/newsfeed-17-stunden-zum-ruhm.html" },
     { src: "/news/trainingsauftakt-in-der-toskana", dest: "/mockups/newsfeed-trainingsauftakt-in-der-toskana.html" },
     { src: "/news/zu-gast-im-podcast-moselmomente", dest: "/mockups/newsfeed-zu-gast-im-podcast-moselmomente.html" },
@@ -189,8 +202,8 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
 
   assert.equal(config.routes?.[0]?.src, "/(.*)");
   assert.equal(config.routes?.[0]?.continue, true);
-  assert.deepEqual(config.routes?.slice(1, 11), expectedLegacyRedirects);
-  assert.deepEqual(config.routes?.slice(11, 18), expectedRewrites);
+  assert.deepEqual(config.routes?.slice(1, 12), expectedLegacyRedirects);
+  assert.deepEqual(config.routes?.slice(12, 20), expectedRewrites);
   assert.deepEqual(config.routes?.at(-1), { handle: "filesystem" });
 
   for (const page of productionPages.filter((page) => page.startsWith("mockups/"))) {
@@ -198,6 +211,7 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   }
 
   assert.doesNotMatch(read("index.html"), /http-equiv="refresh"/i);
+  assert.match(read("mockups/news-data.js"), /url: "\/news\/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/17-stunden-zum-ruhm"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/trainingsauftakt-in-der-toskana"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/zu-gast-im-podcast-moselmomente"/);

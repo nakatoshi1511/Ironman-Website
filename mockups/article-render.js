@@ -1,4 +1,4 @@
-import { getArticleBySlug } from "./news-data.js?v=article-03-2";
+import { getArticleBySlug } from "./news-data.js?v=article-04-2";
 
 const articleRoot = document.querySelector("[data-article-slug]");
 const article = articleRoot ? getArticleBySlug(articleRoot.dataset.articleSlug) : null;

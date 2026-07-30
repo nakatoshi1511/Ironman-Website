@@ -1,5 +1,44 @@
 export const newsArticles = [
   {
+    slug: "eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
+    url: "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
+    title: "Die traditionsreiche Eisdiele Bortolot als Partner auf dem Weg nach Hawaii",
+    teaser: "Ein wenig olympischer Geist kann nicht schaden",
+    category: "Road to Hawaii",
+    dateLabel: "31.07.2026",
+    dateTime: "2026-07-31",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild.jpeg",
+    imageAlt: "Stefano Bortolot und David",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Als ersten Partner auf meiner Road to Hawaii darf ich die Eisdiele meines Vertrauens, die Gelateria Fratelli Bortolot 1896, vorstellen.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild.jpeg",
+        imageAlt: "Stefano Bortolot und David",
+        caption: "Mit der olympischen Fackel in der Hand",
+      },
+      {
+        type: "paragraph",
+        text: "Erst vor wenigen Wochen feierte die traditionsreiche Eismacherfamilie ihr 130-jähriges Jubiläum 🎉",
+      },
+      {
+        type: "paragraph",
+        text: "Die Leidenschaft von Stefano Bortolot gilt nicht nur dem Speiseeis, sondern auch dem Sport. Er durfte bei den olympischen Winterspielen 2026 die Fackel tragen und war sofort Feuer und Flamme, als ich ihm vom Ironman Hawaii erzählt habe.",
+      },
+      {
+        type: "paragraph",
+        text: "Mit dieser echten Olympiafackel in den Händen und so viel olympischem Geist im Rücken ziehe ich voller Motivation weiter Richtung Kona. Danke Stefano und dem gesamten Team Bortolot für euren Support!",
+      },
+      {
+        type: "rich",
+        html: '<p>Hier findet ihr weitere Informationen:</p><ul><li><a href="https://bortolot.de/">https://bortolot.de/</a></li><li><a href="https://www.wochenspiegellive.de/kreis-cochem-zell/artikel/die-bortolots-gehoeren-zu-cochem-wie-die-reichsburg-und-die-mosel">https://www.wochenspiegellive.de/kreis-cochem-zell/artikel/die-bortolots-gehoeren-zu-cochem-wie-die-reichsburg-und-die-mosel</a></li></ul>',
+      },
+    ],
+  },
+  {
     slug: "zu-gast-im-podcast-moselmomente",
     url: "/news/zu-gast-im-podcast-moselmomente",
     title: "Zu Gast im Podcast MoselMomente",

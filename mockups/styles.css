@@ -3141,6 +3141,8 @@ a.sponsor-logo-card:focus-visible {
 .article-rich-text a {
   color: #b64a24;
   font-weight: 800;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }
