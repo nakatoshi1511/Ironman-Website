@@ -8,7 +8,11 @@ export const newsArticles = [
     category: "Road to Hawaii",
     dateLabel: "31.07.2026",
     dateTime: "2026-07-31",
-    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild.jpeg",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild-web.jpg 1600w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
     imageAlt: "Stefano Bortolot und David",
     blocks: [
       {
@@ -17,7 +21,7 @@ export const newsArticles = [
       },
       {
         type: "media",
-        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild.jpeg",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild-web.jpg",
         imageAlt: "Stefano Bortolot und David",
         caption: "Mit der olympischen Fackel in der Hand",
       },

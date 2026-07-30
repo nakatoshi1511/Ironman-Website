@@ -138,6 +138,7 @@ test("publishes only the approved runtime surface", () => {
     "mockups/countdown-designs.html",
     "mockups/sponsor-section-mockups.html",
     "Bilder Landingpage/Newsfeed/Artikel 02/Toskana.docx",
+    "Bilder Landingpage/Newsfeed/Artikel 04/Bild.jpeg",
     "Dokumente/Bilder/WhatsApp Unknown 2026-07-01 at 11.38.35.zip",
     "Bilder Landingpage/IMG_0935.JPG",
   ];
@@ -340,7 +341,7 @@ test("keeps every news article page and image deployable", () => {
     return `mockups/newsfeed-${match[1].split("/").at(-1)}.html`;
   });
   const newsImages = [
-    ...newsData.matchAll(/["'](\.\.\/Bilder%20Landingpage\/[^"']+)["']/g),
+    ...newsData.matchAll(/(\.\.\/Bilder%20Landingpage\/[^"',\s]+)/g),
   ].map((match) => decodeURIComponent(match[1]).replace(/^\.\.\//, ""));
 
   for (const relativePath of new Set(articleUrls)) {

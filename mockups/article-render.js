@@ -1,4 +1,4 @@
-import { getArticleBySlug } from "./news-data.js?v=article-04-2";
+import { getArticleBySlug } from "./news-data.js?v=article-04-5";
 
 const articleRoot = document.querySelector("[data-article-slug]");
 const article = articleRoot ? getArticleBySlug(articleRoot.dataset.articleSlug) : null;
@@ -108,6 +108,8 @@ function addLightboxMetadata(button, block) {
 
 function createMedia(articleData, block, documentRef = document) {
   const imageSrc = block.image || articleData.image;
+  const imageSrcset = block.imageSrcset || articleData.imageSrcset;
+  const imageSizes = block.imageSizes || articleData.imageSizes;
   const imageAlt = block.imageAlt || articleData.imageAlt;
   const captionText = block.caption || articleData.mediaCaption;
   const figure = documentRef.createElement("figure");
@@ -122,6 +124,8 @@ function createMedia(articleData, block, documentRef = document) {
 
   const image = documentRef.createElement("img");
   image.src = imageSrc;
+  if (imageSrcset) image.srcset = imageSrcset;
+  if (imageSizes) image.sizes = imageSizes;
   image.alt = imageAlt;
 
   const label = documentRef.createElement("span");

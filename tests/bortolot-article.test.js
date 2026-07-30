@@ -21,7 +21,15 @@ test("Bortolot article exposes the approved metadata, copy, image, and links", a
   assert.equal(article.category, "Road to Hawaii");
   assert.equal(article.dateLabel, "31.07.2026");
   assert.equal(article.dateTime, "2026-07-31");
-  assert.equal(article.image, "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild.jpeg");
+  assert.equal(article.image, "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild-web.jpg");
+  assert.equal(
+    article.imageSrcset,
+    "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild-web.jpg 1600w",
+  );
+  assert.equal(
+    article.imageSizes,
+    "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+  );
   assert.equal(article.imageAlt, "Stefano Bortolot und David");
   assert.deepEqual(article.blocks.map((block) => block.type), [
     "paragraph",
@@ -37,7 +45,7 @@ test("Bortolot article exposes the approved metadata, copy, image, and links", a
   );
   assert.deepEqual(article.blocks[1], {
     type: "media",
-    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild.jpeg",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2004/Bild-web.jpg",
     imageAlt: "Stefano Bortolot und David",
     caption: "Mit der olympischen Fackel in der Hand",
   });
@@ -48,6 +56,19 @@ test("Bortolot article exposes the approved metadata, copy, image, and links", a
     /https:\/\/www\.wochenspiegellive\.de\/kreis-cochem-zell\/artikel\/die-bortolots-gehoeren-zu-cochem-wie-die-reichsburg-und-die-mosel/,
   );
   assert.doesNotMatch(JSON.stringify(article), /31\.\.07\.2026|Bortolot 1869/);
+
+  const sourceSize = fs.statSync(
+    path.join(projectRoot, "Bilder Landingpage", "Newsfeed", "Artikel 04", "Bild.jpeg"),
+  ).size;
+  const largeWebSize = fs.statSync(
+    path.join(projectRoot, "Bilder Landingpage", "Newsfeed", "Artikel 04", "Bild-web.jpg"),
+  ).size;
+  const mobileWebSize = fs.statSync(
+    path.join(projectRoot, "Bilder Landingpage", "Newsfeed", "Artikel 04", "Bild-web-720.jpg"),
+  ).size;
+  assert.ok(sourceSize > 5_000_000, "the retained editorial source must remain untouched");
+  assert.ok(largeWebSize <= 700_000, "the large web derivative must stay below 700 kB");
+  assert.ok(mobileWebSize <= 200_000, "the mobile web derivative must stay below 200 kB");
 });
 
 test("article rich text wraps long external links inside narrow content columns", () => {
@@ -63,6 +84,7 @@ test("Bortolot uses compact headlines only at the desktop breakpoint", async () 
   const { getArticleBySlug } = await loadNewsData();
   const article = getArticleBySlug("eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii");
   const renderer = fs.readFileSync(path.join(projectRoot, "mockups", "newsfeed-render.js"), "utf8");
+  const articleRenderer = fs.readFileSync(path.join(projectRoot, "mockups", "article-render.js"), "utf8");
   const detailPage = fs.readFileSync(
     path.join(
       projectRoot,
@@ -80,8 +102,14 @@ test("Bortolot uses compact headlines only at the desktop breakpoint", async () 
   assert.match(detailPage, /<body class="[^"]*article-title-compact[^"]*">/);
   assert.match(detailPage, /styles\.css\?v=bortolot-title-2/);
   assert.match(newsfeedPage, /styles\.css\?v=bortolot-title-2/);
-  assert.match(newsfeedPage, /newsfeed-render\.js\?v=news-6/);
-  assert.match(renderer, /news-data\.js\?v=article-04-3/);
+  assert.match(newsfeedPage, /newsfeed-render\.js\?v=news-7/);
+  assert.match(detailPage, /article-render\.js\?v=article-11/);
+  assert.match(renderer, /news-data\.js\?v=article-04-4/);
+  assert.match(articleRenderer, /news-data\.js\?v=article-04-5/);
+  assert.match(renderer, /image\.srcset = article\.imageSrcset/);
+  assert.match(renderer, /image\.sizes = article\.imageSizes/);
+  assert.match(articleRenderer, /image\.srcset = imageSrcset/);
+  assert.match(articleRenderer, /image\.sizes = imageSizes/);
 
   assert.match(
     css,
