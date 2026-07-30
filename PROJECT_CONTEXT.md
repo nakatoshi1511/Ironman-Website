@@ -148,6 +148,19 @@ Artikelpflege:
 - Der Textaufbau nutzt die oben genannten Blocktypen. `rich` ist für kontrollierte Rich-Text-Blöcke mit erlaubtem HTML verfügbar.
 - Für jeden Artikel muss die Kachel im Newsfeed auf die passende Detailseite verweisen.
 
+Verbindliche Bildoptimierung für neue News-Uploads:
+- Hochauflösende Originalbilder bleiben als unveränderte Quelldateien erhalten, werden aber nicht direkt von Newsfeed oder Artikelseite ausgeliefert und über `.vercelignore` vom Deployment ausgeschlossen.
+- Für Fotos werden standardmäßig zwei Web-Ableitungen erzeugt:
+  - große Version mit maximal etwa `1600px` Breite für Desktop und Lightbox
+  - mobile Version mit maximal etwa `720px` Breite
+- Kleinere Originale werden nicht hochskaliert und bereits passend optimierte Bilder nicht unnötig erneut verlustbehaftet komprimiert.
+- Zielgrößen sind ungefähr `300–700 KB` für die große Version und höchstens etwa `200 KB` für die mobile Version. Diese Werte sind Qualitätsziele, keine harten Grenzwerte: Sichtbare Artefakte, Detailverlust oder unnatürliche Farbverläufe dürfen nicht zugunsten einer kleineren Datei akzeptiert werden.
+- Fotos werden bevorzugt als hochwertiges JPEG, WebP oder AVIF ausgegeben. Logos, Grafiken, Transparenzen und Bilder mit feiner Schrift werden formatgerecht behandelt und nicht pauschal wie Fotos komprimiert.
+- Die Ableitungen werden mit `srcset` und `sizes` eingebunden. Mobil soll die kleine Version geladen werden; Desktop und Lightbox erhalten eine ausreichend große Version.
+- Vor der Freigabe werden Original und große Webversion sichtbar verglichen. Gesichter, Schrift, feine Strukturen, Kontraste und Farbverläufe dürfen bei der vorgesehenen Darstellungsgröße keinen wahrnehmbaren Qualitätsverlust zeigen.
+- Im sichtbaren In-App-Browser werden Desktop und Mobile geprüft. Dabei sind `currentSrc`, erfolgreicher Bildabruf, Seitenverhältnis, Schärfe und Lightbox-Darstellung zu kontrollieren.
+- Falls die Zielgröße nur mit sichtbarem Qualitätsverlust erreichbar wäre, bleibt die Webdatei bewusst größer. Bildqualität hat Vorrang vor dem letzten eingesparten Kilobyte.
+
 Google-Docs-Import:
 - Bevorzugter Workflow für neue Artikel: Der User schreibt in Google Docs vor und gibt Codex den Link oder Export.
 - Google Docs ist nur Entwurf, keine automatische Synchronisierung und kein CMS.
