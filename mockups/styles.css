@@ -2980,6 +2980,28 @@ a.sponsor-logo-card:focus-visible {
   text-transform: none;
 }
 
+@media (min-width: 881px) {
+  .feed-grid .news-card-large.news-card-title-compact h2 {
+    font-size: clamp(2.2rem, 3vw, 2.8rem);
+    line-height: 1;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  .article-page.article-title-compact .article-hero h1 {
+    font-size: clamp(2.6rem, 4.5vw, 4.8rem);
+    line-height: 0.96;
+  }
+}
+
+@media (max-width: 880px) {
+  .article-page.article-title-compact .article-hero h1 {
+    font-size: clamp(2.15rem, 10vw, 2.55rem);
+    line-height: 0.95;
+  }
+}
+
 .article-hero-inner > p:last-child {
   max-width: 620px;
   margin: 18px auto 0;
@@ -3141,6 +3163,8 @@ a.sponsor-logo-card:focus-visible {
 .article-rich-text a {
   color: #b64a24;
   font-weight: 800;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }

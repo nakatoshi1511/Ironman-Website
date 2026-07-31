@@ -1,4 +1,4 @@
-import { newsArticles } from "./news-data.js?v=article-03-1";
+import { newsArticles } from "./news-data.js?v=article-04-4";
 
 const feedGrid = document.querySelector("[data-news-feed]");
 const feedFilter = document.querySelector("[data-news-filter]");
@@ -20,6 +20,9 @@ function sortedArticles() {
 function createNewsCard(article, index) {
   const card = document.createElement("article");
   card.className = `news-card${index === 0 ? " news-card-large" : ""}`;
+  if (article.titleVariant === "compact") {
+    card.classList.add("news-card-title-compact");
+  }
 
   const link = document.createElement("a");
   link.href = article.url;
@@ -27,6 +30,8 @@ function createNewsCard(article, index) {
 
   const image = document.createElement("img");
   image.src = article.image;
+  if (article.imageSrcset) image.srcset = article.imageSrcset;
+  if (article.imageSizes) image.sizes = article.imageSizes;
   image.alt = article.imageAlt;
 
   const content = document.createElement("div");

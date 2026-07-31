@@ -47,6 +47,13 @@
       "status": 308
     },
     {
+      "src": "/mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      "headers": {
+        "Location": "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii"
+      },
+      "status": 308
+    },
+    {
       "src": "/mockups/newsfeed-17-stunden-zum-ruhm\\.html",
       "headers": {
         "Location": "/news/17-stunden-zum-ruhm"
@@ -88,6 +95,10 @@
     {
       "src": "/news",
       "dest": "/mockups/newsfeed.html"
+    },
+    {
+      "src": "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
+      "dest": "/mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html"
     },
     {
       "src": "/news/17-stunden-zum-ruhm",
