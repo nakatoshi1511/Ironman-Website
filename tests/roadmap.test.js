@@ -8,7 +8,7 @@ const pagePath = path.join(__dirname, "..", "mockups", "landingpage-flow.html");
 const milestones = [
   "Ironman Lanzarote",
   "Mittelmosel Triathlon",
-  "Finaler Vorbereitungs&shy;wettkampf",
+  "Köln-Triathlon",
   "Leistungs&shy;diagnostik",
   "IRONMAN Hawaii",
 ];
@@ -32,6 +32,8 @@ test("roadmap milestones are connected to the route illustration in the approved
   assert.equal((html.match(/class="roadmap-credential roadmap-credential-/g) || []).length, 5);
   assert.match(html, /<span class="roadmap-credential-meta">\(Qualifikation für Hawaii\)<\/span>/);
   assert.match(html, /<span class="roadmap-credential-meta">\(Juni\)<\/span>/);
+  assert.match(html, /<span class="roadmap-credential-meta">\(Mitteldistanz · 06\.09\.26\)<\/span>/);
+  assert.match(html, /<span class="roadmap-credential-meta">\(14\.09\.26\)<\/span>/);
   assert.match(html, /<span class="roadmap-credential-meta">\(10\.10\.2026\)<\/span>/);
   assert.doesNotMatch(html, /– Qualifikation für Hawaii/);
 
