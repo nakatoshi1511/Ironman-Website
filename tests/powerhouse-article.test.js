@@ -19,7 +19,7 @@ test("Powerhouse article exposes the supplied metadata, copy, images, captions, 
   assert.equal(article.title, "Das Powerhouse Maifeld Gym als Partner auf dem Weg nach Hawaii");
   assert.equal(article.titleVariant, "compact");
   assert.equal(article.teaser, "Krafttraining macht auch für Triathleten Sinn");
-  assert.equal(article.category, "Road to Hawaii");
+  assert.equal(article.category, "Partner");
   assert.equal(article.dateLabel, "15.08.2026");
   assert.equal(article.dateTime, "2026-08-15");
   assert.equal(

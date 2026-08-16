@@ -1,4 +1,4 @@
-import { newsArticles } from "./news-data.js?v=article-05-3";
+import { newsArticles } from "./news-data.js?v=article-06-1";
 
 const feedGrid = document.querySelector("[data-news-feed]");
 const feedFilter = document.querySelector("[data-news-filter]");

@@ -18,7 +18,7 @@ test("Podcast article exposes the supplied metadata and text formatting", async 
   assert.equal(article.url, "/news/zu-gast-im-podcast-moselmomente");
   assert.equal(article.title, "Zu Gast im Podcast MoselMomente");
   assert.equal(article.teaser, "Was haben Golf und Triathlon eigentlich gemeinsam?");
-  assert.equal(article.category, "Road to Hawaii");
+  assert.equal(article.category, "Partner");
   assert.equal(article.dateLabel, "28.07.2026");
   assert.equal(article.dateTime, "2026-07-28");
 

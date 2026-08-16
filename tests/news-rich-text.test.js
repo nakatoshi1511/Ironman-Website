@@ -236,7 +236,7 @@ function escapeAttribute(value) {
 
 async function loadRendererExports() {
   const stubbedSource = rendererSource.replace(
-    'import { getArticleBySlug } from "./news-data.js?v=article-05-2";',
+    'import { getArticleBySlug } from "./news-data.js?v=article-06-1";',
     "const getArticleBySlug = () => null;",
   );
 

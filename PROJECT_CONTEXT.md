@@ -148,6 +148,12 @@ Artikelpflege:
 - Der Textaufbau nutzt die oben genannten Blocktypen. `rich` ist für kontrollierte Rich-Text-Blöcke mit erlaubtem HTML verfügbar.
 - Für jeden Artikel muss die Kachel im Newsfeed auf die passende Detailseite verweisen.
 
+Verbindliche Kachel- und Titelprüfung bei neuen Artikeln:
+- Der neueste Artikel steht als erster Datensatz im Newsfeed und wird als breite Hauptkachel `.news-card-large` dargestellt. Alle älteren Artikel folgen als kleine Kacheln.
+- Beim Einfügen eines neuen Artikels müssen deshalb zwei Zustände getrennt geprüft werden: der neue Artikel in der breiten Hauptkachel und der bisher neueste Artikel nach seinem Wechsel in eine kleine Kachel.
+- Titel in kleinen Kacheln dürfen weder auf Desktop noch bei `390px` oder `360px` mehr als drei Zeilen beanspruchen. Der vollständige Titel muss sichtbar bleiben und darf nicht durch Ellipse oder Abschneiden verkürzt werden. Bei langen Titeln wird die Darstellung über `titleVariant: "compact"` angepasst; der Wortlaut bleibt unverändert.
+- Die breite Hauptkachel besitzt eine eigene Titeltypografie. Ihr Titel muss auf Mobil ebenfalls separat bei `390px` und `360px` geprüft und bei Bedarf minimal verkleinert werden, sodass er höchstens drei Zeilen beansprucht.
+
 Verbindliche Bildoptimierung für neue News-Uploads:
 - Hochauflösende Originalbilder bleiben als unveränderte Quelldateien erhalten, werden aber nicht direkt von Newsfeed oder Artikelseite ausgeliefert und über `.vercelignore` vom Deployment ausgeschlossen.
 - Für Fotos werden standardmäßig zwei Web-Ableitungen erzeugt:
