@@ -1,4 +1,4 @@
-import { newsArticles } from "./news-data.js?v=article-04-4";
+import { newsArticles } from "./news-data.js?v=article-05-3";
 
 const feedGrid = document.querySelector("[data-news-feed]");
 const feedFilter = document.querySelector("[data-news-filter]");
@@ -32,6 +32,7 @@ function createNewsCard(article, index) {
   image.src = article.image;
   if (article.imageSrcset) image.srcset = article.imageSrcset;
   if (article.imageSizes) image.sizes = article.imageSizes;
+  if (article.cardImagePosition) image.style.objectPosition = article.cardImagePosition;
   image.alt = article.imageAlt;
 
   const content = document.createElement("div");

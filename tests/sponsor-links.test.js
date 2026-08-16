@@ -19,6 +19,11 @@ const expectedSponsors = [
   ["Ortsgemeinde Büchel", "https://www.buechel.de/"],
   ["Gerade deshalb. Cochem-Zell", "https://www.kurvenkreis.de/"],
   ["Timo Bertram Energieberatung", "http://www.timo-bertram.de/index.html"],
+  ["Küchen-Galerie Schümmer", "https://www.schuemmer.kuechen.de/"],
+  [
+    "SV Büchel 1927 e.V. und Förderverein Büchel",
+    "https://sv-buechel-1927-ev.chayns.site/",
+  ],
 ];
 
 function sponsorLinkPattern(name, href) {
@@ -52,7 +57,7 @@ test("sponsor tier labels include compact category icons", () => {
   );
 });
 
-test("supporter tier includes all four logos", () => {
+test("supporter tier includes all six logos", () => {
   const html = fs.readFileSync(pagePath, "utf8");
 
   const supporterLogos = [
@@ -60,6 +65,11 @@ test("supporter tier includes all four logos", () => {
     ["Buechel.png", "Ortsgemeinde Büchel"],
     ["CochemZell.png", "Gerade deshalb. Cochem-Zell"],
     ["Timo%20Bertram.jpg", "Timo Bertram Energieberatung"],
+    ["Kuechen-Galerie-Schuemmer.jpg", "Küchen-Galerie Schümmer"],
+    [
+      "Foerderverein-Buechel.jpeg",
+      "SV Büchel 1927 e.V. und Förderverein Büchel",
+    ],
   ];
 
   for (const [filename, alt] of supporterLogos) {
@@ -75,6 +85,8 @@ test("supporter tier includes all four logos", () => {
     /<section class="sponsor-tier sponsor-tier-supporters"[\s\S]*?<div class="sponsor-roster">/,
     "supporters should use the same roster layout as partners",
   );
+  assert.doesNotMatch(html, /Unterstuetzer\/SV-Buechel\.png/);
+  assert.doesNotMatch(html, /Unterstuetzer\/Foerderverein%20Buechel\.jpg/);
 });
 
 test("sponsor tier layout keeps labels readable and logo cards balanced", () => {

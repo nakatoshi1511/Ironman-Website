@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Road to Hawaii – Newsfeed Navigation Mockups</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=flow-67" />
+    <link rel="stylesheet" href="nav-newsfeed-design-mockups.css?v=1" />
+  </head>
+  <body class="flow-page nav-design-page">
+    <header class="flow-hero nav-mockup-hero" aria-labelledby="nav-mockup-title">
+      <picture>
+        <source
+          media="(max-width: 720px)"
+          srcset="../Bilder%20Landingpage/Hero/mobile-hero/road-to-hawaii-mobile-hero.jpg"
+        />
+        <img
+          src="../Bilder Landingpage/Hero/final-variants/hero-final-H-no-bars-clean-filter-warm-sunrise.jpg"
+          alt="Schwimmen, Radfahren und Laufen als Hero Collage"
+        />
+      </picture>
+
+      <nav class="site-nav nav-study" data-nav-variant="lava-cta" aria-label="Hauptnavigation">
+        <div class="site-nav-links">
+          <a href="landingpage-flow.html#profil">Profil</a>
+          <a href="landingpage-flow.html#erfolge">Erfolge</a>
+          <a href="landingpage-flow.html#partner">Partner werden</a>
+          <a href="landingpage-flow.html#social-sponsoren">Social Media</a>
+          <a class="news-nav-link" href="newsfeed.html" aria-label="Newsfeed öffnen">
+            <span class="news-nav-dot" aria-hidden="true"></span>
+            <span class="news-nav-copy">
+              <span class="news-nav-kicker">Journal</span>
+              <span class="news-nav-title">Newsfeed</span>
+            </span>
+            <span class="news-nav-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="flow-hero-content nav-mockup-content">
+        <h1 id="nav-mockup-title">Road to Hawaii</h1>
+        <div class="nav-study-caption" aria-live="polite">
+          <p class="nav-study-number">Variante 01</p>
+          <h2>Lava CTA</h2>
+          <p>Maximale Erkennbarkeit: Der Newsfeed wird zur einzigen klaren Aktion in der Navigation.</p>
+          <span class="nav-study-verdict">Empfehlung: stärkste Lösung</span>
+        </div>
+      </div>
+    </header>
+
+    <aside class="nav-mockup-switcher" aria-label="Newsfeed-Navigationsvarianten">
+      <div class="nav-mockup-switcher-intro">
+        <span>Newsfeed Navigation</span>
+        <strong>Designstudien</strong>
+      </div>
+      <div class="nav-mockup-options">
+        <button type="button" class="is-active" data-nav-target="lava-cta">
+          <span>01</span>
+          Lava CTA
+        </button>
+        <button type="button" data-nav-target="signal-dot">
+          <span>02</span>
+          Signal Dot
+        </button>
+        <button type="button" data-nav-target="editorial-tab">
+          <span>03</span>
+          Editorial Tab
+        </button>
+        <button type="button" data-nav-target="kona-bracket">
+          <span>04</span>
+          Kona Bracket
+        </button>
+      </div>
+    </aside>
+
+    <script src="nav-newsfeed-design-mockups.js?v=1"></script>
+  </body>
+</html>

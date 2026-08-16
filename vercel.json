@@ -47,6 +47,13 @@
       "status": 308
     },
     {
+      "src": "/mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      "headers": {
+        "Location": "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii"
+      },
+      "status": 308
+    },
+    {
       "src": "/mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii\\.html",
       "headers": {
         "Location": "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii"
@@ -95,6 +102,10 @@
     {
       "src": "/news",
       "dest": "/mockups/newsfeed.html"
+    },
+    {
+      "src": "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii",
+      "dest": "/mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii.html"
     },
     {
       "src": "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",

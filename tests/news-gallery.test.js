@@ -45,7 +45,7 @@ class FakeDocument {
 
 async function loadRendererExports() {
   const stubbedSource = rendererSource.replace(
-    'import { getArticleBySlug } from "./news-data.js?v=article-04-5";',
+    'import { getArticleBySlug } from "./news-data.js?v=article-05-2";',
     "const getArticleBySlug = () => null;",
   );
 

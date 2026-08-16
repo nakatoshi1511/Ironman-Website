@@ -11,6 +11,7 @@ const productionPages = [
   "index.html",
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
@@ -22,6 +23,7 @@ const canonicalBaseUrl = "https://www.roadtohawaii.de";
 const indexablePages = [
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
@@ -30,6 +32,8 @@ const indexablePages = [
 const publicPathByPage = {
   "mockups/landingpage-flow.html": "/",
   "mockups/newsfeed.html": "/news",
+  "mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii.html":
+    "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii",
   "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html":
     "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
   "mockups/newsfeed-17-stunden-zum-ruhm.html": "/news/17-stunden-zum-ruhm",
@@ -139,6 +143,10 @@ test("publishes only the approved runtime surface", () => {
     "mockups/sponsor-section-mockups.html",
     "Bilder Landingpage/Newsfeed/Artikel 02/Toskana.docx",
     "Bilder Landingpage/Newsfeed/Artikel 04/Bild.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 05/Artikel 05.docx",
+    "Bilder Landingpage/Newsfeed/Artikel 05/IMG_9733.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 05/IMG_9737.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 05/IMG_9951.jpeg",
     "Dokumente/Bilder/WhatsApp Unknown 2026-07-01 at 11.38.35.zip",
     "Bilder Landingpage/IMG_0935.JPG",
   ];
@@ -177,6 +185,11 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
     { src: "/mockups/landingpage-flow\\.html", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/newsfeed\\.html", headers: { Location: "/news" }, status: 308 },
     {
+      src: "/mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      headers: { Location: "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii" },
+      status: 308,
+    },
+    {
       src: "/mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii\\.html",
       headers: { Location: "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii" },
       status: 308,
@@ -191,6 +204,10 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
     { src: "/", dest: "/mockups/landingpage-flow.html" },
     { src: "/news", dest: "/mockups/newsfeed.html" },
     {
+      src: "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii",
+      dest: "/mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii.html",
+    },
+    {
       src: "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
       dest: "/mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
     },
@@ -203,8 +220,8 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
 
   assert.equal(config.routes?.[0]?.src, "/(.*)");
   assert.equal(config.routes?.[0]?.continue, true);
-  assert.deepEqual(config.routes?.slice(1, 12), expectedLegacyRedirects);
-  assert.deepEqual(config.routes?.slice(12, 20), expectedRewrites);
+  assert.deepEqual(config.routes?.slice(1, 13), expectedLegacyRedirects);
+  assert.deepEqual(config.routes?.slice(13, 22), expectedRewrites);
   assert.deepEqual(config.routes?.at(-1), { handle: "filesystem" });
 
   for (const page of productionPages.filter((page) => page.startsWith("mockups/"))) {
@@ -212,6 +229,7 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   }
 
   assert.doesNotMatch(read("index.html"), /http-equiv="refresh"/i);
+  assert.match(read("mockups/news-data.js"), /url: "\/news\/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/17-stunden-zum-ruhm"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/trainingsauftakt-in-der-toskana"/);

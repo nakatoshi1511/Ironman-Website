@@ -5,6 +5,8 @@ const path = require("node:path");
 const publicRoutes = {
   "/": "mockups/landingpage-flow.html",
   "/news": "mockups/newsfeed.html",
+  "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii":
+    "mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii.html",
   "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii":
     "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
   "/news/17-stunden-zum-ruhm": "mockups/newsfeed-17-stunden-zum-ruhm.html",

@@ -102,10 +102,10 @@ test("Bortolot uses compact headlines only at the desktop breakpoint", async () 
   assert.match(detailPage, /<body class="[^"]*article-title-compact[^"]*">/);
   assert.match(detailPage, /styles\.css\?v=bortolot-title-2/);
   assert.match(newsfeedPage, /styles\.css\?v=bortolot-title-2/);
-  assert.match(newsfeedPage, /newsfeed-render\.js\?v=news-7/);
+  assert.match(newsfeedPage, /newsfeed-render\.js\?v=news-9/);
   assert.match(detailPage, /article-render\.js\?v=article-11/);
-  assert.match(renderer, /news-data\.js\?v=article-04-4/);
-  assert.match(articleRenderer, /news-data\.js\?v=article-04-5/);
+  assert.match(renderer, /news-data\.js\?v=article-05-3/);
+  assert.match(articleRenderer, /news-data\.js\?v=article-05-2/);
   assert.match(renderer, /image\.srcset = article\.imageSrcset/);
   assert.match(renderer, /image\.sizes = article\.imageSizes/);
   assert.match(articleRenderer, /image\.srcset = imageSrcset/);

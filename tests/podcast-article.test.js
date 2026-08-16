@@ -52,7 +52,11 @@ test("Podcast article uses the three supplied images in their assigned roles", a
     "../Bilder%20Landingpage/Newsfeed/Artikel%2003/cf887347-697b-4c82-a1dd-7d31b23d9bb0.jpeg",
   );
   assert.equal(article.imageAlt, "Jannik und ich mit Rad und Golfausrüstung");
+  assert.equal(article.cardImagePosition, "center 22%");
   assert.equal(article.mediaCaption, undefined);
+
+  const renderer = fs.readFileSync(path.join(projectRoot, "mockups", "newsfeed-render.js"), "utf8");
+  assert.match(renderer, /image\.style\.objectPosition = article\.cardImagePosition/);
 
   assert.deepEqual(
     article.blocks.filter((block) => block.type === "media"),

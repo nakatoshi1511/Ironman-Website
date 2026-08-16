@@ -7,6 +7,7 @@ const projectRoot = path.join(__dirname, "..");
 const navigationPages = [
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-17-stunden-zum-ruhm.html",
   "mockups/newsfeed-trainingsauftakt-in-der-toskana.html",
@@ -15,6 +16,13 @@ const navigationPages = [
 const expectedNavigationTargets = {
   "mockups/landingpage-flow.html": ["#profil", "#erfolge", "#partner", "#social-sponsoren", "/news"],
   "mockups/newsfeed.html": ["/#profil", "/#erfolge", "/#partner", "/#social-sponsoren", "/news"],
+  "mockups/newsfeed-powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii.html": [
+    "/#profil",
+    "/#erfolge",
+    "/#partner",
+    "/#social-sponsoren",
+    "/news",
+  ],
   "mockups/newsfeed-eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii.html": [
     "/#profil",
     "/#erfolge",

@@ -33,3 +33,7 @@ Images remain normal `media` blocks so the existing lightbox behavior keeps work
 ## Content Fidelity Rule
 
 Do not infer, invent, or add article content. This includes captions, alt text, teasers, headings, image choices, and factual details. Import only content explicitly supplied or approved by the user; leave missing fields empty or ask for them before publishing.
+
+## Spelling-Only Review
+
+Before importing a new or changed article, review it once for spelling errors only. Replace only unambiguous misspellings with their correct spelling. Do not add or remove words, sentences, or paragraphs, and do not change grammar, punctuation, sentence structure, style, wording, or meaning.

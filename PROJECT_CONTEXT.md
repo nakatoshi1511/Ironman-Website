@@ -168,6 +168,7 @@ Google-Docs-Import:
 - Bilder bleiben als `media`-Blöcke im Projektordner `Bilder Landingpage/Newsfeed/Artikel XX/`.
 - Doku: `docs/news-google-docs-import.md`
 - Verbindliche Inhaltsregel: Bei Artikelimporten keinerlei Inhalte selbst erfinden oder ergÃ¤nzen. Bildunterschriften, Alt-Texte, Teaser, ZwischenÃ¼berschriften, Bildauswahl und sonstige Angaben werden nur Ã¼bernommen, wenn sie vom User ausdrÃ¼cklich geliefert oder freigegeben wurden. Fehlen Angaben, bleiben sie leer oder werden vor dem EinfÃ¼gen abgefragt.
+- Verbindliche Rechtschreibregel: Vor dem Einbau wird jeder neue oder geänderte Beitrag einmal ausschließlich auf Rechtschreibfehler geprüft. Es dürfen nur eindeutig falsche Schreibweisen durch die korrekte Schreibweise ersetzt werden. Wörter, Sätze oder Absätze dürfen weder hinzugefügt noch entfernt werden; Grammatik, Zeichensetzung, Satzbau, Stil, Wortwahl und Inhalt bleiben unverändert.
 
 Learnings aus dem DOCX-Testimport:
 - Nach Änderungen an `mockups/news-data.js` müssen die ES-Module im Browser frisch geladen werden. Der In-App-Browser kann alte Modulversionen hartnäckig behalten; deshalb bei Artikelimporten die Script-/Import-Versionierung bewusst aktualisieren oder mit eindeutigem Cache-Buster prüfen.
@@ -346,6 +347,7 @@ Empfohlener Arbeitsablauf für zukünftige Website-Anpassungen:
 
 Zusätzliche Regel für News-Artikel:
 
+- Vor dem Einbau jeden Beitrag auf Rechtschreibfehler prüfen und ausschließlich eindeutige Rechtschreibfehler korrigieren. Nichts inhaltlich hinzufügen oder löschen; Grammatik, Zeichensetzung, Satzbau, Stil und Wortwahl nicht bearbeiten.
 - Bei jedem neuen oder geänderten Artikel müssen Desktop- und Mobile-Ansicht geprüft werden.
 - Nicht nur prüfen, ob Inhalt vorhanden ist, sondern bewusst auf Satzbau, Absatzlängen, Zeilenumbrüche, Überschriftenumbrüche und Bildpositionen achten.
 - Besonders bei Artikel-Detailseiten darf die Überschrift nicht unruhig umbrechen; Trenner wie `-` sollen nicht unglücklich am Zeilenende hängen.

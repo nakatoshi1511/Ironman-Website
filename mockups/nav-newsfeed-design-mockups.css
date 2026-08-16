@@ -1,0 +1,454 @@
+:root {
+  --nav-study-ink: #0d1111;
+  --nav-study-cream: #f8f4ea;
+  --nav-study-lava: var(--lava, #e75b32);
+  --nav-study-sun: #ffb25d;
+}
+
+.nav-design-page {
+  min-height: 100vh;
+  background: var(--nav-study-ink);
+}
+
+.nav-mockup-hero {
+  min-height: 100vh;
+}
+
+.nav-mockup-hero::after {
+  background:
+    linear-gradient(180deg, rgba(7, 10, 10, 0.12) 0%, rgba(7, 10, 10, 0.04) 42%, rgba(7, 10, 10, 0.82) 100%),
+    linear-gradient(90deg, rgba(7, 10, 10, 0.42), transparent 45%, rgba(7, 10, 10, 0.16));
+}
+
+.nav-study {
+  overflow: visible;
+}
+
+.nav-study .site-nav-links,
+.nav-study .site-nav-links a {
+  transition:
+    gap 180ms ease,
+    margin 180ms ease,
+    padding 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.nav-study .news-nav-link {
+  position: relative;
+  gap: 7px;
+  isolation: isolate;
+}
+
+.news-nav-copy {
+  display: inline-flex;
+  align-items: center;
+}
+
+.news-nav-kicker,
+.news-nav-dot,
+.news-nav-arrow {
+  display: none;
+}
+
+.news-nav-kicker {
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+/* Variante 01: eine klare CTA, die sich wie der Einstieg in die Story anfühlt. */
+.nav-study[data-nav-variant="lava-cta"] .news-nav-link {
+  min-height: 32px;
+  padding-inline: 14px 11px;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  border-radius: 0;
+  color: #fffaf0;
+  background: var(--nav-study-lava);
+  box-shadow: 0 8px 24px rgba(231, 91, 50, 0.32);
+}
+
+.nav-study[data-nav-variant="lava-cta"] .news-nav-arrow {
+  display: inline-block;
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.nav-study[data-nav-variant="lava-cta"] .news-nav-link:hover {
+  color: #fff;
+  background: #f2693f;
+  transform: translateY(-1px);
+}
+
+/* Variante 02: zurückhaltend, aber durch den Marker sofort als eigener Bereich lesbar. */
+.nav-study[data-nav-variant="signal-dot"] .news-nav-link {
+  min-height: 32px;
+  padding-inline: 12px;
+  border: 1px solid rgba(248, 244, 234, 0.72);
+  border-radius: 999px;
+  color: var(--nav-study-cream);
+  background: rgba(8, 12, 12, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(8, 12, 12, 0.24);
+}
+
+.nav-study[data-nav-variant="signal-dot"] .news-nav-dot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--nav-study-lava);
+  box-shadow: 0 0 0 4px rgba(231, 91, 50, 0.18);
+}
+
+.nav-study[data-nav-variant="signal-dot"] .news-nav-link:hover {
+  border-color: var(--nav-study-sun);
+  background: rgba(8, 12, 12, 0.56);
+}
+
+/* Variante 03: kleiner Magazin-Reiter mit hochwertiger, redaktioneller Tonalität. */
+.nav-study[data-nav-variant="editorial-tab"] .news-nav-link {
+  min-height: 34px;
+  padding: 3px 12px;
+  border-radius: 4px;
+  color: var(--nav-study-ink);
+  background: var(--nav-study-cream);
+  box-shadow: inset 0 2px 0 var(--nav-study-lava), 0 6px 18px rgba(8, 12, 12, 0.16);
+}
+
+.nav-study[data-nav-variant="editorial-tab"] .news-nav-copy {
+  display: grid;
+  gap: 0;
+  line-height: 1;
+}
+
+.nav-study[data-nav-variant="editorial-tab"] .news-nav-kicker {
+  display: block;
+  color: var(--nav-study-lava);
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.nav-study[data-nav-variant="editorial-tab"] .news-nav-title {
+  font-size: 0.72rem;
+}
+
+.nav-study[data-nav-variant="editorial-tab"] .news-nav-link:hover {
+  color: var(--nav-study-ink);
+  background: #fffaf0;
+  transform: translateY(1px);
+}
+
+/* Variante 04: sportlich-minimal, visuell wie eine Startklammer abgetrennt. */
+.nav-study[data-nav-variant="kona-bracket"] .news-nav-link {
+  min-height: 31px;
+  margin-left: 10px;
+  padding: 0 9px 0 17px;
+  border-radius: 0 4px 4px 0;
+  color: #fffaf0;
+  background: rgba(248, 244, 234, 0.08);
+}
+
+.nav-study[data-nav-variant="kona-bracket"] .news-nav-link::before,
+.nav-study[data-nav-variant="kona-bracket"] .news-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 9px;
+  height: 2px;
+  background: var(--nav-study-lava);
+}
+
+.nav-study[data-nav-variant="kona-bracket"] .news-nav-link::before {
+  top: 0;
+  box-shadow: 0 29px 0 var(--nav-study-lava);
+}
+
+.nav-study[data-nav-variant="kona-bracket"] .news-nav-link::after {
+  top: 0;
+  width: 2px;
+  height: 31px;
+}
+
+.nav-study[data-nav-variant="kona-bracket"] .news-nav-arrow {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: var(--nav-study-ink);
+  background: var(--nav-study-sun);
+  font-size: 0.68rem;
+}
+
+.nav-study[data-nav-variant="kona-bracket"] .news-nav-link:hover {
+  background: rgba(248, 244, 234, 0.15);
+}
+
+.nav-mockup-content {
+  justify-content: flex-end;
+  padding-bottom: 190px;
+  pointer-events: none;
+}
+
+.nav-mockup-content h1 {
+  opacity: 0.3;
+}
+
+.nav-study-caption {
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  bottom: 178px;
+  width: min(390px, calc(100% - 48px));
+  padding: 22px 24px;
+  border-left: 4px solid var(--nav-study-lava);
+  color: var(--nav-study-cream);
+  background: rgba(8, 12, 12, 0.74);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(16px);
+  pointer-events: auto;
+}
+
+.nav-study-number {
+  margin: 0 0 6px;
+  color: var(--nav-study-sun);
+  font-size: 0.67rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.nav-study-caption h2 {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.nav-study-caption h2 + p {
+  margin: 10px 0 0;
+  color: rgba(248, 244, 234, 0.76);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.nav-study-verdict {
+  display: inline-block;
+  margin-top: 13px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(248, 244, 234, 0.18);
+  color: #fffaf0;
+  font-size: 0.67rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-mockup-switcher {
+  position: fixed;
+  z-index: 80;
+  left: 50%;
+  bottom: 18px;
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  width: min(960px, calc(100% - 36px));
+  padding: 10px;
+  border: 1px solid rgba(248, 244, 234, 0.26);
+  transform: translateX(-50%);
+  color: var(--nav-study-cream);
+  background: rgba(8, 12, 12, 0.9);
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(18px);
+}
+
+.nav-mockup-switcher-intro {
+  display: grid;
+  align-content: center;
+  min-width: 152px;
+  padding: 0 12px;
+  border-right: 1px solid rgba(248, 244, 234, 0.16);
+}
+
+.nav-mockup-switcher-intro span {
+  color: var(--nav-study-sun);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.nav-mockup-switcher-intro strong {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.18rem;
+  text-transform: uppercase;
+}
+
+.nav-mockup-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+}
+
+.nav-mockup-options button {
+  min-height: 54px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  color: rgba(248, 244, 234, 0.62);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.035em;
+  text-align: left;
+  text-transform: uppercase;
+  transition: 160ms ease;
+}
+
+.nav-mockup-options button span {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--nav-study-lava);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.64rem;
+}
+
+.nav-mockup-options button:hover {
+  color: var(--nav-study-cream);
+  background: rgba(248, 244, 234, 0.08);
+}
+
+.nav-mockup-options button.is-active {
+  border-color: var(--nav-study-sun);
+  color: var(--nav-study-ink);
+  background: var(--nav-study-sun);
+}
+
+.nav-mockup-options button.is-active span {
+  color: rgba(13, 17, 17, 0.6);
+}
+
+@media (max-width: 720px) {
+  .nav-mockup-hero {
+    min-height: 100svh;
+  }
+
+  .nav-study .site-nav-links {
+    gap: 1px;
+  }
+
+  .nav-study .site-nav-links > a:not(.news-nav-link) {
+    padding-inline: 5px;
+  }
+
+  .nav-study .news-nav-link {
+    gap: 4px;
+  }
+
+  .nav-study[data-nav-variant="lava-cta"] .news-nav-link,
+  .nav-study[data-nav-variant="signal-dot"] .news-nav-link {
+    min-height: 27px;
+    padding-inline: 7px;
+  }
+
+  .nav-study[data-nav-variant="editorial-tab"] .news-nav-link {
+    min-height: 27px;
+    padding: 2px 6px;
+  }
+
+  .nav-study[data-nav-variant="editorial-tab"] .news-nav-kicker {
+    display: none;
+  }
+
+  .nav-study[data-nav-variant="editorial-tab"] .news-nav-title {
+    font-size: inherit;
+  }
+
+  .nav-study[data-nav-variant="kona-bracket"] .news-nav-link {
+    min-height: 27px;
+    margin-left: 2px;
+    padding: 0 5px 0 10px;
+  }
+
+  .nav-study[data-nav-variant="kona-bracket"] .news-nav-link::before {
+    box-shadow: 0 25px 0 var(--nav-study-lava);
+  }
+
+  .nav-study[data-nav-variant="kona-bracket"] .news-nav-link::after {
+    height: 27px;
+  }
+
+  .nav-study[data-nav-variant="kona-bracket"] .news-nav-arrow,
+  .nav-study[data-nav-variant="lava-cta"] .news-nav-arrow {
+    display: none;
+  }
+
+  .nav-study-caption {
+    right: 14px;
+    bottom: 164px;
+    width: min(330px, calc(100% - 28px));
+    padding: 16px 18px;
+  }
+
+  .nav-study-caption h2 {
+    font-size: 2.2rem;
+  }
+
+  .nav-study-caption h2 + p {
+    font-size: 0.78rem;
+  }
+
+  .nav-study-verdict {
+    margin-top: 9px;
+    padding-top: 8px;
+  }
+
+  .nav-mockup-switcher {
+    bottom: 10px;
+    display: block;
+    width: calc(100% - 20px);
+    padding: 7px;
+  }
+
+  .nav-mockup-switcher-intro {
+    display: none;
+  }
+
+  .nav-mockup-options {
+    gap: 3px;
+  }
+
+  .nav-mockup-options button {
+    min-height: 48px;
+    padding: 6px 5px;
+    font-size: 0.55rem;
+    text-align: center;
+  }
+
+  .nav-mockup-options button span {
+    font-size: 0.57rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-study .site-nav-links > a:not(.news-nav-link) {
+    padding-inline: 3px;
+  }
+
+  .nav-study[data-nav-variant="signal-dot"] .news-nav-dot {
+    width: 5px;
+    height: 5px;
+    box-shadow: none;
+  }
+
+  .nav-study-caption {
+    bottom: 154px;
+  }
+}

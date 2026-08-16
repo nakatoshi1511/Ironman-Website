@@ -1,5 +1,69 @@
 export const newsArticles = [
   {
+    slug: "powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii",
+    url: "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii",
+    title: "Das Powerhouse Maifeld Gym als Partner auf dem Weg nach Hawaii",
+    titleVariant: "compact",
+    teaser: "Krafttraining macht auch für Triathleten Sinn",
+    category: "Road to Hawaii",
+    dateLabel: "15.08.2026",
+    dateTime: "2026-08-15",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2005/powerhouse-daniel-david-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2005/powerhouse-daniel-david-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2005/powerhouse-daniel-david-web.jpg 1600w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+    imageAlt: "Daniel Gietzen und David vor dem Powerhouse in Münstermaifeld",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Als treuer Sponsor unseres Vereins RSC Untermosel darf ich das Powerhouse Maifeld Gym nun auch als Partner auf meiner road to Hawaii an Bord begrüßen.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2005/powerhouse-daniel-david-web.jpg",
+        imageAlt: "Daniel Gietzen und David vor dem Powerhouse in Münstermaifeld",
+        caption: "Ein starker Partner auf dem Weg nach Hawaii",
+      },
+      {
+        type: "paragraph",
+        text: "Als Triathlet ist es mir vor allem im Winter wichtig, meine Rumpfmuskulatur zu stärken. Hierzu nutze ich aus Zeitgründen meine Scheune.",
+      },
+      {
+        type: "paragraph",
+        text: "Hätte ich dieses tolle Studio in meiner Nähe, würde ich ganz sicher mehr Zeit ins Krafttraining investieren.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2005/powerhouse-klimmzuege-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2005/powerhouse-klimmzuege-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2005/powerhouse-klimmzuege-web.jpg 1179w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "David macht Klimmzüge",
+        caption: "Immerhin 11 Klimmzüge, ganz okay für einen Triathleten",
+      },
+      {
+        type: "paragraph",
+        text: "Danke an Maximilian Puff und Daniel Gietzen für eure Unterstützung!",
+      },
+      {
+        type: "rich",
+        html: '<p>Hier könnt ihr euch über das Fitnessstudio informieren:</p><p><a href="https://www.powerhouse-maifeld-gym.com/">https://www.powerhouse-maifeld-gym.com/</a></p>',
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2005/scheunen-gym-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2005/scheunen-gym-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2005/scheunen-gym-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Scheune",
+        caption: "Mein Scheunen Gym",
+      },
+    ],
+  },
+  {
     slug: "eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
     url: "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii",
     title: "Die traditionsreiche Eisdiele Bortolot als Partner auf dem Weg nach Hawaii",
@@ -53,6 +117,7 @@ export const newsArticles = [
     dateTime: "2026-07-28",
     image: "../Bilder%20Landingpage/Newsfeed/Artikel%2003/cf887347-697b-4c82-a1dd-7d31b23d9bb0.jpeg",
     imageAlt: "Jannik und ich mit Rad und Golfausrüstung",
+    cardImagePosition: "center 22%",
     blocks: [
       {
         type: "rich",

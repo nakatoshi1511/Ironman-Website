@@ -41,13 +41,14 @@ test("local preview resolves clean public routes without changing production HTM
 
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 
-  const [home, mockupOverview, news, article, podcastArticle, bortolotArticle] = await Promise.all([
+  const [home, mockupOverview, news, article, podcastArticle, bortolotArticle, powerhouseArticle] = await Promise.all([
     request(server, "/"),
     request(server, "/mockups/"),
     request(server, "/news"),
     request(server, "/news/17-stunden-zum-ruhm"),
     request(server, "/news/zu-gast-im-podcast-moselmomente"),
     request(server, "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii"),
+    request(server, "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii"),
   ]);
 
   assert.equal(home.statusCode, 200);
@@ -71,4 +72,11 @@ test("local preview resolves clean public routes without changing production HTM
   );
   assert.match(bortolotArticle.body, /Die traditionsreiche Eisdiele Bortolot/);
   assert.doesNotMatch(bortolotArticle.body, /data-article-teaser/);
+  assert.equal(powerhouseArticle.statusCode, 200);
+  assert.match(
+    powerhouseArticle.body,
+    /data-article-slug="powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii"/,
+  );
+  assert.match(powerhouseArticle.body, /Das Powerhouse Maifeld Gym als Partner/);
+  assert.doesNotMatch(powerhouseArticle.body, /data-article-teaser/);
 });
