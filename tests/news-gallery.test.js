@@ -45,7 +45,7 @@ class FakeDocument {
 
 async function loadRendererExports() {
   const stubbedSource = rendererSource.replace(
-    'import { getArticleBySlug } from "./news-data.js?v=article-06-1";',
+    'import { getArticleBySlug } from "./news-data.js?v=article-06-3";',
     "const getArticleBySlug = () => null;",
   );
 
@@ -143,6 +143,79 @@ test("createGallery renders ordered thumbnail buttons for the existing lightbox"
       { className: "article-gallery-thumb", type: "button", lightboxSrc: "01.jpeg", lightboxAlt: "", imageSrc: "01.jpeg", imageAlt: "" },
       { className: "article-gallery-thumb", type: "button", lightboxSrc: "03.jpeg", lightboxAlt: "", imageSrc: "03.jpeg", imageAlt: "" },
       { className: "article-gallery-thumb", type: "button", lightboxSrc: "04.jpeg", lightboxAlt: "", imageSrc: "04.jpeg", imageAlt: "" },
+    ],
+  );
+});
+
+test("createGallery renders a responsive captioned collection without changing legacy galleries", async () => {
+  const { createGallery } = await loadRendererExports();
+  const images = [
+    {
+      image: "large-1.jpg",
+      imageSrcset: "mobile-1.jpg 720w, large-1.jpg 1600w",
+      imageSizes: "330px",
+      imageAlt: "Lauftraining",
+      caption: "Laufen in der Hitze",
+    },
+    {
+      image: "large-2.jpg",
+      imageSrcset: "mobile-2.jpg 720w, large-2.jpg 1600w",
+      imageSizes: "330px",
+      imageAlt: "Radtraining",
+      caption: "Gute Laune auf dem Rad",
+    },
+  ];
+  const gallery = createGallery(
+    {
+      type: "gallery",
+      variant: "collection",
+      images,
+      lightboxGroup: "recap",
+      lightboxImages: images.map((image) => image.image),
+    },
+    new FakeDocument(),
+  );
+
+  assert.equal(gallery.className, "article-media-gallery article-media-gallery-collection");
+  assert.equal(gallery.childNodes.length, 2);
+  assert.deepEqual(
+    gallery.childNodes.map((figure) => ({
+      className: figure.className,
+      buttonClass: figure.childNodes[0].className,
+      lightboxSrc: figure.childNodes[0].dataset.lightboxSrc,
+      lightboxAlt: figure.childNodes[0].dataset.lightboxAlt,
+      lightboxGroup: figure.childNodes[0].dataset.lightboxGroup,
+      imageSrc: figure.childNodes[0].childNodes[0].src,
+      imageSrcset: figure.childNodes[0].childNodes[0].srcset,
+      imageSizes: figure.childNodes[0].childNodes[0].sizes,
+      imageAlt: figure.childNodes[0].childNodes[0].alt,
+      caption: figure.childNodes[1].textContent,
+    })),
+    [
+      {
+        className: "article-gallery-item",
+        buttonClass: "article-gallery-thumb",
+        lightboxSrc: "large-1.jpg",
+        lightboxAlt: "Lauftraining",
+        lightboxGroup: "recap",
+        imageSrc: "large-1.jpg",
+        imageSrcset: "mobile-1.jpg 720w, large-1.jpg 1600w",
+        imageSizes: "330px",
+        imageAlt: "Lauftraining",
+        caption: "Laufen in der Hitze",
+      },
+      {
+        className: "article-gallery-item",
+        buttonClass: "article-gallery-thumb",
+        lightboxSrc: "large-2.jpg",
+        lightboxAlt: "Radtraining",
+        lightboxGroup: "recap",
+        imageSrc: "large-2.jpg",
+        imageSrcset: "mobile-2.jpg 720w, large-2.jpg 1600w",
+        imageSizes: "330px",
+        imageAlt: "Radtraining",
+        caption: "Gute Laune auf dem Rad",
+      },
     ],
   );
 });

@@ -1,4 +1,4 @@
-import { getArticleBySlug } from "./news-data.js?v=article-06-1";
+import { getArticleBySlug } from "./news-data.js?v=article-06-3";
 
 const articleRoot = document.querySelector("[data-article-slug]");
 const article = articleRoot ? getArticleBySlug(articleRoot.dataset.articleSlug) : null;
@@ -145,22 +145,42 @@ function createMedia(articleData, block, documentRef = document) {
 
 function createGallery(block, documentRef = document) {
   const gallery = documentRef.createElement("div");
-  gallery.className = "article-media-gallery";
+  gallery.className = `article-media-gallery${block.variant === "collection" ? " article-media-gallery-collection" : ""}`;
 
-  (block.images || []).forEach((imageSrc) => {
+  (block.images || []).forEach((entry) => {
+    const imageData = typeof entry === "string" ? { image: entry } : entry;
+    const imageSrc = imageData.image;
     const button = documentRef.createElement("button");
     button.className = "article-gallery-thumb";
     button.type = "button";
     button.dataset.lightboxSrc = imageSrc;
-    button.dataset.lightboxAlt = "";
+    button.dataset.lightboxAlt = imageData.imageAlt || "";
     addLightboxMetadata(button, block);
 
     const image = documentRef.createElement("img");
     image.src = imageSrc;
-    image.alt = "";
+    if (imageData.imageSrcset) image.srcset = imageData.imageSrcset;
+    if (imageData.imageSizes) image.sizes = imageData.imageSizes;
+    image.alt = imageData.imageAlt || "";
 
     button.append(image);
-    gallery.append(button);
+
+    if (block.variant !== "collection") {
+      gallery.append(button);
+      return;
+    }
+
+    const figure = documentRef.createElement("figure");
+    figure.className = "article-gallery-item";
+    figure.append(button);
+
+    if (imageData.caption) {
+      const caption = documentRef.createElement("figcaption");
+      caption.textContent = imageData.caption;
+      figure.append(caption);
+    }
+
+    gallery.append(figure);
   });
 
   return gallery;

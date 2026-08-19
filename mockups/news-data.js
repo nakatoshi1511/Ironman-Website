@@ -1,5 +1,128 @@
 export const newsArticles = [
   {
+    slug: "ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung",
+    url: "/news/ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung",
+    title: "Ein erstes Fazit nach vier Wochen konzentrierter Vorbereitung",
+    titleVariant: "compact",
+    teaser: "Alles läuft nach Plan",
+    category: "Training",
+    dateLabel: "17.08.2026",
+    dateTime: "2026-08-17",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2006/training-fazit-schwimmen-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2006/training-fazit-schwimmen-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2006/training-fazit-schwimmen-web.jpg 1600w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+    imageAlt: "David beim Schwimmen unter Wasser",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Am 20.07.2026 habe ich mit meiner konzentrierten 12-Wochen Vorbereitung auf die Ironman Weltmeisterschaft begonnen und ich kann nach dem ersten vierwöchigen Trainingsblock ein positives Fazit ziehen. ",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2006/trainingsplanung-trainer-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2006/trainingsplanung-trainer-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2006/trainingsplanung-trainer-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Trainingsplanung mit dem Trainer",
+        caption: "Trainingsplanung mit dem Trainer ",
+      },
+      {
+        type: "paragraph",
+        text: "Ich konnte nahezu alle Einheiten wie geplant umsetzen und musste lediglich hin und wieder Einheiten schieben oder Leistungsvorgaben reduzieren, was aufgrund der extremen Hitzebedingungen aber nur vernünftig war. ",
+      },
+      {
+        type: "paragraph",
+        text: "Insgesamt trainierte ich 77:14h, was 19h pro Woche entspricht. ",
+      },
+      {
+        type: "paragraph",
+        text: "Schwimmen: 8:23h (25 km)",
+      },
+      {
+        type: "paragraph",
+        text: "Radfahren: 47:38h (1409 km)",
+      },
+      {
+        type: "paragraph",
+        text: "Laufen: 21:13h (296 km)",
+      },
+      {
+        type: "paragraph",
+        text: "In der letzten Woche habe ich es auch endlich geschafft, dreimal ins Wasser zu kommen und an meiner Schwäche zu arbeiten, was ich nun unbedingt beibehalten sollte. ",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2006/training-fazit-schwimmen-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2006/training-fazit-schwimmen-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2006/training-fazit-schwimmen-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "David beim Schwimmen unter Wasser",
+        caption: "Das Schwimmtraining bleibt die größte Baustelle",
+      },
+      {
+        type: "paragraph",
+        text: "Neben dem Training standen noch einige Treffen mit meinen Sponsoren sowie mehrere Interviewtermine an. ",
+      },
+      {
+        type: "paragraph",
+        text: "Insgesamt kann ich jetzt schon sagen, dass mir das gesamte Projekt \"Road To Hawaii\" trotz des zeitlichen Mehraufwands große Freude bereitet und mich zusätzlich motiviert. ",
+      },
+      {
+        type: "paragraph",
+        text: "Ich bin sehr dankbar, dass mich so viele Menschen finanziell und moralisch auf dieser sportlichen Reise unterstützen.",
+      },
+      {
+        type: "gallery",
+        variant: "collection",
+        lightboxGroup: "training-fazit-sammlung",
+        lightboxImages: [
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2006/laufen-hitze-web.jpg",
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2006/radfahren-web.jpg",
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2006/bahntraining-web.jpg",
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2006/wochenspiegel-artikel-web.jpg",
+        ],
+        images: [
+          {
+            image: "../Bilder%20Landingpage/Newsfeed/Artikel%2006/laufen-hitze-web.jpg",
+            imageSrcset:
+              "../Bilder%20Landingpage/Newsfeed/Artikel%2006/laufen-hitze-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2006/laufen-hitze-web.jpg 1600w",
+            imageSizes: "(max-width: 560px) calc((100vw - 60px) / 2), 330px",
+            imageAlt: "David beim Laufen",
+            caption: "Die Hitze ist diesen Sommer wirklich brutal",
+          },
+          {
+            image: "../Bilder%20Landingpage/Newsfeed/Artikel%2006/radfahren-web.jpg",
+            imageSrcset:
+              "../Bilder%20Landingpage/Newsfeed/Artikel%2006/radfahren-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2006/radfahren-web.jpg 1600w",
+            imageSizes: "(max-width: 560px) calc((100vw - 60px) / 2), 330px",
+            imageAlt: "David beim Radeln",
+            caption: "Meistens gute Laune beim Radfahren",
+          },
+          {
+            image: "../Bilder%20Landingpage/Newsfeed/Artikel%2006/bahntraining-web.jpg",
+            imageSrcset:
+              "../Bilder%20Landingpage/Newsfeed/Artikel%2006/bahntraining-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2006/bahntraining-web.jpg 1179w",
+            imageSizes: "(max-width: 560px) calc((100vw - 60px) / 2), 330px",
+            imageAlt: "David beim Laufen auf der Bahn",
+            caption: "Bahntraining",
+          },
+          {
+            image: "../Bilder%20Landingpage/Newsfeed/Artikel%2006/wochenspiegel-artikel-web.jpg",
+            imageSrcset:
+              "../Bilder%20Landingpage/Newsfeed/Artikel%2006/wochenspiegel-artikel-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2006/wochenspiegel-artikel-web.jpg 1600w",
+            imageSizes: "(max-width: 560px) calc((100vw - 60px) / 2), 330px",
+            imageAlt: "Wochenspiegel Artikel",
+            caption: "Der Cop, der Hawaii bezwingen will",
+          },
+        ],
+      },
+    ],
+  },
+  {
     slug: "powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii",
     url: "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii",
     title: "Das Powerhouse Maifeld Gym als Partner auf dem Weg nach Hawaii",
