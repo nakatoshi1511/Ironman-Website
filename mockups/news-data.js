@@ -1,5 +1,117 @@
 export const newsArticles = [
   {
+    slug: "autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii",
+    url: "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii",
+    title: "Das Autohaus Schaden Subaru als Exklusivpartner auf dem Weg nach Hawaii",
+    titleVariant: "compact",
+    teaser: "“Do your Dō“ - Gehe deinen eigenen Weg",
+    category: "Partner",
+    dateLabel: "22.08.2026",
+    dateTime: "2026-08-22",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2008/autohaus-schaden-team-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2008/autohaus-schaden-team-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2008/autohaus-schaden-team-web.jpg 1600w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+    imageAlt: "Bild im Autohaus Schaden",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "„Do your Dō“ - das Motto von Subaru - bedeutet so viel wie „Gehe deinen eigenen Weg.“",
+      },
+      {
+        type: "paragraph",
+        text: "Und genau deshalb passt das Autohaus Schaden Subaru aus Landkern perfekt zu meinem Weg nach Hawaii!",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2008/autohaus-schaden-team-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2008/autohaus-schaden-team-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2008/autohaus-schaden-team-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Bild im Autohaus Schaden",
+        caption: "Vielen Dank an Kirsten, Frank und das gesamte Team vom Autohaus Schaden",
+      },
+      {
+        type: "paragraph",
+        text: "Nicht nur wegen dieser Botschaft, sondern natürlich auch wegen der gemeinsamen Outdoor-DNA.",
+      },
+      {
+        type: "paragraph",
+        text: "Umso dankbarer bin ich, das Team vom Autohaus Schaden  nach jahrelanger Unterstützung unseres Vereins nun auch bei meinem ganz persönlichen Abenteuer Hawaii als zuverlässigen Exklusivpartner an meiner Seite zu haben! ",
+      },
+      {
+        type: "rich",
+        html: '<p>Schaut gerne mal vorbei unter <a href="https://www.subaru-eifel-mosel.de/">https://www.subaru-eifel-mosel.de/</a></p>',
+      },
+    ],
+  },
+  {
+    slug: "zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii",
+    url: "/news/zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii",
+    title: "Die Zimmerei Schnorbach als Partner auf dem Weg nach Hawaii",
+    titleVariant: "compact",
+    teaser: "Eine Radtour durch den Hunsrück",
+    category: "Partner",
+    dateLabel: "22.08.2026",
+    dateTime: "2026-08-22",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-david-johannes-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-david-johannes-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-david-johannes-web.jpg 1600w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+    imageAlt: "David und Johannes vor dem Schnorbach Bus",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Am 13.08.2026 war ich zu Besuch bei der Zimmerei Schnorbach in Lieg und fuhr gemeinsam mit dem Gründer und Inhaber der Firma, Johannes Schnorbach, eine schöne Tour durch den Hunsrück. ",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-david-johannes-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-david-johannes-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-david-johannes-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "David und Johannes vor dem Schnorbach Bus",
+        caption: "Zu Besuch bei der Zimmerei Schnorbach in Lieg",
+      },
+      {
+        type: "paragraph",
+        text: "Johannes ist Zimmerermeister und hat 2022 sein eigenes Unternehmen gegründet. Seine Leidenschaft gilt mittlerweile neben dem Handwerk auch dem Radsport, wo er mit Talent und dem nötigen Ehrgeiz in kürzester Zeit durch beachtliche Leistungssteigerungen auf sich aufmerksam machen konnte.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-radtour-selfie-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-radtour-selfie-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-radtour-selfie-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Selfie beim Radfahren",
+        caption: "Feierabendrunde durch den Hunsrück",
+      },
+      {
+        type: "paragraph",
+        text: "Johannes, vielen Dank für deine Unterstützung!",
+      },
+      {
+        type: "rich",
+        html: '<p>Schaut gerne mal vorbei unter <a href="https://zimmerei-schnorbach.de/">https://zimmerei-schnorbach.de/</a></p>',
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-radweg-kastellaun-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-radweg-kastellaun-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2007/zimmerei-radweg-kastellaun-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Johannes von hinten",
+        caption: "Über den Radweg bei Kastellaun",
+      },
+    ],
+  },
+  {
     slug: "ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung",
     url: "/news/ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung",
     title: "Ein erstes Fazit nach vier Wochen konzentrierter Vorbereitung",

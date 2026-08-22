@@ -16,7 +16,7 @@ test("training recap exposes the supplied metadata, copy, responsive images, and
   const article = getArticleBySlug(slug);
 
   assert.ok(article, "training recap must be available through the news data API");
-  assert.equal(newsArticles[0].slug, slug, "the newest article must stay first in the source data");
+  assert.equal(newsArticles[2].slug, slug, "the training recap must follow the two newer partner articles");
   assert.equal(article.url, `/news/${slug}`);
   assert.equal(article.title, "Ein erstes Fazit nach vier Wochen konzentrierter Vorbereitung");
   assert.equal(article.titleVariant, "compact");

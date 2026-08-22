@@ -41,7 +41,18 @@ test("local preview resolves clean public routes without changing production HTM
 
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 
-  const [home, mockupOverview, news, article, podcastArticle, bortolotArticle, powerhouseArticle, trainingFazitArticle] = await Promise.all([
+  const [
+    home,
+    mockupOverview,
+    news,
+    article,
+    podcastArticle,
+    bortolotArticle,
+    powerhouseArticle,
+    trainingFazitArticle,
+    autohausArticle,
+    zimmereiArticle,
+  ] = await Promise.all([
     request(server, "/"),
     request(server, "/mockups/"),
     request(server, "/news"),
@@ -50,6 +61,8 @@ test("local preview resolves clean public routes without changing production HTM
     request(server, "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii"),
     request(server, "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii"),
     request(server, "/news/ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung"),
+    request(server, "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii"),
+    request(server, "/news/zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii"),
   ]);
 
   assert.equal(home.statusCode, 200);
@@ -87,4 +100,18 @@ test("local preview resolves clean public routes without changing production HTM
   );
   assert.match(trainingFazitArticle.body, /Ein erstes Fazit nach vier Wochen/);
   assert.doesNotMatch(trainingFazitArticle.body, /data-article-teaser/);
+  assert.equal(autohausArticle.statusCode, 200);
+  assert.match(
+    autohausArticle.body,
+    /data-article-slug="autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii"/,
+  );
+  assert.match(autohausArticle.body, /Das Autohaus Schaden Subaru als Exklusivpartner/);
+  assert.doesNotMatch(autohausArticle.body, /data-article-teaser/);
+  assert.equal(zimmereiArticle.statusCode, 200);
+  assert.match(
+    zimmereiArticle.body,
+    /data-article-slug="zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii"/,
+  );
+  assert.match(zimmereiArticle.body, /Die Zimmerei Schnorbach als Partner/);
+  assert.doesNotMatch(zimmereiArticle.body, /data-article-teaser/);
 });

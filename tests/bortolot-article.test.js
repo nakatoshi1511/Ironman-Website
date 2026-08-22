@@ -102,11 +102,11 @@ test("Newsfeed keeps compact tile headlines within the approved hierarchy", asyn
   assert.match(renderer, /news-card-title-compact/);
   assert.match(detailPage, /<body class="[^"]*article-title-compact[^"]*">/);
   assert.match(detailPage, /styles\.css\?v=bortolot-title-2/);
-  assert.match(newsfeedPage, /styles\.css\?v=news-headlines-1/);
-  assert.match(newsfeedPage, /newsfeed-render\.js\?v=news-12/);
-  assert.match(detailPage, /article-render\.js\?v=article-15/);
-  assert.match(renderer, /news-data\.js\?v=article-06-3/);
-  assert.match(articleRenderer, /news-data\.js\?v=article-06-3/);
+  assert.match(newsfeedPage, /styles\.css\?v=news-headlines-2/);
+  assert.match(newsfeedPage, /newsfeed-render\.js\?v=news-13/);
+  assert.match(detailPage, /article-render\.js\?v=article-16/);
+  assert.match(renderer, /news-data\.js\?v=article-08-1/);
+  assert.match(articleRenderer, /news-data\.js\?v=article-08-1/);
   assert.match(renderer, /image\.srcset = article\.imageSrcset/);
   assert.match(renderer, /image\.sizes = article\.imageSizes/);
   assert.match(articleRenderer, /image\.srcset = imageSrcset/);
@@ -123,7 +123,7 @@ test("Newsfeed keeps compact tile headlines within the approved hierarchy", asyn
   );
   assert.match(
     css,
-    /@media \(max-width: 880px\) \{\s*\.article-page\.article-title-compact \.article-hero h1\s*\{[^}]*font-size: clamp\(2\.15rem, 10vw, 2\.55rem\);[^}]*line-height: 0\.95;[^}]*\}\s*\}/s,
+    /@media \(max-width: 880px\) \{\s*\.article-page\.article-title-compact \.article-hero h1\s*\{[^}]*font-size: clamp\(2\.15rem, 10vw, 2\.55rem\);[^}]*line-height: 0\.95;[^}]*\}/s,
   );
   assert.match(
     css,

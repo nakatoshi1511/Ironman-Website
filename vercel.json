@@ -47,6 +47,20 @@
       "status": 308
     },
     {
+      "src": "/mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii\\.html",
+      "headers": {
+        "Location": "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii"
+      },
+      "status": 308
+    },
+    {
+      "src": "/mockups/newsfeed-zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      "headers": {
+        "Location": "/news/zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii"
+      },
+      "status": 308
+    },
+    {
       "src": "/mockups/newsfeed-ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung\\.html",
       "headers": {
         "Location": "/news/ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung"
@@ -109,6 +123,14 @@
     {
       "src": "/news",
       "dest": "/mockups/newsfeed.html"
+    },
+    {
+      "src": "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii",
+      "dest": "/mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html"
+    },
+    {
+      "src": "/news/zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii",
+      "dest": "/mockups/newsfeed-zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii.html"
     },
     {
       "src": "/news/ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung",
