@@ -11,6 +11,7 @@ const productionPages = [
   "index.html",
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung.html",
@@ -26,6 +27,7 @@ const canonicalBaseUrl = "https://www.roadtohawaii.de";
 const indexablePages = [
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung.html",
@@ -38,6 +40,8 @@ const indexablePages = [
 const publicPathByPage = {
   "mockups/landingpage-flow.html": "/",
   "mockups/newsfeed.html": "/news",
+  "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html":
+    "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii",
   "mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html":
     "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii",
   "mockups/newsfeed-zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii.html":
@@ -172,6 +176,13 @@ test("publishes only the approved runtime surface", () => {
     "Bilder Landingpage/Newsfeed/Artikel 07/IMG_9904.jpeg",
     "Bilder Landingpage/Newsfeed/Artikel 08/Newsfeed Autohaus Schaden.docx",
     "Bilder Landingpage/Newsfeed/Artikel 08/4f92b546-8d09-4556-bf1e-97542ecc24d5.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 09/Newsfeed Ollis Radladen.docx",
+    "Bilder Landingpage/Newsfeed/Artikel 09/IMG_0122.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 09/IMG_0140.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 09/IMG_0145.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 09/IMG_0154.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 09/IMG_0158.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 09/IMG_0167.jpeg",
     "Dokumente/Bilder/WhatsApp Unknown 2026-07-01 at 11.38.35.zip",
     "Bilder Landingpage/IMG_0935.JPG",
   ];
@@ -210,6 +221,11 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
     { src: "/mockups/landingpage-flow\\.html", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/newsfeed\\.html", headers: { Location: "/news" }, status: 308 },
     {
+      src: "/mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      headers: { Location: "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii" },
+      status: 308,
+    },
+    {
       src: "/mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii\\.html",
       headers: { Location: "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii" },
       status: 308,
@@ -243,6 +259,10 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   const expectedRewrites = [
     { src: "/", dest: "/mockups/landingpage-flow.html" },
     { src: "/news", dest: "/mockups/newsfeed.html" },
+    {
+      src: "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii",
+      dest: "/mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
+    },
     {
       src: "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii",
       dest: "/mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html",
@@ -283,6 +303,7 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   }
 
   assert.doesNotMatch(read("index.html"), /http-equiv="refresh"/i);
+  assert.match(read("mockups/news-data.js"), /url: "\/news\/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung"/);

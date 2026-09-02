@@ -50,6 +50,7 @@ test("local preview resolves clean public routes without changing production HTM
     bortolotArticle,
     powerhouseArticle,
     trainingFazitArticle,
+    ollisRadladenArticle,
     autohausArticle,
     zimmereiArticle,
   ] = await Promise.all([
@@ -61,6 +62,7 @@ test("local preview resolves clean public routes without changing production HTM
     request(server, "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii"),
     request(server, "/news/powerhouse-maifeld-gym-als-partner-auf-dem-weg-nach-hawaii"),
     request(server, "/news/ein-erstes-fazit-nach-vier-wochen-konzentrierter-vorbereitung"),
+    request(server, "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii"),
     request(server, "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii"),
     request(server, "/news/zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii"),
   ]);
@@ -100,6 +102,13 @@ test("local preview resolves clean public routes without changing production HTM
   );
   assert.match(trainingFazitArticle.body, /Ein erstes Fazit nach vier Wochen/);
   assert.doesNotMatch(trainingFazitArticle.body, /data-article-teaser/);
+  assert.equal(ollisRadladenArticle.statusCode, 200);
+  assert.match(
+    ollisRadladenArticle.body,
+    /data-article-slug="ollis-radladen-als-partner-auf-dem-weg-nach-hawaii"/,
+  );
+  assert.match(ollisRadladenArticle.body, /Ollis Radladen als Partner/);
+  assert.doesNotMatch(ollisRadladenArticle.body, /data-article-teaser/);
   assert.equal(autohausArticle.statusCode, 200);
   assert.match(
     autohausArticle.body,

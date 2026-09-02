@@ -1,5 +1,118 @@
 export const newsArticles = [
   {
+    slug: "ollis-radladen-als-partner-auf-dem-weg-nach-hawaii",
+    url: "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii",
+    title: "Ollis Radladen als Partner auf dem dem Weg nach Hawaii",
+    titleVariant: "compact",
+    teaser: "Ollis Radladen, klein aber fein!",
+    category: "Partner",
+    dateLabel: "27.08.2026",
+    dateTime: "2026-08-27",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-david-vor-radladen-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-david-vor-radladen-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-david-vor-radladen-web.jpg 1600w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+    imageAlt: "Olli und ich vor dem Radladen",
+    mediaCaption: "Olli und ich vor dem Radladen in Hambuch",
+    cardImagePosition: "50% 34%",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Bevor es für mich im Oktober nach Hawaii geht, bekommt mein Bike bei Ollis Radladen in Hambuch nochmal den letzten Check. Denn auf 180 km Radstrecke beim IRONMAN Hawaii sollte wirklich jedes Detail passen.",
+      },
+      {
+        type: "paragraph",
+        text: "Ollis Radladen ist klein, aber fein und genau das macht den Unterschied: Olli nimmt sich Zeit, berät persönlich und schaut nicht einfach nur kurz über das Rad.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-david-vor-radladen-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-david-vor-radladen-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-david-vor-radladen-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Olli und David in der Eingangstür vom Laden",
+        caption: "Olli’s Radladen, klein aber fein!",
+      },
+      {
+        type: "paragraph",
+        text: "Das Angebot ist vielfältig:",
+      },
+      {
+        type: "rich",
+        html: "<h2>Beratung &amp; Verkauf</h2><ul><li>Individuelle Beratung</li><li>Verkauf passender Bikes, E-Bikes und Komponenten</li></ul><h2>Service &amp; Wartung</h2><ul><li>Wartung und Inspektion</li><li>Scheibenbremsen einbremsen</li></ul><h2>Ergonomie &amp; Setup</h2><ul><li>Bikefitting</li><li>Sitzbreite Messung &amp; Sattelberatung</li></ul>",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2009/ollis-radladen-bikefitting-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2009/ollis-radladen-bikefitting-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2009/ollis-radladen-bikefitting-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Ich auf dem Fahrrad",
+        caption: "Ein Bikefitting ist die beste Investition",
+      },
+      {
+        type: "paragraph",
+        text: "Auch bei der Auswahl der Räder wird auf Qualität gesetzt: Haibike, Lapierre sowie spezielle Reiseräder von Velotraum.",
+      },
+      {
+        type: "rich",
+        html: '<p>Schaut gerne mal bei <a href="http://www.ollis-radladen.de">www.ollis-Radladen.de</a> oder <a href="http://www.ferienhaeuser-brieden.de">www.ferienhaeuser-brieden.de</a> vorbei.</p>',
+      },
+      {
+        type: "paragraph",
+        text: "Danke, Olli, für die Unterstützung auf meinem Weg nach Hawaii!",
+      },
+      {
+        type: "gallery",
+        variant: "collection",
+        lightboxGroup: "ollis-radladen-sammlung",
+        lightboxImages: [
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-feineinstellung-schaltung-web.jpg",
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-scheibenbremsen-einbremsen-web.jpg",
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2009/ollis-radladen-fahrrad-auswahl-web.jpg",
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2009/velotraum-reiseraeder-web.jpg",
+        ],
+        images: [
+          {
+            image: "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-feineinstellung-schaltung-web.jpg",
+            imageSrcset:
+              "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-feineinstellung-schaltung-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-feineinstellung-schaltung-web.jpg 1600w",
+            imageSizes: "(max-width: 560px) calc((100vw - 60px) / 2), 330px",
+            imageAlt: "Olli am Schrauben",
+            caption: "Olli bei der Feineinstellung meiner Schaltung",
+          },
+          {
+            image: "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-scheibenbremsen-einbremsen-web.jpg",
+            imageSrcset:
+              "../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-scheibenbremsen-einbremsen-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2009/olli-scheibenbremsen-einbremsen-web.jpg 1600w",
+            imageSizes: "(max-width: 560px) calc((100vw - 60px) / 2), 330px",
+            imageAlt: "Olli beim Einbremsen",
+            caption: "Wieder was gelernt: Ich wusste nicht, dass Scheiben und Bremsbeläge eingebremst werden sollten.",
+          },
+          {
+            image: "../Bilder%20Landingpage/Newsfeed/Artikel%2009/ollis-radladen-fahrrad-auswahl-web.jpg",
+            imageSrcset:
+              "../Bilder%20Landingpage/Newsfeed/Artikel%2009/ollis-radladen-fahrrad-auswahl-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2009/ollis-radladen-fahrrad-auswahl-web.jpg 1600w",
+            imageSizes: "(max-width: 560px) calc((100vw - 60px) / 2), 330px",
+            imageAlt: "Bikes",
+            caption: "Eine große Auswahl an E-Bikes und normalen Fahrrädern",
+          },
+          {
+            image: "../Bilder%20Landingpage/Newsfeed/Artikel%2009/velotraum-reiseraeder-web.jpg",
+            imageSrcset:
+              "../Bilder%20Landingpage/Newsfeed/Artikel%2009/velotraum-reiseraeder-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2009/velotraum-reiseraeder-web.jpg 1600w",
+            imageSizes: "(max-width: 560px) calc((100vw - 60px) / 2), 330px",
+            imageAlt: "Zwei Räder von Velotraum",
+            caption: "Sogar Reiseräder sind im Sortiment vorhanden",
+          },
+        ],
+      },
+    ],
+  },
+  {
     slug: "autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii",
     url: "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii",
     title: "Das Autohaus Schaden Subaru als Exklusivpartner auf dem Weg nach Hawaii",
