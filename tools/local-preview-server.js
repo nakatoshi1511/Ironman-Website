@@ -5,6 +5,8 @@ const path = require("node:path");
 const publicRoutes = {
   "/": "mockups/landingpage-flow.html",
   "/news": "mockups/newsfeed.html",
+  "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii":
+    "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html",
   "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii":
     "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
   "/news/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii":

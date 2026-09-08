@@ -47,6 +47,13 @@
       "status": 308
     },
     {
+      "src": "/mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      "headers": {
+        "Location": "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii"
+      },
+      "status": 308
+    },
+    {
       "src": "/mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii\\.html",
       "headers": {
         "Location": "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii"
@@ -130,6 +137,10 @@
     {
       "src": "/news",
       "dest": "/mockups/newsfeed.html"
+    },
+    {
+      "src": "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
+      "dest": "/mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html"
     },
     {
       "src": "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii",

@@ -45,6 +45,7 @@ test("local preview resolves clean public routes without changing production HTM
     home,
     mockupOverview,
     news,
+    andreasArticle,
     article,
     podcastArticle,
     bortolotArticle,
@@ -57,6 +58,7 @@ test("local preview resolves clean public routes without changing production HTM
     request(server, "/"),
     request(server, "/mockups/"),
     request(server, "/news"),
+    request(server, "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii"),
     request(server, "/news/17-stunden-zum-ruhm"),
     request(server, "/news/zu-gast-im-podcast-moselmomente"),
     request(server, "/news/eisdiele-bortolot-als-partner-auf-dem-weg-nach-hawaii"),
@@ -74,6 +76,12 @@ test("local preview resolves clean public routes without changing production HTM
   assert.match(mockupOverview.body, /Road to Hawaii - Hero Mockups/);
   assert.equal(news.statusCode, 200);
   assert.match(news.body, /<h1>Newsfeed<\/h1>/);
+  assert.equal(andreasArticle.statusCode, 200);
+  assert.match(
+    andreasArticle.body,
+    /data-article-slug="mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii"/,
+  );
+  assert.match(andreasArticle.body, /Mein Trainer Andreas Würtz/);
   assert.equal(article.statusCode, 200);
   assert.match(article.body, /17 Stunden zum Ruhm/);
   assert.match(article.body, /data-article-teaser/);

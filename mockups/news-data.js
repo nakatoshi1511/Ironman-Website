@@ -1,5 +1,93 @@
 export const newsArticles = [
   {
+    slug: "mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
+    url: "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
+    title: "Mein Trainer Andreas Würtz (EMH-Coaching) als Partner auf dem Weg nach Hawaii",
+    titleVariant: "compact",
+    teaser: "Bei Andreas steht der Mensch im Vordergrund",
+    category: "Partner",
+    dateLabel: "08.09.2026",
+    dateTime: "2026-09-08",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2010/andreas-david-ironman-frankfurt-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2010/andreas-david-ironman-frankfurt-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2010/andreas-david-ironman-frankfurt-web.jpg 1200w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+    imageAlt: "Andreas und ich nach dem Ironman Frankfurt 2025",
+    mediaCaption: "Andreas und ich nach dem Ironman Frankfurt 2025",
+    cardImagePosition: "50% 34%",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Als ich 2014 mit dem Leistungssport aufgehört habe, hätte ich nicht gedacht, dass ich irgendwann noch einmal mit einem Trainer zusammenarbeiten würde. Ich wollte mich nie wieder durch einen Trainingsplan einschränken.",
+      },
+      {
+        type: "paragraph",
+        text: "Dann kam Andreas!",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2010/andreas-david-ironman-frankfurt-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2010/andreas-david-ironman-frankfurt-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2010/andreas-david-ironman-frankfurt-web.jpg 1200w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Andreas und ich zufrieden nach dem Ironman Frankfurt 2025",
+        caption: "Andreas und ich zufrieden nach dem Ironman Frankfurt 2025",
+      },
+      {
+        type: "paragraph",
+        text: "Seit mittlerweile vier Jahren arbeiten wir zusammen – zunächst als Schwimmtrainer, mittlerweile übernimmt er mein komplettes Training.",
+      },
+      {
+        type: "paragraph",
+        text: "Was ich an Andreas besonders schätze: Bei ihm steht der Mensch im Vordergrund – und dann kommt das Training.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2010/besprechung-vor-wettkampf-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2010/besprechung-vor-wettkampf-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2010/besprechung-vor-wettkampf-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Besprechung vor dem Wettkampf",
+        caption: "Besprechung vor dem Wettkampf",
+      },
+      {
+        type: "paragraph",
+        text: "Gerade im Schichtdienst lässt sich ein Plan nicht immer zu 100 % einhalten. Dafür hat Andreas Verständnis und passt das Training an meinen Alltag an. Je näher der Wettkampf rückt, desto genauer halte ich mich an seine Vorgaben.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2010/unterstuetzung-im-wettkampf-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2010/unterstuetzung-im-wettkampf-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2010/unterstuetzung-im-wettkampf-web.jpg 1200w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Unterstützung im Wettkampf",
+        caption: "Unterstützung im Wettkampf",
+      },
+      {
+        type: "paragraph",
+        text: "Andreas hat es geschafft, über die Jahre mein Vertrauen zu gewinnen. Und jetzt gehen wir gemeinsam den nächsten großen Schritt 💪",
+      },
+      {
+        type: "rich",
+        html: '<p>Schaut gerne mal bei <a href="https://www.emh-coaching.de">https://www.emh-coaching.de</a> vorbei.</p>',
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2010/trainingsplanung-schwimmbad-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2010/trainingsplanung-schwimmbad-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2010/trainingsplanung-schwimmbad-web.jpg 1400w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "Trainingsplanung an meinem Lieblingsort",
+        caption: "Trainingsplanung an meinem Lieblingsort",
+      },
+    ],
+  },
+  {
     slug: "ollis-radladen-als-partner-auf-dem-weg-nach-hawaii",
     url: "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii",
     title: "Ollis Radladen als Partner auf dem dem Weg nach Hawaii",

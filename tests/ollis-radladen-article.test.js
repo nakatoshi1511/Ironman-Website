@@ -11,12 +11,12 @@ async function loadNewsData() {
   return import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 }
 
-test("Ollis Radladen is the new lead article with the supplied copy and image placement", async () => {
+test("Ollis Radladen follows the new lead article with the supplied copy and image placement", async () => {
   const { getArticleBySlug, newsArticles } = await loadNewsData();
   const article = getArticleBySlug(slug);
 
   assert.ok(article);
-  assert.equal(newsArticles[0].slug, slug);
+  assert.equal(newsArticles[1].slug, slug);
   assert.equal(article.url, `/news/${slug}`);
   assert.equal(article.title, "Ollis Radladen als Partner auf dem dem Weg nach Hawaii");
   assert.equal(article.titleVariant, "compact");
@@ -101,6 +101,6 @@ test("Ollis Radladen detail page uses the clean route, compact title, and curren
 
   assert.match(html, new RegExp(`data-article-slug="${slug}"`));
   assert.match(html, /<body class="[^"]*article-title-compact[^"]*">/);
-  assert.match(html, /article-render\.js\?v=article-17/);
+  assert.match(html, /article-render\.js\?v=article-18/);
   assert.match(html, new RegExp(`https://www\\.roadtohawaii\\.de/news/${slug}`));
 });

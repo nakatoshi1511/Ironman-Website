@@ -11,6 +11,7 @@ const productionPages = [
   "index.html",
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii.html",
@@ -27,6 +28,7 @@ const canonicalBaseUrl = "https://www.roadtohawaii.de";
 const indexablePages = [
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii.html",
@@ -40,6 +42,8 @@ const indexablePages = [
 const publicPathByPage = {
   "mockups/landingpage-flow.html": "/",
   "mockups/newsfeed.html": "/news",
+  "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html":
+    "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
   "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html":
     "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii",
   "mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html":
@@ -183,6 +187,11 @@ test("publishes only the approved runtime surface", () => {
     "Bilder Landingpage/Newsfeed/Artikel 09/IMG_0154.jpeg",
     "Bilder Landingpage/Newsfeed/Artikel 09/IMG_0158.jpeg",
     "Bilder Landingpage/Newsfeed/Artikel 09/IMG_0167.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 10/Newsfeed Andreas Würtz.docx",
+    "Bilder Landingpage/Newsfeed/Artikel 10/Bild 1.JPG",
+    "Bilder Landingpage/Newsfeed/Artikel 10/Bild 2.jpg",
+    "Bilder Landingpage/Newsfeed/Artikel 10/Bild 3.JPG",
+    "Bilder Landingpage/Newsfeed/Artikel 10/Bild 4.HEIC",
     "Dokumente/Bilder/WhatsApp Unknown 2026-07-01 at 11.38.35.zip",
     "Bilder Landingpage/IMG_0935.JPG",
   ];
@@ -220,6 +229,13 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
     { src: "/mockups/", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/landingpage-flow\\.html", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/newsfeed\\.html", headers: { Location: "/news" }, status: 308 },
+    {
+      src: "/mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      headers: {
+        Location: "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
+      },
+      status: 308,
+    },
     {
       src: "/mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii\\.html",
       headers: { Location: "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii" },
@@ -259,6 +275,10 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   const expectedRewrites = [
     { src: "/", dest: "/mockups/landingpage-flow.html" },
     { src: "/news", dest: "/mockups/newsfeed.html" },
+    {
+      src: "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
+      dest: "/mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html",
+    },
     {
       src: "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii",
       dest: "/mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
@@ -303,6 +323,7 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   }
 
   assert.doesNotMatch(read("index.html"), /http-equiv="refresh"/i);
+  assert.match(read("mockups/news-data.js"), /url: "\/news\/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/zimmerei-schnorbach-als-partner-auf-dem-weg-nach-hawaii"/);

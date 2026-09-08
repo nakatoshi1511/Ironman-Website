@@ -122,7 +122,11 @@ Der Newsfeed ist bewusst keine Sektion der Homepage mehr, sondern eine eigene Se
 Aktueller Stand:
 - statische Seite, deren Kacheln per `mockups/newsfeed-render.js` aus `mockups/news-data.js` gerendert werden
 - Hero mit Navigation zurück zu den Homepage-Sektionen
-- drei echte Beiträge sind angelegt:
+- zehn echte Beiträge sind angelegt; der aktuellste ist:
+  - `Mein Trainer Andreas Würtz (EMH-Coaching) als Partner auf dem Weg nach Hawaii`
+    - Detailseite: `mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html`
+    - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 10/`
+- zu den weiteren Beiträgen gehören:
   - `17 Stunden zum Ruhm - Mythos Ironman Hawaii`
     - Detailseite: `mockups/newsfeed-17-stunden-zum-ruhm.html`
     - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 01/`
