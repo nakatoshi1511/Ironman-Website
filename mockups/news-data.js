@@ -1,5 +1,135 @@
 export const newsArticles = [
   {
+    slug: "schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon",
+    url: "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon",
+    title: "Schnellster Amateur über die Mitteldistanz beim Köln Triathlon",
+    titleVariant: "compact",
+    teaser: "Die Form stimmt",
+    category: "Wettkampf",
+    dateLabel: "12.09.2026",
+    dateTime: "2026-09-12",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-zieleinlauf-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-zieleinlauf-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-zieleinlauf-web.jpg 1600w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+    imageAlt: "",
+    mediaCaption: "Zieleinlauf",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Am Sonntag, den 06.09.2026, ging ich beim Köln Triathlon an den Start und wollte in erster Linie überprüfen, ob das Training der letzten Wochen Früchte trägt. Außerdem hatte ich einfach nochmal Lust auf einen Wettkampf.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-zieleinlauf-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-zieleinlauf-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-zieleinlauf-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Zieleinlauf",
+      },
+      {
+        type: "paragraph",
+        text: "Wir hatten die Trainingsumfänge während der Tage vor dem Wettkampf bewusst etwas heruntergefahren um relativ ausgeruht starten zu können.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-dom-lauf-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-dom-lauf-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-dom-lauf-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Die Laufstrecke führte am Kölner Dom vorbei",
+      },
+      {
+        type: "paragraph",
+        text: "Die 2,6 km lange Schwimmstrecke bewältigte ich in 30:18 min (1:10min/100m), was jedoch in erster Linie der Strömung im Rhein zu verdanken war. Wie gewohnt startete ich jetzt meine Aufholjagd auf dem Rad und arbeitete mich auf der weitestgehend flachen Strecke sukzessive nach vorne. Die 88 km lange Radstrecke absolvierte ich in 2:03:34 h, was einen 42,7er Schnitt bedeutete.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-radfahren-aero-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-radfahren-aero-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-radfahren-aero-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Radfahren überwiegend in Aero-Position",
+      },
+      {
+        type: "paragraph",
+        text: "Beim abschließenden Lauf über 19,9 km konnte ich mich mit einer Zeit von 1:08:33 (3:27 min/km) weiter auf den 18 Gesamtrang nach vorne arbeiten. Damit war ich schnellster Amateur und belegte in der AK 35 den 1. Platz!",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-unterstuetzung-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-unterstuetzung-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-unterstuetzung-web.jpg 1200w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Die Unterstützung vor Ort",
+      },
+      {
+        type: "paragraph",
+        text: "Der Wettkampf hat mir gezeigt, dass ich auf dem richtigen Weg bin. Ich konnte meine Werte wie geplant abrufen und fühlte mich durchgehend gut. Das macht Mut für die letzten 3 Trainingswochen, bevor es dann am 01.10.2026 mit dem Flieger nach Hawaii geht.",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-autohaus-schaden-danke-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-autohaus-schaden-danke-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2012/koeln-autohaus-schaden-danke-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Danke an das Subaru Autohaus Schaden",
+      },
+    ],
+  },
+  {
+    slug: "steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii",
+    url: "/news/steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii",
+    title: "Das Steuerbüro Berenz und Burggraf als Partner auf dem Weg nach Hawaii",
+    titleVariant: "compact",
+    teaser: "",
+    category: "Partner",
+    dateLabel: "12.09.2026",
+    dateTime: "2026-09-12",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2011/berenz-burggraf-partner-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2011/berenz-burggraf-partner-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2011/berenz-burggraf-partner-web.jpg 1600w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+    imageAlt: "",
+    mediaCaption: "Gemeinsam mit Rainer Berenz und Philipp Burggraf vor der Firmenzentrale in Kaisersesch",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Triathlon ist eine Nischensportart. Umso bemerkenswerter ist es, wenn Unternehmen abseits der typischen Sportbranche einen Sportler auf dem Weg nach Hawaii begleiten!",
+      },
+      {
+        type: "paragraph",
+        text: "Danke an die Steuerberatungsgesellschaft Berenz und Burggraf aus Kaisersesch für das Vertrauen und die Unterstützung!",
+      },
+      {
+        type: "rich",
+        html: '<p>Schaut gerne mal vorbei auf <a href="https://berenz-burggraf-stb.de">https://berenz-burggraf-stb.de</a></p>',
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2011/berenz-burggraf-partner-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2011/berenz-burggraf-partner-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2011/berenz-burggraf-partner-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Gemeinsam mit Rainer Berenz und Philipp Burggraf vor der Firmenzentrale in Kaisersesch",
+      },
+    ],
+  },
+  {
     slug: "mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
     url: "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
     title: "Mein Trainer Andreas Würtz (EMH-Coaching) als Partner auf dem Weg nach Hawaii",

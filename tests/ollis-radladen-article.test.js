@@ -16,7 +16,7 @@ test("Ollis Radladen follows the new lead article with the supplied copy and ima
   const article = getArticleBySlug(slug);
 
   assert.ok(article);
-  assert.equal(newsArticles[1].slug, slug);
+  assert.equal(newsArticles[3].slug, slug);
   assert.equal(article.url, `/news/${slug}`);
   assert.equal(article.title, "Ollis Radladen als Partner auf dem dem Weg nach Hawaii");
   assert.equal(article.titleVariant, "compact");
@@ -101,6 +101,6 @@ test("Ollis Radladen detail page uses the clean route, compact title, and curren
 
   assert.match(html, new RegExp(`data-article-slug="${slug}"`));
   assert.match(html, /<body class="[^"]*article-title-compact[^"]*">/);
-  assert.match(html, /article-render\.js\?v=article-18/);
+  assert.match(html, /article-render\.js\?v=article-19/);
   assert.match(html, new RegExp(`https://www\\.roadtohawaii\\.de/news/${slug}`));
 });

@@ -11,6 +11,8 @@ const productionPages = [
   "index.html",
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon.html",
+  "mockups/newsfeed-steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html",
@@ -28,6 +30,8 @@ const canonicalBaseUrl = "https://www.roadtohawaii.de";
 const indexablePages = [
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon.html",
+  "mockups/newsfeed-steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html",
@@ -42,6 +46,10 @@ const indexablePages = [
 const publicPathByPage = {
   "mockups/landingpage-flow.html": "/",
   "mockups/newsfeed.html": "/news",
+  "mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon.html":
+    "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon",
+  "mockups/newsfeed-steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii.html":
+    "/news/steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii",
   "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html":
     "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
   "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html":
@@ -192,6 +200,14 @@ test("publishes only the approved runtime surface", () => {
     "Bilder Landingpage/Newsfeed/Artikel 10/Bild 2.jpg",
     "Bilder Landingpage/Newsfeed/Artikel 10/Bild 3.JPG",
     "Bilder Landingpage/Newsfeed/Artikel 10/Bild 4.HEIC",
+    "Bilder Landingpage/Newsfeed/Artikel 11/Steeuerbürop Berenz und Burggraf.docx",
+    "Bilder Landingpage/Newsfeed/Artikel 11/IMG_0691.jpeg",
+    "Bilder Landingpage/Newsfeed/Artikel 12/Newsfeed Triathlon Köln.docx",
+    "Bilder Landingpage/Newsfeed/Artikel 12/Köln Bild 1.JPG",
+    "Bilder Landingpage/Newsfeed/Artikel 12/Köln Bild 2.JPG",
+    "Bilder Landingpage/Newsfeed/Artikel 12/Köln Bild 3.JPG",
+    "Bilder Landingpage/Newsfeed/Artikel 12/Köln Bild 4.JPG",
+    "Bilder Landingpage/Newsfeed/Artikel 12/Köln Bild 5.HEIC",
     "Dokumente/Bilder/WhatsApp Unknown 2026-07-01 at 11.38.35.zip",
     "Bilder Landingpage/IMG_0935.JPG",
   ];
@@ -229,6 +245,16 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
     { src: "/mockups/", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/landingpage-flow\\.html", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/newsfeed\\.html", headers: { Location: "/news" }, status: 308 },
+    {
+      src: "/mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon\\.html",
+      headers: { Location: "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon" },
+      status: 308,
+    },
+    {
+      src: "/mockups/newsfeed-steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      headers: { Location: "/news/steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii" },
+      status: 308,
+    },
     {
       src: "/mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii\\.html",
       headers: {
@@ -275,6 +301,14 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   const expectedRewrites = [
     { src: "/", dest: "/mockups/landingpage-flow.html" },
     { src: "/news", dest: "/mockups/newsfeed.html" },
+    {
+      src: "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon",
+      dest: "/mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon.html",
+    },
+    {
+      src: "/news/steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii",
+      dest: "/mockups/newsfeed-steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii.html",
+    },
     {
       src: "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
       dest: "/mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html",
@@ -323,6 +357,8 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   }
 
   assert.doesNotMatch(read("index.html"), /http-equiv="refresh"/i);
+  assert.match(read("mockups/news-data.js"), /url: "\/news\/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon"/);
+  assert.match(read("mockups/news-data.js"), /url: "\/news\/steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii"/);
   assert.match(read("mockups/news-data.js"), /url: "\/news\/autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii"/);

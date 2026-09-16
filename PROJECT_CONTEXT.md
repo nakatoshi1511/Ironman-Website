@@ -122,10 +122,13 @@ Der Newsfeed ist bewusst keine Sektion der Homepage mehr, sondern eine eigene Se
 Aktueller Stand:
 - statische Seite, deren Kacheln per `mockups/newsfeed-render.js` aus `mockups/news-data.js` gerendert werden
 - Hero mit Navigation zurück zu den Homepage-Sektionen
-- zehn echte Beiträge sind angelegt; der aktuellste ist:
-  - `Mein Trainer Andreas Würtz (EMH-Coaching) als Partner auf dem Weg nach Hawaii`
-    - Detailseite: `mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html`
-    - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 10/`
+- zwölf echte Beiträge sind angelegt; die beiden aktuellsten sind:
+  - `Schnellster Amateur über die Mitteldistanz beim Köln Triathlon`
+    - Detailseite: `mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon.html`
+    - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 12/`
+  - `Das Steuerbüro Berenz und Burggraf als Partner auf dem Weg nach Hawaii`
+    - Detailseite: `mockups/newsfeed-steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii.html`
+    - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 11/`
 - zu den weiteren Beiträgen gehören:
   - `17 Stunden zum Ruhm - Mythos Ironman Hawaii`
     - Detailseite: `mockups/newsfeed-17-stunden-zum-ruhm.html`

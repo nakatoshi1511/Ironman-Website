@@ -5,6 +5,10 @@ const path = require("node:path");
 const publicRoutes = {
   "/": "mockups/landingpage-flow.html",
   "/news": "mockups/newsfeed.html",
+  "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon":
+    "mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon.html",
+  "/news/steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii":
+    "mockups/newsfeed-steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii.html",
   "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii":
     "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html",
   "/news/ollis-radladen-als-partner-auf-dem-weg-nach-hawaii":

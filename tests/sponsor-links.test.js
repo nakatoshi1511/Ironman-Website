@@ -24,6 +24,7 @@ const expectedSponsors = [
     "SV Büchel 1927 e.V. und Förderverein Büchel",
     "https://sv-buechel-1927-ev.chayns.site/",
   ],
+  ["HRC GmbH Andre Hürter", "https://hrc-cochem.de/"],
 ];
 
 function sponsorLinkPattern(name, href) {
@@ -57,7 +58,7 @@ test("sponsor tier labels include compact category icons", () => {
   );
 });
 
-test("supporter tier includes all six logos", () => {
+test("supporter tier includes all seven logos", () => {
   const html = fs.readFileSync(pagePath, "utf8");
 
   const supporterLogos = [
@@ -70,6 +71,7 @@ test("supporter tier includes all six logos", () => {
       "Foerderverein-Buechel.jpeg",
       "SV Büchel 1927 e.V. und Förderverein Büchel",
     ],
+    ["HRC%20Logo.png", "HRC GmbH Andre Hürter"],
   ];
 
   for (const [filename, alt] of supporterLogos) {

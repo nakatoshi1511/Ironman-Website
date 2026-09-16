@@ -17,8 +17,8 @@ test("the two new partner articles expose the supplied metadata, copy, links, an
   const autohaus = getArticleBySlug(autohausSlug);
   const zimmerei = getArticleBySlug(zimmereiSlug);
 
-  assert.equal(newsArticles[2].slug, autohausSlug, "Artikel 08 must follow Artikel 09");
-  assert.equal(newsArticles[3].slug, zimmereiSlug, "Artikel 07 must follow as a compact card");
+  assert.equal(newsArticles[4].slug, autohausSlug, "Artikel 08 must follow Artikel 09");
+  assert.equal(newsArticles[5].slug, zimmereiSlug, "Artikel 07 must follow as a compact card");
 
   assert.ok(autohaus);
   assert.equal(autohaus.url, `/news/${autohausSlug}`);
@@ -121,7 +121,7 @@ test("the two new article pages use compact titles and the current article bundl
   for (const page of pages) {
     const html = fs.readFileSync(path.join(projectRoot, page), "utf8");
     assert.match(html, /<body class="[^"]*article-title-compact[^"]*">/);
-    assert.match(html, /article-render\.js\?v=article-18/);
+    assert.match(html, /article-render\.js\?v=article-19/);
   }
 });
 

@@ -12,12 +12,12 @@ async function loadNewsData() {
   return import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 }
 
-test("Andreas Würtz is the new lead article with the supplied metadata and copy", async () => {
+test("Andreas Würtz keeps the supplied metadata and copy", async () => {
   const { getArticleBySlug, newsArticles } = await loadNewsData();
   const article = getArticleBySlug(slug);
 
   assert.ok(article);
-  assert.equal(newsArticles[0].slug, slug);
+  assert.equal(newsArticles[2].slug, slug);
   assert.equal(article.url, `/news/${slug}`);
   assert.equal(article.title, "Mein Trainer Andreas Würtz (EMH-Coaching) als Partner auf dem Weg nach Hawaii");
   assert.equal(article.titleVariant, "compact");
@@ -90,6 +90,6 @@ test("Andreas Würtz detail page uses the clean route and current article bundle
   assert.match(html, new RegExp(`data-article-slug="${slug}"`));
   assert.match(html, /<body class="[^"]*article-title-compact[^"]*">/);
   assert.match(html, /article-title-extra-compact/);
-  assert.match(html, /article-render\.js\?v=article-18/);
+  assert.match(html, /article-render\.js\?v=article-19/);
   assert.match(html, new RegExp(`https://www\\.roadtohawaii\\.de/news/${slug}`));
 });

@@ -47,6 +47,20 @@
       "status": 308
     },
     {
+      "src": "/mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon\\.html",
+      "headers": {
+        "Location": "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon"
+      },
+      "status": 308
+    },
+    {
+      "src": "/mockups/newsfeed-steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii\\.html",
+      "headers": {
+        "Location": "/news/steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii"
+      },
+      "status": 308
+    },
+    {
       "src": "/mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii\\.html",
       "headers": {
         "Location": "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii"
@@ -137,6 +151,14 @@
     {
       "src": "/news",
       "dest": "/mockups/newsfeed.html"
+    },
+    {
+      "src": "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon",
+      "dest": "/mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon.html"
+    },
+    {
+      "src": "/news/steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii",
+      "dest": "/mockups/newsfeed-steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii.html"
     },
     {
       "src": "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii",
