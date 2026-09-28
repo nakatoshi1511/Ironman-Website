@@ -1,5 +1,136 @@
 export const newsArticles = [
   {
+    slug: "fazit-nach-10-wochen-vorbereitung",
+    url: "/news/fazit-nach-10-wochen-vorbereitung",
+    title: "Fazit nach 10 Wochen Vorbereitung",
+    teaser: "Die Arbeit ist getan, jetzt nur noch konzentriert bleiben",
+    category: "Training",
+    dateLabel: "28.09.2026",
+    dateTime: "2026-09-28",
+    image: "../Bilder%20Landingpage/Newsfeed/Artikel%2013/leistungsdiagnostik-lauf-web.jpg",
+    imageSrcset:
+      "../Bilder%20Landingpage/Newsfeed/Artikel%2013/leistungsdiagnostik-lauf-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2013/leistungsdiagnostik-lauf-web.jpg 1600w",
+    imageSizes:
+      "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), (max-width: 1280px) 46vw, 600px",
+    imageAlt: "",
+    mediaCaption: "Leistungsdiagnostik in Köln",
+    cardImagePosition: "50% 38%",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Die letzten sechs Wochen nach dem ersten Zwischenfazit vergingen wie im Flug. Ich konnte fast alle Trainingseinheiten wie geplant umsetzen und blieb von längeren Krankheiten und Verletzungen verschont. Zwei Tage musste ich pausieren, da eine Erkältung im Anmarsch war, die ich aber noch rechtzeitig abfangen konnte. ",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2013/erkaeltung-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2013/erkaeltung-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2013/erkaeltung-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Der Erkältung nochmal von der Schippe gesprungen",
+      },
+      {
+        type: "paragraph",
+        text: "Dank dem Projekt “Road to Hawaii” hatte ich die Gelegenheit viele interessante Menschen kennenzulernen und neue Erfahrungen zu sammeln.",
+      },
+      {
+        type: "paragraph",
+        text: "So durfte ich zum Beispiel bei der Veranstaltung “Sterne des Sports” als Ehrengast dabei sein. Hier zeichnen der Deutsche Olympische Sportbund und die Volksbanken Raiffeisenbanken Sportvereine aus, die sich besonders gesellschaftlich engagieren. ",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2013/sterne-des-sports-gruppe-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2013/sterne-des-sports-gruppe-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2013/sterne-des-sports-gruppe-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Die Veranstaltung “Sterne des Sports”",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2013/sterne-des-sports-interview-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2013/sterne-des-sports-interview-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2013/sterne-des-sports-interview-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Interview",
+      },
+      {
+        type: "paragraph",
+        text: "Außerdem hat mich ein Mitarbeiter des Projekts “Kurvenkreis” in Büchel besucht und einen schönen Artikel über meinen Weg nach Hawaii geschrieben. Den Artikel findet ihr hier:",
+      },
+      {
+        type: "rich",
+        html: '<p><a href="https://www.kurvenkreis.de/blog/2026/august/ironman/">https://www.kurvenkreis.de/blog/2026/august/ironman/</a></p>',
+      },
+      {
+        type: "paragraph",
+        text: "Letzte Woche war ich bei dem Sportinstitut HYCYS in Köln und absolvierte eine Leistungsdiagnostik. Die dort erlangten Erkenntnisse helfen mir und meinem Trainer, die Leistungsbereiche für den Ironman Hawaii festzulegen. Insgesamt war ich sehr zufrieden mit den Ergebnissen, das Training der letzten Wochen hat sich ausgezahlt. ",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2013/leistungsdiagnostik-rad-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2013/leistungsdiagnostik-rad-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2013/leistungsdiagnostik-rad-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Diagnostik Rad",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2013/leistungsdiagnostik-lauf-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2013/leistungsdiagnostik-lauf-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2013/leistungsdiagnostik-lauf-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Diagnostik Lauf",
+      },
+      {
+        type: "paragraph",
+        text: "Nun blicke ich voller Vorfreude auf die letzten beiden Wochen Vorbereitung. Es geht in erster Linie darum, dem Körper auf der einen Seite Ruhe zu gönnen und auf der anderen Seite eine gewisse Spannung aufrechtzuerhalten. Die Trainingseinheiten werden kürzer, aber nicht weniger intensiv. ",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2013/lauftraining-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2013/lauftraining-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2013/lauftraining-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Lauftraining",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2013/schwimmtraining-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2013/schwimmtraining-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2013/schwimmtraining-web.jpg 1600w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Schwimmtraining in bester Gesellschaft",
+      },
+      {
+        type: "paragraph",
+        text: "Vielen Dank an meine Unterstützer, Partner und Exklusivpartner! ",
+      },
+      {
+        type: "media",
+        image: "../Bilder%20Landingpage/Newsfeed/Artikel%2013/trainingsstunden-web.jpg",
+        imageSrcset:
+          "../Bilder%20Landingpage/Newsfeed/Artikel%2013/trainingsstunden-web-720.jpg 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2013/trainingsstunden-web.jpg 1179w",
+        imageSizes:
+          "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+        imageAlt: "",
+        caption: "Meine Trainingsstunden der letzten Wochen",
+      },
+    ],
+  },
+  {
     slug: "schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon",
     url: "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon",
     title: "Schnellster Amateur über die Mitteldistanz beim Köln Triathlon",

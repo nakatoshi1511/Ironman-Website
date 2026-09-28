@@ -5,6 +5,8 @@ const path = require("node:path");
 const publicRoutes = {
   "/": "mockups/landingpage-flow.html",
   "/news": "mockups/newsfeed.html",
+  "/news/fazit-nach-10-wochen-vorbereitung":
+    "mockups/newsfeed-fazit-nach-10-wochen-vorbereitung.html",
   "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon":
     "mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon.html",
   "/news/steuerbuero-berenz-und-burggraf-als-partner-auf-dem-weg-nach-hawaii":

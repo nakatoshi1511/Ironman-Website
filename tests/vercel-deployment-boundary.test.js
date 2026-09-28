@@ -246,6 +246,11 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
     { src: "/mockups/landingpage-flow\\.html", headers: { Location: "/" }, status: 308 },
     { src: "/mockups/newsfeed\\.html", headers: { Location: "/news" }, status: 308 },
     {
+      src: "/mockups/newsfeed-fazit-nach-10-wochen-vorbereitung\\.html",
+      headers: { Location: "/news/fazit-nach-10-wochen-vorbereitung" },
+      status: 308,
+    },
+    {
       src: "/mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon\\.html",
       headers: { Location: "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon" },
       status: 308,
@@ -301,6 +306,10 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
   const expectedRewrites = [
     { src: "/", dest: "/mockups/landingpage-flow.html" },
     { src: "/news", dest: "/mockups/newsfeed.html" },
+    {
+      src: "/news/fazit-nach-10-wochen-vorbereitung",
+      dest: "/mockups/newsfeed-fazit-nach-10-wochen-vorbereitung.html",
+    },
     {
       src: "/news/schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon",
       dest: "/mockups/newsfeed-schnellster-amateur-ueber-die-mitteldistanz-beim-koeln-triathlon.html",

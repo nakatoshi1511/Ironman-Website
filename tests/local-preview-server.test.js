@@ -45,6 +45,7 @@ test("local preview resolves clean public routes without changing production HTM
     home,
     mockupOverview,
     news,
+    tenWeekArticle,
     andreasArticle,
     article,
     podcastArticle,
@@ -58,6 +59,7 @@ test("local preview resolves clean public routes without changing production HTM
     request(server, "/"),
     request(server, "/mockups/"),
     request(server, "/news"),
+    request(server, "/news/fazit-nach-10-wochen-vorbereitung"),
     request(server, "/news/mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii"),
     request(server, "/news/17-stunden-zum-ruhm"),
     request(server, "/news/zu-gast-im-podcast-moselmomente"),
@@ -76,6 +78,9 @@ test("local preview resolves clean public routes without changing production HTM
   assert.match(mockupOverview.body, /Road to Hawaii - Hero Mockups/);
   assert.equal(news.statusCode, 200);
   assert.match(news.body, /<h1>Newsfeed<\/h1>/);
+  assert.equal(tenWeekArticle.statusCode, 200);
+  assert.match(tenWeekArticle.body, /data-article-slug="fazit-nach-10-wochen-vorbereitung"/);
+  assert.match(tenWeekArticle.body, /Fazit nach 10 Wochen Vorbereitung/);
   assert.equal(andreasArticle.statusCode, 200);
   assert.match(
     andreasArticle.body,

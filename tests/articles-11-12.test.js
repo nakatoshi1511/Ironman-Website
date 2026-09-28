@@ -18,8 +18,8 @@ test("Artikel 12 and 11 lead the feed with the supplied metadata and content ord
   const koeln = getArticleBySlug(koelnSlug);
   const steuerbuero = getArticleBySlug(steuerbueroSlug);
 
-  assert.equal(newsArticles[0].slug, koelnSlug);
-  assert.equal(newsArticles[1].slug, steuerbueroSlug);
+  assert.equal(newsArticles[1].slug, koelnSlug);
+  assert.equal(newsArticles[2].slug, steuerbueroSlug);
 
   assert.equal(koeln.title, "Schnellster Amateur über die Mitteldistanz beim Köln Triathlon");
   assert.equal(koeln.teaser, "Die Form stimmt");

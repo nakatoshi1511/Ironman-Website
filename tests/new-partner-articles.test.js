@@ -17,8 +17,8 @@ test("the two new partner articles expose the supplied metadata, copy, links, an
   const autohaus = getArticleBySlug(autohausSlug);
   const zimmerei = getArticleBySlug(zimmereiSlug);
 
-  assert.equal(newsArticles[4].slug, autohausSlug, "Artikel 08 must follow Artikel 09");
-  assert.equal(newsArticles[5].slug, zimmereiSlug, "Artikel 07 must follow as a compact card");
+  assert.equal(newsArticles[5].slug, autohausSlug, "Artikel 08 must follow Artikel 09");
+  assert.equal(newsArticles[6].slug, zimmereiSlug, "Artikel 07 must follow as a compact card");
 
   assert.ok(autohaus);
   assert.equal(autohaus.url, `/news/${autohausSlug}`);

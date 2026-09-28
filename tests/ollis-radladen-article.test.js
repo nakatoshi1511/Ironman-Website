@@ -16,7 +16,7 @@ test("Ollis Radladen follows the new lead article with the supplied copy and ima
   const article = getArticleBySlug(slug);
 
   assert.ok(article);
-  assert.equal(newsArticles[3].slug, slug);
+  assert.equal(newsArticles[4].slug, slug);
   assert.equal(article.url, `/news/${slug}`);
   assert.equal(article.title, "Ollis Radladen als Partner auf dem dem Weg nach Hawaii");
   assert.equal(article.titleVariant, "compact");

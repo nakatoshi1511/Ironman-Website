@@ -7,6 +7,7 @@ const projectRoot = path.join(__dirname, "..");
 const navigationPages = [
   "mockups/landingpage-flow.html",
   "mockups/newsfeed.html",
+  "mockups/newsfeed-fazit-nach-10-wochen-vorbereitung.html",
   "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-ollis-radladen-als-partner-auf-dem-weg-nach-hawaii.html",
   "mockups/newsfeed-autohaus-schaden-subaru-als-exklusivpartner-auf-dem-weg-nach-hawaii.html",
@@ -20,6 +21,13 @@ const navigationPages = [
 const expectedNavigationTargets = {
   "mockups/landingpage-flow.html": ["#profil", "#erfolge", "#partner", "#social-sponsoren", "/news"],
   "mockups/newsfeed.html": ["/#profil", "/#erfolge", "/#partner", "/#social-sponsoren", "/news"],
+  "mockups/newsfeed-fazit-nach-10-wochen-vorbereitung.html": [
+    "/#profil",
+    "/#erfolge",
+    "/#partner",
+    "/#social-sponsoren",
+    "/news",
+  ],
   "mockups/newsfeed-mein-trainer-andreas-wuertz-emh-coaching-als-partner-auf-dem-weg-nach-hawaii.html": [
     "/#profil",
     "/#erfolge",

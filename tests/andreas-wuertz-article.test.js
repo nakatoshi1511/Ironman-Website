@@ -17,7 +17,7 @@ test("Andreas Würtz keeps the supplied metadata and copy", async () => {
   const article = getArticleBySlug(slug);
 
   assert.ok(article);
-  assert.equal(newsArticles[2].slug, slug);
+  assert.equal(newsArticles[3].slug, slug);
   assert.equal(article.url, `/news/${slug}`);
   assert.equal(article.title, "Mein Trainer Andreas Würtz (EMH-Coaching) als Partner auf dem Weg nach Hawaii");
   assert.equal(article.titleVariant, "compact");
