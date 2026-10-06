@@ -17,8 +17,8 @@ test("the two new partner articles expose the supplied metadata, copy, links, an
   const autohaus = getArticleBySlug(autohausSlug);
   const zimmerei = getArticleBySlug(zimmereiSlug);
 
-  assert.equal(newsArticles[5].slug, autohausSlug, "Artikel 08 must follow Artikel 09");
-  assert.equal(newsArticles[6].slug, zimmereiSlug, "Artikel 07 must follow as a compact card");
+  assert.equal(newsArticles[6].slug, autohausSlug, "Artikel 08 must follow Artikel 09");
+  assert.equal(newsArticles[7].slug, zimmereiSlug, "Artikel 07 must follow as a compact card");
 
   assert.ok(autohaus);
   assert.equal(autohaus.url, `/news/${autohausSlug}`);
@@ -133,7 +133,7 @@ test("the compact lead card keeps long partner names intact on narrow screens", 
     styles,
     /@media \(max-width:\s*560px\)[\s\S]*?\.feed-grid \.news-card-large\.news-card-title-compact h2\s*\{[^}]*font-size:\s*clamp\(1\.1rem, 5\.25vw, 1\.32rem\);[^}]*overflow-wrap:\s*normal;[^}]*word-break:\s*normal;[^}]*hyphens:\s*none;/,
   );
-  assert.match(newsfeed, /styles\.css\?v=news-headlines-2/);
+  assert.match(newsfeed, /styles\.css\?v=news-headlines-3/);
 });
 
 test("the extra-long Autohaus detail title gets its own compact mobile scale", () => {

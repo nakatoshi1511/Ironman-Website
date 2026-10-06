@@ -122,7 +122,10 @@ Der Newsfeed ist bewusst keine Sektion der Homepage mehr, sondern eine eigene Se
 Aktueller Stand:
 - statische Seite, deren Kacheln per `mockups/newsfeed-render.js` aus `mockups/news-data.js` gerendert werden
 - Hero mit Navigation zurück zu den Homepage-Sektionen
-- dreizehn echte Beiträge sind angelegt; die beiden aktuellsten sind:
+- vierzehn echte Beiträge sind angelegt; die aktuellsten sind:
+  - `Das traditionsreiche Familienunternehmen Wajos als Exklusivpartner auf dem Weg nach Hawaii`
+    - Detailseite: `mockups/newsfeed-das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii.html`
+    - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 14/`
   - `Fazit nach 10 Wochen Vorbereitung`
     - Detailseite: `mockups/newsfeed-fazit-nach-10-wochen-vorbereitung.html`
     - Bildmaterial: `Bilder Landingpage/Newsfeed/Artikel 13/`

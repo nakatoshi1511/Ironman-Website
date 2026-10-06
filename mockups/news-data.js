@@ -1,4 +1,53 @@
 export const newsArticles = [
+{
+  slug: "das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii",
+  url: "/news/das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii",
+  title: "Das traditionsreiche Familienunternehmen Wajos als Exklusivpartner auf dem Weg nach Hawaii",
+  titleVariant: "compact",
+  teaser: "Das Leben mit guten Zutaten ein bisschen leckerer machen",
+  category: "Partner",
+  dateLabel: "01.10.2026",
+  dateTime: "2026-10-01",
+  image: "../Bilder%20Landingpage/Newsfeed/Artikel%2014/wajos-web.webp",
+  imageSrcset: "../Bilder%20Landingpage/Newsfeed/Artikel%2014/wajos-web-720.webp 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2014/wajos-web.webp 1554w",
+  imageSizes: "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+  imageAlt: "",
+  mediaCaption: "",
+  blocks: [
+    {
+      type: "paragraph",
+      text: "Ich freue mich sehr, mit Wajos einen weiteren Partner aus der Region an meiner Seite zu haben."
+    },
+    {
+      type: "paragraph",
+      text: "Als traditionsreiches Familienunternehmen mit tiefen Wurzeln an der Mosel engagiert sich Wajos für die Region und unterstützt mit mir nun auch einen Sportler aus der Region auf seinem Weg zur IRONMAN Weltmeisterschaft nach Hawaii."
+    },
+    {
+      type: "paragraph",
+      text: "Bei meinen hohen Trainingsumfängen muss ich täglich ordentlich essen."
+    },
+    {
+      type: "paragraph",
+      text: "Genau hier bringen die Produkte von Wajos mit wenig Aufwand Abwechslung und Geschmack in meine Gerichte. So wird aus einem einfachen Trainingsessen schnell etwas, auf das man sich wieder freut."
+    },
+    {
+      type: "rich",
+      html: "<p>Schaut gerne mal vorbei: <a href=\"https://www.wajos.de\">https://www.wajos.de</a></p>"
+    },
+    {
+      type: "paragraph",
+      text: "Vielen Dank an Wajos für die Unterstützung auf meinem Weg nach Hawaii!"
+    },
+    {
+      type: "media",
+      image: "../Bilder%20Landingpage/Newsfeed/Artikel%2014/wajos-web.webp",
+      imageSrcset: "../Bilder%20Landingpage/Newsfeed/Artikel%2014/wajos-web-720.webp 720w, ../Bilder%20Landingpage/Newsfeed/Artikel%2014/wajos-web.webp 1554w",
+      imageSizes: "(max-width: 560px) calc(100vw - 28px), (max-width: 880px) calc(100vw - 48px), 760px",
+      imageAlt: "",
+      caption: "Ulf Schwichtenberg und David vor der Firmenzentrale in Dohr"
+    }
+  ]
+},
   {
     slug: "fazit-nach-10-wochen-vorbereitung",
     url: "/news/fazit-nach-10-wochen-vorbereitung",

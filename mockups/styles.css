@@ -4588,6 +4588,10 @@ a.sponsor-logo-card:focus-visible {
     hyphens: none;
   }
 
+  .feed-grid .news-card-large a[href="/news/das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii"] h2 {
+    font-size: 0.875rem;
+  }
+
   .feed-grid .news-card p {
     font-size: 0.92rem;
     line-height: 1.45;
@@ -4597,5 +4601,49 @@ a.sponsor-logo-card:focus-visible {
   .news-card-meta {
     margin-bottom: 8px;
     font-size: 0.7rem;
+  }
+}
+
+/* Compact heading scale for the Wajos article. */
+.feed-grid .news-card-large a[href="/news/das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii"] h2 {
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+.article-page.article-title-wajos .article-hero h1 {
+  font-size: 2rem;
+  line-height: 1.08;
+}
+@media (max-width: 880px) {
+  .article-page.article-title-wajos .article-hero h1 {
+    font-size: 1.25rem;
+    line-height: 1.12;
+  }
+}
+@media (max-width: 560px) {
+  .feed-grid .news-card-large a[href="/news/das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii"] h2 {
+    font-size: 0.75rem;
+    line-height: 1.12;
+  }
+}
+
+/* Artikel 13 follows the approved smaller heading scale. */
+.feed-grid .news-card a[href="/news/fazit-nach-10-wochen-vorbereitung"] h2 {
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+.article-page.article-title-fazit .article-hero h1 {
+  font-size: 3rem;
+  line-height: 1.08;
+}
+@media (max-width: 880px) {
+  .article-page.article-title-fazit .article-hero h1 {
+    font-size: 1.875rem;
+    line-height: 1.12;
+  }
+}
+@media (max-width: 560px) {
+  .feed-grid .news-card a[href="/news/fazit-nach-10-wochen-vorbereitung"] h2 {
+    font-size: 0.75rem;
+    line-height: 1.12;
   }
 }

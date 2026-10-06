@@ -12,6 +12,13 @@
       "continue": true
     },
     {
+      "src": "/mockups/newsfeed-das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii\\.html",
+      "headers": {
+        "Location": "/news/das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii"
+      },
+      "status": 308
+    },
+    {
       "src": "/index\\.html",
       "headers": {
         "Location": "/"
@@ -158,6 +165,10 @@
     {
       "src": "/news",
       "dest": "/mockups/newsfeed.html"
+    },
+    {
+      "src": "/news/das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii",
+      "dest": "/mockups/newsfeed-das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii.html"
     },
     {
       "src": "/news/fazit-nach-10-wochen-vorbereitung",

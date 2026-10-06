@@ -12,12 +12,12 @@ async function loadNewsData() {
   return import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 }
 
-test("Artikel 13 leads the feed with the supplied metadata, copy, and image order", async () => {
+test("Artikel 13 follows Artikel 14 with the supplied metadata, copy, and image order", async () => {
   const { getArticleBySlug, newsArticles } = await loadNewsData();
   const article = getArticleBySlug(slug);
 
   assert.ok(article);
-  assert.equal(newsArticles[0].slug, slug);
+  assert.equal(newsArticles[1].slug, slug);
   assert.equal(article.url, `/news/${slug}`);
   assert.equal(article.title, "Fazit nach 10 Wochen Vorbereitung");
   assert.equal(article.teaser, "Die Arbeit ist getan, jetzt nur noch konzentriert bleiben");

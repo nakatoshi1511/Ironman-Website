@@ -3,6 +3,7 @@ const http = require("node:http");
 const path = require("node:path");
 
 const publicRoutes = {
+  "/news/das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii": "mockups/newsfeed-das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii.html",
   "/": "mockups/landingpage-flow.html",
   "/news": "mockups/newsfeed.html",
   "/news/fazit-nach-10-wochen-vorbereitung":

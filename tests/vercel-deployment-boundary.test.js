@@ -355,6 +355,8 @@ test("serves clean public URLs and redirects legacy mockup pages", () => {
 
   assert.equal(config.routes?.[0]?.src, "/(.*)");
   assert.equal(config.routes?.[0]?.continue, true);
+  expectedLegacyRedirects.unshift({"src": "/mockups/newsfeed-das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii\\.html", "headers": {"Location": "/news/das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii"}, "status": 308});
+  expectedRewrites.splice(expectedRewrites.findIndex(route => route.src === "/news/fazit-nach-10-wochen-vorbereitung"), 0, {"src": "/news/das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii", "dest": "/mockups/newsfeed-das-traditionsreiche-familienunternehmen-wajos-als-exklusivpartner-auf-dem-weg-nach-hawaii.html"});
   const legacyRedirectEnd = 1 + expectedLegacyRedirects.length;
   const rewriteEnd = legacyRedirectEnd + expectedRewrites.length;
   assert.deepEqual(config.routes?.slice(1, legacyRedirectEnd), expectedLegacyRedirects);
