@@ -4647,3 +4647,16 @@ a.sponsor-logo-card:focus-visible {
     line-height: 1.12;
   }
 }
+
+/* One heading scale for every Newsfeed card, including the lead card. */
+.newsfeed-page .feed-grid .news-card.news-card a h2 {
+  font-size: 1.25rem;
+  line-height: 1.05;
+  max-width: none;
+}
+@media (max-width: 560px) {
+  .newsfeed-page .feed-grid .news-card.news-card a h2 {
+    font-size: 0.875rem;
+    line-height: 1.05;
+  }
+}
